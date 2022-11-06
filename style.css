@@ -1,0 +1,93 @@
+body, html {
+    padding: 0%;
+    margin: 0%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    padding: 0%;
+    list-style: none;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    padding: calc(100vh / 10 * 1.5) calc(100vw / 5) calc(100vh / 10);
+    grid-template-rows: 7fr 1fr 2fr 2fr;
+    grid-template-areas:
+        "main"
+        "."
+        "next"
+        "queue";
+}
+
+/* Main task (clock and task name) */
+
+.main-task {
+    grid-area: main;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.timer {
+    width: calc(100vw / 5 * 3);
+    height: calc(100vw / 5 * 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+/* Next task */
+
+.next-task {
+    grid-area: next;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.next-task span.label {
+    font-weight: bold;
+    padding-right: .5rem;
+}
+
+.next-task span.last-task {
+    font-style: italic;
+}
+
+/* Task queue */
+
+.task-queue {
+    grid-area: queue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-queue ul {
+    display: flex;
+    position: absolute;
+    width: max-content;
+}
+
+.task-queue li.current {
+    padding: 0% .5rem;
+    margin: 0% .5rem;
+    color: #555;
+    border-left: 2px solid #777;
+    border-right: 2px solid #777;
+}
+
+.task-queue li:not(.current) {
+    color: #bbb;
+}
+
+.task-queue li.current ~ li {
+    color: #777;
+}
