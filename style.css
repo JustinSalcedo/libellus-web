@@ -16,7 +16,8 @@ ul {
 .container {
     display: grid;
     height: 100vh;
-    padding: calc(100vh / 10 * 1.5) calc(100vw / 5) calc(100vh / 10);
+    overflow-y: hidden;
+    padding: calc(100vh / 10 * 1.5) calc(100vw / 6) calc(100vh / 10);
     grid-template-rows: 7fr 1fr 2fr 2fr;
     grid-template-areas:
         "main"
@@ -34,8 +35,8 @@ ul {
 }
 
 .timer {
-    width: calc(100vw / 5 * 3);
-    height: calc(100vw / 5 * 3);
+    width: calc(100vw / 6 * 4);
+    height: calc(100vw / 6 * 4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +51,6 @@ ul {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    width: max-content;
 }
 
 .next-task span.label {
