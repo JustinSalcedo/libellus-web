@@ -17,7 +17,6 @@ const mySchedule = MY_SCHEDULE.sort((a, b) => a.start.getTime() - b.start.getTim
 function getTaskQueue(schedule) {
     const time  = new Date()
     const currentIndex = schedule.findIndex(task => time >= task.start && time < task.end)
-    console.log(currentIndex)
     // assumes the schedule is time sorted
     let queue = schedule.slice(currentIndex - 1, currentIndex + 2)
     if (currentIndex === -1) {
@@ -146,7 +145,6 @@ function loadTaskQueue(taskQueue) {
         const taskElement = document.createElement('li')
         if (index === 1) taskElement.className = 'current'
         taskElement.textContent = task ? task.name : '...'
-        console.log(task)
         taskQueueList.appendChild(taskElement)
     })
 }
@@ -160,8 +158,8 @@ function redirectCompletion() {
 // Main function
 
 function main() {
-    const taskQueue = getTaskQueue(mySchedule)
-    interval = setInterval(() => loadContent(taskQueue), 1000)
+    // create custom intervals to recall the task queue
+    interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
 }
 
 main()
