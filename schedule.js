@@ -141,7 +141,7 @@ const MY_SCHEDULE = [
     {
         name: "Drive",
         start: new Date(`${MONDAY} 14:30`),
-        end: new Date(`${MONDAY} 17:00`)
+        end: new Date(`${MONDAY} 15:00`)
     },
     {
         name: "Eat & Setup",
