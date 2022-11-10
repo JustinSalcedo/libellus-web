@@ -330,6 +330,140 @@ const MY_SCHEDULE = [
     },
 
     // Thursday
+    {
+        name: "Get ready",
+        start: new Date(`${THURSDAY} 5:00`),
+        end: new Date(`${THURSDAY} 6:00`)
+    },
+    {
+        name: "Work",
+        start: new Date(`${THURSDAY} 6:00`),
+        end: new Date(`${THURSDAY} 14:30`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${THURSDAY} 14:30`),
+        end: new Date(`${THURSDAY} 15:00`)
+    },
+    {
+        name: "Eat & Setup",
+        start: new Date(`${THURSDAY} 15:00`),
+        end: new Date(`${THURSDAY} 15:30`)
+    },
+    {
+        name: "Check email",
+        start: new Date(`${THURSDAY} 15:30`),
+        end: new Date(`${THURSDAY} 15:45`)
+    },
+    {
+        name: "CT Project",
+        start: new Date(`${THURSDAY} 15:45`),
+        end: new Date(`${THURSDAY} 16:30`)
+    },
+    {
+        name: "CT Discussion",
+        start: new Date(`${THURSDAY} 16:30`),
+        end: new Date(`${THURSDAY} 17:30`)
+    },
+    {
+        name: "Shower",
+        start: new Date(`${THURSDAY} 17:30`),
+        end: new Date(`${THURSDAY} 18:30`)
+    },
+    {
+        name: "IP Discussion",
+        start: new Date(`${THURSDAY} 19:00`),
+        end: new Date(`${THURSDAY} 19:30`)
+    },
+    {
+        name: "Debt Relief",
+        start: new Date(`${THURSDAY} 19:30`),
+        end: new Date(`${THURSDAY} 20:00`)
+    },
+    {
+        name: "NSLS Induction",
+        start: new Date(`${THURSDAY} 20:00`),
+        end: new Date(`${THURSDAY} 21:00`)
+    },
+    {
+        name: "Setup",
+        start: new Date(`${THURSDAY} 21:30`),
+        end: new Date(`${THURSDAY} 22:00`)
+    },
+    {
+        name: "Sleep",
+        start: new Date(`${THURSDAY} 22:00`),
+        end: new Date(`${FRIDAY} 5:00`)
+    },
+
+    // Friday
+    {
+        name: "Get ready",
+        start: new Date(`${FRIDAY} 5:00`),
+        end: new Date(`${FRIDAY} 6:00`)
+    },
+    {
+        name: "Work",
+        start: new Date(`${FRIDAY} 6:00`),
+        end: new Date(`${FRIDAY} 14:30`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${FRIDAY} 14:30`),
+        end: new Date(`${FRIDAY} 15:00`)
+    },
+    {
+        name: "Eat & Setup",
+        start: new Date(`${FRIDAY} 15:00`),
+        end: new Date(`${FRIDAY} 15:30`)
+    },
+    {
+        name: "Check email",
+        start: new Date(`${FRIDAY} 15:30`),
+        end: new Date(`${FRIDAY} 15:45`)
+    },
+    {
+        name: "New ID",
+        start: new Date(`${FRIDAY} 16:00`),
+        end: new Date(`${FRIDAY} 16:30`)
+    },
+    {
+        name: "CT Discussion",
+        start: new Date(`${FRIDAY} 16:30`),
+        end: new Date(`${FRIDAY} 17:00`)
+    },
+    {
+        name: "Shower",
+        start: new Date(`${FRIDAY} 17:30`),
+        end: new Date(`${FRIDAY} 18:00`)
+    },
+    {
+        name: "Debt relief",
+        start: new Date(`${FRIDAY} 18:00`),
+        end: new Date(`${FRIDAY} 18:30`)
+    },
+    {
+        name: "NSLS Induction",
+        start: new Date(`${FRIDAY} 18:30`),
+        end: new Date(`${FRIDAY} 20:30`)
+    },
+    {
+        name: "Libellus",
+        start: new Date(`${FRIDAY} 21:00`),
+        end: new Date(`${FRIDAY} 21:30`)
+    },
+    {
+        name: "Setup",
+        start: new Date(`${FRIDAY} 21:30`),
+        end: new Date(`${FRIDAY} 22:00`)
+    },
+    {
+        name: "Sleep",
+        start: new Date(`${FRIDAY} 22:00`),
+        end: new Date(`${SATURDAY} 5:00`)
+    },
+
+    // Saturday
     // {
     //     name: "",
     //     start: new Date(`${}`),
@@ -345,34 +479,4 @@ const MY_SCHEDULE = [
     //     start: new Date(`${}`),
     //     end: new Date(`${}`)
     // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // },
-    // {
-    //     name: "",
-    //     start: new Date(`${}`),
-    //     end: new Date(`${}`)
-    // }
 ]
