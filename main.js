@@ -1,19 +1,37 @@
-const TODAY = "2022/11/5"
-
-const clock = document.querySelector('.main-task .clock')
+/* Global variables */
 
 let interval
 
-const task = {
-    name: "Homework",
-    start: new Date(`${TODAY} 14:00`),
-    end: new Date(`${TODAY} 15:00`)
-}
-
 const mySchedule = MY_SCHEDULE.sort((a, b) => a.start.getTime() - b.start.getTime())
 
-// get previous, current, and next task
+let currentTaskCache = null
 
+// Elements
+
+const clock = document.querySelector('.main-task .clock')
+
+const taskName = document.querySelector('.main-task .task-name')
+
+const nextTaskElement = document.querySelector('.next-task')
+
+const taskQueueList = document.querySelector('.task-queue ul')
+taskQueueList.addEventListener('click', displayTaskHistory)
+
+const overlay = document.querySelector('.overlay')
+overlay.addEventListener('click', hideModal)
+
+const modalElement = document.querySelector('.modal')
+const modalHeaderElement = document.querySelector('.modal > .modal-header')
+const modalBodyElement = document.querySelector('.modal > .modal-body')
+
+/* Utilities */
+
+// get formatted time
+function formatTimeToStr(timestamp, locale, is12hr) {
+    return timestamp.toLocaleString(locale, { hour: 'numeric', minute: 'numeric', hour12: is12hr })
+}
+
+// get previous, current, and next task
 function getTaskQueue(schedule) {
     const time  = new Date()
     const currentIndex = schedule.findIndex(task => time >= task.start && time < task.end)
@@ -45,8 +63,7 @@ function getDefaultGap(schedule, time) {
     ]
 }
 
-// regular clock
-
+// // regular clock
 // const renderTime = () => {
 //     let time = new Date()
 //     clock.textContent = time.toLocaleTimeString()
@@ -55,7 +72,6 @@ function getDefaultGap(schedule, time) {
 // setInterval(renderTime, 1000)
 
 // timer
-
 function getTimeLeft(task, unit) {
     const msCurrentTime = Date.now()
     const msEndTime = task.end.getTime()
@@ -81,9 +97,6 @@ const renderTimeLeft = currentTask => {
 }
 
 // content loader (current and next task)
-
-let currentTaskCache = null
-
 function loadContent(taskQueue) {
     const [_, currentTask, nextTask] = taskQueue
     if (!currentTask) {
@@ -101,13 +114,9 @@ function loadContent(taskQueue) {
     renderTimeLeft(currentTask)
 }
 
-const taskName = document.querySelector('.main-task .task-name')
-
 function loadTask(currentTask) {
     taskName.textContent = currentTask.name
 }
-
-const nextTaskElement = document.querySelector('.next-task')
 
 function loadNextTask(nextTask) {
     nextTaskElement.innerHTML = ''
@@ -135,9 +144,6 @@ function loadNextTask(nextTask) {
 }
 
 // load task queue
-
-const taskQueueList = document.querySelector('.task-queue ul')
-
 function loadTaskQueue(taskQueue) {
     taskQueueList.innerHTML = ''
 
@@ -149,17 +155,71 @@ function loadTaskQueue(taskQueue) {
     })
 }
 
-// redirect to completion screen (no more scheduled tasks)
+function displayTaskHistory() {
+    loadTaskHistory(mySchedule)
+    displayModal()
+}
 
+// load task history
+function loadTaskHistory(mySchedule) {
+    clearModal()
+
+    modalHeaderElement.textContent = 'Task history'
+
+    const taskHistoryCont = document.createElement('div')
+    taskHistoryCont.className = 'task-history'
+    const taskHistoryTable = document.createElement('table')
+    
+    mySchedule.forEach((task, index) => {
+        const taskRow = document.createElement('tr')
+        taskRow.id = `def_${index}` // task ID = def(ault)_TASKINDEX
+
+        const taskNameCell = document.createElement('td')
+        taskNameCell.textContent = task.name
+
+        const taskTimeCell = document.createElement('td')
+        taskTimeCell.textContent = `${formatTimeToStr(task.start)} - ${formatTimeToStr(task.end)}`
+
+        taskRow.appendChild(taskNameCell)
+        taskRow.appendChild(taskTimeCell)
+        taskHistoryTable.appendChild(taskRow)
+    });
+
+    taskHistoryCont.appendChild(taskHistoryTable)
+
+    modalBodyElement.appendChild(taskHistoryCont)
+}
+
+// display modal and overlay
+function displayModal() {
+    overlay.className = 'overlay on'
+    modalElement.className = 'modal on'
+}
+
+// hide modal and overlay
+function hideModal() {
+    overlay.className = 'overlay'
+    modalElement.className = 'modal'
+}
+
+// clear modal
+function clearModal() {
+    modalHeaderElement.textContent = ''
+    modalBodyElement.textContent = ''
+}
+
+// redirect to completion screen (no more scheduled tasks)
 function redirectCompletion() {
     window.location.href = 'complete.html'
 }
 
-// Main function
+
+/* Main function */
 
 function main() {
-    // create custom intervals to recall the task queue
+    // TODO: create custom intervals to recall the task queue
     interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
+    loadTaskHistory(mySchedule)
 }
 
 main()

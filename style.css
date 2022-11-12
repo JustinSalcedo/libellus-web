@@ -75,6 +75,7 @@ ul {
     display: flex;
     position: absolute;
     width: max-content;
+    cursor: pointer;
 }
 
 .task-queue li.current {
@@ -91,4 +92,57 @@ ul {
 
 .task-queue li.current ~ li {
     color: #777;
+}
+
+/* Overlay */
+
+.overlay {
+    visibility: hidden;
+}
+
+.overlay.on {
+    visibility: visible;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(235, 100%, 7%, 0.64);
+}
+
+/* Modal */
+
+.modal {
+    display: none;
+}
+
+.modal.on {
+    display: initial;
+    position: absolute;
+    z-index: 2;
+    max-width: 75%;
+    max-height: 75%;
+    overflow-y: hidden;
+    padding: 1rem;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1rem;
+}
+
+.modal > .modal-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Task history */
+
+.task-history {
+    max-height: 50%;
+    overflow-y: scroll;
+}
+
+.task-history > table {
+    width: calc(100vw / 6 * 4);
 }
