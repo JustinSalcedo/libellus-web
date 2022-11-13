@@ -47,21 +47,16 @@ const MY_SCHEDULE = [
     {
         name: "Libellus UI",
         start: new Date(`${SATURDAY} 13:00`),
-        end: new Date(`${SATURDAY} 16:00`)
-    },
-    {
-        name: "Forecast",
-        start: new Date(`${SATURDAY} 16:30`),
-        end: new Date(`${SATURDAY} 17:00`)
+        end: new Date(`${SATURDAY} 18:00`)
     },
     {
         name: "Eat",
-        start: new Date(`${SATURDAY} 17:00`),
-        end: new Date(`${SATURDAY} 17:15`)
+        start: new Date(`${SATURDAY} 18:00`),
+        end: new Date(`${SATURDAY} 18:15`)
     },
     {
-        name: "NSLS",
-        start: new Date(`${SATURDAY} 17:15`),
+        name: "Tickets",
+        start: new Date(`${SATURDAY} 18:15`),
         end: new Date(`${SATURDAY} 19:00`)
     },
     {

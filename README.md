@@ -1,7 +1,8 @@
 # Libellus
 
 ## Roadmap
-- [ ] Task history
+- [x] Task history
+- [ ] Unit testing: task queue
 - [ ] Exception handler
 - [ ] Task editor
 - [ ] Schedule manager
