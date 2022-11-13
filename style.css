@@ -105,7 +105,7 @@ ul {
     position: absolute;
     z-index: 1;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: hsla(235, 100%, 7%, 0.64);
 }
 
@@ -139,10 +139,56 @@ ul {
 /* Task history */
 
 .task-history {
-    max-height: 50%;
+    height: fit-content;
+    max-height: 50vh;
     overflow-y: scroll;
 }
 
 .task-history > table {
     width: calc(100vw / 6 * 4);
+    table-layout: fixed;
+}
+
+.task-history > .fixed-header {
+    position: fixed;
+    background: white;
+}
+
+.task-history > table:not(.fixed-header) {
+    margin-top: 1.25rem;
+}
+
+.task-history > table thead {
+    text-align: end;
+    color: #777;
+    text-transform: uppercase;
+    font-size: .875rem;
+}
+
+.task-history > table th:first-child {
+    width: 7rem;
+}
+
+.task-history > table tr {
+    height: 2rem;
+}
+
+.task-history > table td:first-child {
+    width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #555;
+}
+
+.task-history > table td:not(:first-child) {
+    text-align: end;
+}
+
+.task-history > table .day-subhead {
+    color: #bbb;
+    font-style: italic;
+    font-weight: bold;
+    background: #eee;
+    font-size: .875rem;
 }

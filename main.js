@@ -166,25 +166,70 @@ function loadTaskHistory(mySchedule) {
 
     modalHeaderElement.textContent = 'Task history'
 
+    // general element
+    const today = new Date().getDay()
+
     const taskHistoryCont = document.createElement('div')
     taskHistoryCont.className = 'task-history'
     const taskHistoryTable = document.createElement('table')
+
+    const fixedTable = document.createElement('table')
+    fixedTable.className = 'fixed-header'
+    const fixedTableHead = document.createElement('thead')
+
+    const headCell = headStr => {
+        cell = document.createElement('th')
+        cell.textContent = headStr; return cell
+    }
+
+    // Setup fixed table header
+    fixedTableHead.appendChild(headCell(''))
+    fixedTableHead.appendChild(headCell('start'))
+    fixedTableHead.appendChild(headCell('end'))
+    fixedTable.appendChild(fixedTableHead)
     
+    // Write task rows in the table
+    let currentDay = today
     mySchedule.forEach((task, index) => {
+        if (today !== task.start.getDay()) {
+        }
+
+        if (currentDay !== task.start.getDay()) {
+            const dayRow = document.createElement('tr')
+            dayRow.className = 'day-subhead'
+            const dayCell = document.createElement('td')
+            dayCell.setAttribute('colspan', '3')
+            const dayStr = today !== task.start.getDay()
+                ? task.start.toLocaleDateString('en-US', { weekday: 'long' })
+                : 'Today'
+
+            dayCell.textContent = dayStr
+            dayRow.appendChild(dayCell)
+            taskHistoryTable.appendChild(dayRow)
+
+            currentDay = task.start.getDay()
+        }
+
         const taskRow = document.createElement('tr')
         taskRow.id = `def_${index}` // task ID = def(ault)_TASKINDEX
 
         const taskNameCell = document.createElement('td')
         taskNameCell.textContent = task.name
 
-        const taskTimeCell = document.createElement('td')
-        taskTimeCell.textContent = `${formatTimeToStr(task.start)} - ${formatTimeToStr(task.end)}`
+        const taskStartCell = document.createElement('td')
+        taskStartCell.textContent = formatTimeToStr(task.start, 'en-US', true)
+
+        const taskEndCell = document.createElement('td')
+        taskEndCell.textContent = formatTimeToStr(task.end, 'en-US', true)
 
         taskRow.appendChild(taskNameCell)
-        taskRow.appendChild(taskTimeCell)
+        taskRow.appendChild(taskStartCell)
+        taskRow.appendChild(taskEndCell)
         taskHistoryTable.appendChild(taskRow)
     });
 
+    // append fixed table and history table to container, then containter to modal
+    taskHistoryCont.appendChild(fixedTable)
     taskHistoryCont.appendChild(taskHistoryTable)
 
     modalBodyElement.appendChild(taskHistoryCont)
@@ -219,7 +264,6 @@ function redirectCompletion() {
 function main() {
     // TODO: create custom intervals to recall the task queue
     interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
-    loadTaskHistory(mySchedule)
 }
 
 main()
