@@ -73,23 +73,23 @@ const MY_SCHEDULE = [
     {
         name: "IP Discussion",
         start: new Date(`${SUNDAY} 13:45`),
-        end: new Date(`${SUNDAY} 14:30`)
-    },
-    {
-        name: "CT Knowledge check",
-        start: new Date(`${SUNDAY} 14:30`),
         end: new Date(`${SUNDAY} 16:00`)
     },
     {
-        name: "CT Discussion",
+        name: "Shower",
         start: new Date(`${SUNDAY} 16:00`),
         end: new Date(`${SUNDAY} 17:00`)
     },
     {
-        name: "Shower",
+        name: "CT Knowledge Check",
         start: new Date(`${SUNDAY} 17:00`),
         end: new Date(`${SUNDAY} 18:00`)
     },
+    // {
+    //     name: "Shower",
+    //     start: new Date(`${SUNDAY} 17:00`),
+    //     end: new Date(`${SUNDAY} 18:00`)
+    // },
     {
         name: "Tickets",
         start: new Date(`${SUNDAY} 18:30`),
