@@ -143,13 +143,8 @@ const MY_SCHEDULE = [
         end: new Date(`${MONDAY} 16:00`)
     },
     {
-        name: "Call DMV",
+        name: "Flight tickets",
         start: new Date(`${MONDAY} 16:00`),
-        end: new Date(`${MONDAY} 16:30`)
-    },
-    {
-        name: "Call Aerotek",
-        start: new Date(`${MONDAY} 16:30`),
         end: new Date(`${MONDAY} 17:30`)
     },
     {
