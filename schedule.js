@@ -153,17 +153,12 @@ const MY_SCHEDULE = [
         end: new Date(`${MONDAY} 18:00`)
     },
     {
-        name: "CT Lab",
-        start: new Date(`${MONDAY} 18:00`),
-        end: new Date(`${MONDAY} 18:45`)
-    },
-    {
-        name: "CT Discussion",
-        start: new Date(`${MONDAY} 19:00`),
+        name: "CT Knowledge Check",
+        start: new Date(`${MONDAY} 18:45`),
         end: new Date(`${MONDAY} 20:00`)
     },
     {
-        name: "IP Discussion",
+        name: "CT Discussion",
         start: new Date(`${MONDAY} 20:00`),
         end: new Date(`${MONDAY} 21:00`)
     },
