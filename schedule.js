@@ -105,15 +105,82 @@ const MY_SCHEDULE = [
         end: new Date(`${THURSDAY} 5:00`)
     },
 
-    //
+    // Thursay
     {
         name: "Get ready",
         start: new Date(`${THURSDAY} 5:00`),
         end: new Date(`${THURSDAY} 6:00`)
     },
+    {
+        name: "Work",
+        start: new Date(`${THURSDAY} 6:00`),
+        end: new Date(`${THURSDAY} 14:30`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${THURSDAY} 14:30`),
+        end: new Date(`${THURSDAY} 15:00`)
+    },
+    {
+        name: "Nap",
+        start: new Date(`${THURSDAY} 15:30`),
+        end: new Date(`${THURSDAY} 16:00`)
+    },
+    {
+        name: "Shower",
+        start: new Date(`${THURSDAY} 16:00`),
+        end: new Date(`${THURSDAY} 16:30`)
+    },
+    {
+        name: "Eat & Setup",
+        start: new Date(`${THURSDAY} 16:30`),
+        end: new Date(`${THURSDAY} 16:45`)
+    },
+    {
+        name: "Reply email",
+        start: new Date(`${THURSDAY} 16:45`),
+        end: new Date(`${THURSDAY} 17:00`)
+    },
+    {
+        name: "CT Discussion",
+        start: new Date(`${THURSDAY} 17:00`),
+        end: new Date(`${THURSDAY} 17:30`)
+    },
+    {
+        name: "IP Discussion",
+        start: new Date(`${THURSDAY} 18:00`),
+        end: new Date(`${THURSDAY} 19:00`)
+    },
+    {
+        name: "CT Lab",
+        start: new Date(`${THURSDAY} 19:00`),
+        end: new Date(`${THURSDAY} 19:45`)
+    },
+    {
+        name: "IP Project",
+        start: new Date(`${THURSDAY} 19:45`),
+        end: new Date(`${THURSDAY} 21:00`)
+    },
+    {
+        name: "Libellus",
+        start: new Date(`${THURSDAY} 21:00`),
+        end: new Date(`${THURSDAY} 21:30`)
+    },
+    {
+        name: "Setup",
+        start: new Date(`${THURSDAY} 21:30`),
+        end: new Date(`${THURSDAY} 21:45`)
+    },
+    {
+        name: "Sleep",
+        start: new Date(`${THURSDAY} 22:00`),
+        end: new Date(`${FRIDAY} 5:00`)
+    },
+
+    //
     // {
     //     name: "",
-    //     start: new Date(`${THURSDAY} `),
-    //     end: new Date(`${THURSDAY} `)
+    //     start: new Date(`${FRIDAY} `),
+    //     end: new Date(`${FRIDAY} `)
     // },
 ]
