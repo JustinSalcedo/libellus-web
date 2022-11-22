@@ -85,30 +85,25 @@ const MY_SCHEDULE = [
         end: new Date(`${TUESDAY} 20:00`)
     },
     {
-        name: "CT Lab",
-        start: new Date(`${TUESDAY} 20:00`),
-        end: new Date(`${TUESDAY} 21:00`)
-    },
-    {
         name: "Libellus",
-        start: new Date(`${TUESDAY} 21:00`),
-        end: new Date(`${TUESDAY} 21:15`)
+        start: new Date(`${TUESDAY} 20:00`),
+        end: new Date(`${TUESDAY} 20:15`)
     },
     {
         name: "Setup",
-        start: new Date(`${TUESDAY} 21:15`),
-        end: new Date(`${TUESDAY} 21:30`)
+        start: new Date(`${TUESDAY} 20:15`),
+        end: new Date(`${TUESDAY} 20:30`)
     },
     {
         name: "Sleep",
-        start: new Date(`${TUESDAY} 22:00`),
-        end: new Date(`${WEDNESDAY} 5:00`)
+        start: new Date(`${TUESDAY} 21:00`),
+        end: new Date(`${WEDNESDAY} 4:00`)
     },
 
     // Wednesday
     {
         name: "Get ready",
-        start: new Date(`${WEDNESDAY} 5:00`),
-        end: new Date(`${WEDNESDAY} 6:00`)
+        start: new Date(`${WEDNESDAY} 4:00`),
+        end: new Date(`${WEDNESDAY} 5:00`)
     },
 ]
