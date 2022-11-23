@@ -24,86 +24,96 @@ const SATURDAY = "2022/11/26"
 const MY_SCHEDULE = [
     {
         name: "Libellus",
-        start: new Date(`${MONDAY} 21:00`),
-        end: new Date(`${MONDAY} 21:15`)
+        start: new Date(`${TUESDAY} 21:30`),
+        end: new Date(`${TUESDAY} 21:45`)
     },
     {
         name: "Setup",
-        start: new Date(`${MONDAY} 21:15`),
-        end: new Date(`${MONDAY} 21:30`)
+        start: new Date(`${TUESDAY} 21:45`),
+        end: new Date(`${TUESDAY} 22:00`)
     },
     {
         name: "Sleep",
-        start: new Date(`${MONDAY} 22:00`),
-        end: new Date(`${TUESDAY} 5:00`)
-    },
-
-    // MONDAY
-    {
-        name: "Get ready",
-        start: new Date(`${TUESDAY} 5:00`),
-        end: new Date(`${TUESDAY} 6:00`)
-    },
-    {
-        name: "Work",
-        start: new Date(`${TUESDAY} 6:00`),
-        end: new Date(`${TUESDAY} 14:30`)
-    },
-    {
-        name: "Drive",
-        start: new Date(`${TUESDAY} 14:30`),
-        end: new Date(`${TUESDAY} 15:00`)
-    },
-    {
-        name: "Shopping",
-        start: new Date(`${TUESDAY} 15:00`),
-        end: new Date(`${TUESDAY} 15:30`)
-    },
-    {
-        name: "Eat & Setup",
-        start: new Date(`${TUESDAY} 15:30`),
-        end: new Date(`${TUESDAY} 15:45`)
-    },
-    {
-        name: "CT Discussion",
-        start: new Date(`${TUESDAY} 16:00`),
-        end: new Date(`${TUESDAY} 16:15`)
-    },
-    {
-        name: "CT Knowledge check",
-        start: new Date(`${TUESDAY} 16:15`),
-        end: new Date(`${TUESDAY} 17:45`)
-    },
-    {
-        name: "IP Discussion",
-        start: new Date(`${TUESDAY} 18:00`),
-        end: new Date(`${TUESDAY} 19:00`)
-    },
-    {
-        name: "IP Project",
-        start: new Date(`${TUESDAY} 19:00`),
-        end: new Date(`${TUESDAY} 20:00`)
-    },
-    {
-        name: "Libellus",
-        start: new Date(`${TUESDAY} 20:00`),
-        end: new Date(`${TUESDAY} 20:15`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${TUESDAY} 20:15`),
-        end: new Date(`${TUESDAY} 20:30`)
-    },
-    {
-        name: "Sleep",
-        start: new Date(`${TUESDAY} 21:00`),
+        start: new Date(`${TUESDAY} 22:15`),
         end: new Date(`${WEDNESDAY} 4:00`)
     },
 
-    // Wednesday
+    // WEDNESDAY
     {
         name: "Get ready",
         start: new Date(`${WEDNESDAY} 4:00`),
         end: new Date(`${WEDNESDAY} 5:00`)
+    },
+    {
+        name: "Work",
+        start: new Date(`${WEDNESDAY} 5:00`),
+        end: new Date(`${WEDNESDAY} 13:30`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${WEDNESDAY} 13:30`),
+        end: new Date(`${WEDNESDAY} 14:00`)
+    },
+    {
+        name: "Call Aerotek",
+        start: new Date(`${WEDNESDAY} 14:00`),
+        end: new Date(`${WEDNESDAY} 14:15`)
+    },
+    {
+        name: "Eat & Setup",
+        start: new Date(`${WEDNESDAY} 14:15`),
+        end: new Date(`${WEDNESDAY} 14:30`)
+    },
+    {
+        name: "CT Knowledge check",
+        start: new Date(`${WEDNESDAY} 14:30`),
+        end: new Date(`${WEDNESDAY} 16:30`)
+    },
+    {
+        name: "CT Discussion",
+        start: new Date(`${WEDNESDAY} 16:30`),
+        end: new Date(`${WEDNESDAY} 17:30`)
+    },
+    {
+        name: "IP Project",
+        start: new Date(`${WEDNESDAY} 18:00`),
+        end: new Date(`${WEDNESDAY} 19:00`)
+    },
+    {
+        name: "IP Discussion",
+        start: new Date(`${WEDNESDAY} 19:00`),
+        end: new Date(`${WEDNESDAY} 19:30`)
+    },
+    {
+        name: "CT Lab",
+        start: new Date(`${WEDNESDAY} 19:00`),
+        end: new Date(`${WEDNESDAY} 20:00`)
+    },
+    {
+        name: "NSLS Broadcast",
+        start: new Date(`${WEDNESDAY} 20:00`),
+        end: new Date(`${WEDNESDAY} 21:00`)
+    },
+    {
+        name: "Libellus",
+        start: new Date(`${WEDNESDAY} 21:30`),
+        end: new Date(`${WEDNESDAY} 21:45`)
+    },
+    {
+        name: "Setup",
+        start: new Date(`${WEDNESDAY} 21:45`),
+        end: new Date(`${WEDNESDAY} 22:00`)
+    },
+    {
+        name: "Sleep",
+        start: new Date(`${WEDNESDAY} 22:00`),
+        end: new Date(`${THURSDAY} 7:00`)
+    },
+
+    // THURSDAY
+    {
+        name: "Meditate",
+        start: new Date(`${THURSDAY} 7:00`),
+        end: new Date(`${THURSDAY} 7:30`)
     },
 ]
