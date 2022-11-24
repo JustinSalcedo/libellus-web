@@ -1,6 +1,8 @@
 # Libellus
 
 ## Roadmap
+
+### UI
 - [x] Task history
 - [ ] Hide previous history
 - [ ] Highlight current task
@@ -11,3 +13,8 @@
 - [ ] Aesthetics
 - [ ] Task bulk increaser
 - [ ] Material list
+
+### API
+- [ ] CRUD Tasks
+- [ ] Auth service
+- [ ] CRUD Actions
