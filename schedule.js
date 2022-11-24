@@ -23,97 +23,78 @@ const SATURDAY = "2022/11/26"
 
 const MY_SCHEDULE = [
     {
-        name: "Libellus",
-        start: new Date(`${TUESDAY} 21:30`),
-        end: new Date(`${TUESDAY} 21:45`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${TUESDAY} 21:45`),
-        end: new Date(`${TUESDAY} 22:00`)
-    },
-    {
         name: "Sleep",
-        start: new Date(`${TUESDAY} 22:15`),
-        end: new Date(`${WEDNESDAY} 4:00`)
-    },
-
-    // WEDNESDAY
-    {
-        name: "Get ready",
-        start: new Date(`${WEDNESDAY} 4:00`),
-        end: new Date(`${WEDNESDAY} 5:00`)
+        start: new Date(`${WEDNESDAY} 23:45`),
+        end: new Date(`${THURSDAY} 11:00`)
     },
     {
-        name: "Work",
-        start: new Date(`${WEDNESDAY} 5:00`),
-        end: new Date(`${WEDNESDAY} 13:30`)
+        name: "Meditate",
+        start: new Date(`${THURSDAY} 11:00`),
+        end: new Date(`${THURSDAY} 12:00`)
     },
     {
-        name: "Drive",
-        start: new Date(`${WEDNESDAY} 13:30`),
-        end: new Date(`${WEDNESDAY} 14:00`)
+        name: "Breakfast",
+        start: new Date(`${THURSDAY} 12:00`),
+        end: new Date(`${THURSDAY} 12:30`)
     },
     {
-        name: "Call Aerotek",
-        start: new Date(`${WEDNESDAY} 14:00`),
-        end: new Date(`${WEDNESDAY} 14:15`)
+        name: "Libellus App",
+        start: new Date(`${THURSDAY} 12:30`),
+        end: new Date(`${THURSDAY} 16:30`)
     },
     {
-        name: "Eat & Setup",
-        start: new Date(`${WEDNESDAY} 14:15`),
-        end: new Date(`${WEDNESDAY} 14:30`)
+        name: "Earth's center",
+        start: new Date(`${THURSDAY} 16:30`),
+        end: new Date(`${THURSDAY} 17:00`)
     },
     {
-        name: "CT Knowledge check",
-        start: new Date(`${WEDNESDAY} 14:30`),
-        end: new Date(`${WEDNESDAY} 16:30`)
+        name: "To the Moon",
+        start: new Date(`${THURSDAY} 17:00`),
+        end: new Date(`${THURSDAY} 17:30`)
     },
     {
-        name: "CT Discussion",
-        start: new Date(`${WEDNESDAY} 16:30`),
-        end: new Date(`${WEDNESDAY} 17:30`)
+        name: "Swim in Ness Lake",
+        start: new Date(`${THURSDAY} 17:30`),
+        end: new Date(`${THURSDAY} 18:00`)
     },
     {
-        name: "IP Project",
-        start: new Date(`${WEDNESDAY} 18:00`),
-        end: new Date(`${WEDNESDAY} 19:00`)
+        name: "Climb the Everest",
+        start: new Date(`${THURSDAY} 18:00`),
+        end: new Date(`${THURSDAY} 18:30`)
+    },
+    {
+        name: "Fight Sparta",
+        start: new Date(`${THURSDAY} 18:30`),
+        end: new Date(`${THURSDAY} 19:00`)
     },
     {
         name: "IP Discussion",
-        start: new Date(`${WEDNESDAY} 19:00`),
-        end: new Date(`${WEDNESDAY} 19:30`)
+        start: new Date(`${THURSDAY} 19:00`),
+        end: new Date(`${THURSDAY} 19:30`)
     },
     {
-        name: "CT Lab",
-        start: new Date(`${WEDNESDAY} 19:00`),
-        end: new Date(`${WEDNESDAY} 20:00`)
+        name: "CT Discussion",
+        start: new Date(`${THURSDAY} 19:30`),
+        end: new Date(`${THURSDAY} 20:00`)
     },
     {
-        name: "NSLS Broadcast",
-        start: new Date(`${WEDNESDAY} 20:00`),
-        end: new Date(`${WEDNESDAY} 21:00`)
+        name: "Dinner & CT Lab",
+        start: new Date(`${THURSDAY} 20:00`),
+        end: new Date(`${THURSDAY} 21:00`)
     },
     {
         name: "Libellus",
-        start: new Date(`${WEDNESDAY} 21:30`),
-        end: new Date(`${WEDNESDAY} 21:45`)
+        start: new Date(`${THURSDAY} 21:00`),
+        end: new Date(`${THURSDAY} 21:15`)
     },
     {
         name: "Setup",
-        start: new Date(`${WEDNESDAY} 21:45`),
-        end: new Date(`${WEDNESDAY} 22:00`)
+        start: new Date(`${THURSDAY} 21:15`),
+        end: new Date(`${THURSDAY} 21:30`)
     },
     {
         name: "Sleep",
-        start: new Date(`${WEDNESDAY} 22:00`),
-        end: new Date(`${THURSDAY} 7:00`)
-    },
-
-    // THURSDAY
-    {
-        name: "Meditate",
-        start: new Date(`${THURSDAY} 7:00`),
-        end: new Date(`${THURSDAY} 7:30`)
+        start: new Date(`${THURSDAY} 22:00`),
+        end: new Date(`${FRIDAY} 8:00`)
     },
 ]
