@@ -6,6 +6,8 @@ const mySchedule = MY_SCHEDULE.sort((a, b) => a.start.getTime() - b.start.getTim
 
 let currentTaskCache = null
 
+let showHistory = false
+
 // Elements
 
 const clock = document.querySelector('.main-task .clock')
@@ -130,8 +132,7 @@ function loadNextTask(nextTask) {
         text.className = 'text'
         text.textContent = nextTask.name
 
-        nextTaskElement.appendChild(label)
-        nextTaskElement.appendChild(text)
+        nextTaskElement.append(label, text)
 
         return;
     }
@@ -167,14 +168,14 @@ function loadTaskHistory(mySchedule) {
     modalHeaderElement.textContent = 'Task history'
 
     // general element
-    const today = new Date().getDay()
-
     const taskHistoryCont = document.createElement('div')
     taskHistoryCont.className = 'task-history'
     const taskHistoryTable = document.createElement('table')
 
+    const fixedHeader = document.createElement('div')
+    fixedHeader.className = 'fixed-header'
+
     const fixedTable = document.createElement('table')
-    fixedTable.className = 'fixed-header'
     const fixedTableHead = document.createElement('thead')
 
     const headCell = headStr => {
@@ -183,16 +184,55 @@ function loadTaskHistory(mySchedule) {
     }
 
     // Setup fixed table header
-    fixedTableHead.appendChild(headCell(''))
-    fixedTableHead.appendChild(headCell('start'))
-    fixedTableHead.appendChild(headCell('end'))
+    fixedTableHead.append(headCell(''), headCell('start'), headCell('end'))
     fixedTable.appendChild(fixedTableHead)
+
+    // Setup showHistory form
+    const showHistoryForm = document.createElement('form')
+    const sHID = 'showHistory'  // showHistory identifier
+
+    const sHLabel = document.createElement('label')
+    sHLabel.setAttribute('for', sHID)
+    sHLabel.textContent = 'Show past tasks:'
+
+    const sHCheckbox = document.createElement('input')
+    sHCheckbox.setAttribute('type', 'checkbox')
+    sHCheckbox.setAttribute('name', sHID)
+    sHCheckbox.setAttribute('id', sHID)
+
+    showHistoryForm.append(sHLabel, sHCheckbox)
+
+    // Setup fixed header
+    fixedHeader.append(showHistoryForm, fixedTable)
+
+    // Render task history a first time and add to event listener
+    renderTaskHistory(mySchedule, taskHistoryTable)
+    sHCheckbox.addEventListener('click', e =>
+        toggleHistory(e, () => renderTaskHistory(mySchedule, taskHistoryTable)))
+
+    // append showHistory form, fixed table and history table to container, then containter to modal
+    taskHistoryCont.append(fixedHeader, taskHistoryTable)
+
+    modalBodyElement.appendChild(taskHistoryCont)
+}
+
+function toggleHistory(e, callback) {
+    showHistory = e.target.checked
+    if (callback) callback()
+}
+
+function renderTaskHistory(mySchedule, taskHistoryTable) {
+    const today = new Date().getDay()
+    taskHistoryTable.textContent = ''
+
+    // Show only scheduled tasks, not the history
+    let parsedSchedule = mySchedule
+    if (!showHistory)
+        parsedSchedule = mySchedule.filter(task => Date.now() < task.end.getTime())
     
     // Write task rows in the table
     let currentDay = today
-    mySchedule.forEach((task, index) => {
-        if (today !== task.start.getDay()) {
-        }
+    parsedSchedule.forEach((task, index) => {
 
         if (currentDay !== task.start.getDay()) {
             const dayRow = document.createElement('tr')
@@ -222,17 +262,9 @@ function loadTaskHistory(mySchedule) {
         const taskEndCell = document.createElement('td')
         taskEndCell.textContent = formatTimeToStr(task.end, 'en-US', true)
 
-        taskRow.appendChild(taskNameCell)
-        taskRow.appendChild(taskStartCell)
-        taskRow.appendChild(taskEndCell)
+        taskRow.append(taskNameCell, taskStartCell, taskEndCell)
         taskHistoryTable.appendChild(taskRow)
     });
-
-    // append fixed table and history table to container, then containter to modal
-    taskHistoryCont.appendChild(fixedTable)
-    taskHistoryCont.appendChild(taskHistoryTable)
-
-    modalBodyElement.appendChild(taskHistoryCont)
 }
 
 // display modal and overlay

@@ -144,29 +144,38 @@ ul {
     overflow-y: scroll;
 }
 
-.task-history > table {
+.task-history table {
     width: calc(100vw / 6 * 4);
     table-layout: fixed;
 }
 
+/* Fixed header */
+
 .task-history > .fixed-header {
     position: fixed;
     background: white;
+    width: calc(100vw / 6 * 4);
 }
 
-.task-history > table:not(.fixed-header) {
-    margin-top: 1.25rem;
+.fixed-header > table {
+    width: 100%;
 }
 
-.task-history > table thead {
+.fixed-header > table th:first-child {
+    width: 7rem;
+}
+
+.fixed-header > table thead {
     text-align: end;
     color: #777;
     text-transform: uppercase;
     font-size: .875rem;
 }
 
-.task-history > table th:first-child {
-    width: 7rem;
+/* Task list table */
+
+.task-history > table {
+    margin-top: 3rem;
 }
 
 .task-history > table tr {

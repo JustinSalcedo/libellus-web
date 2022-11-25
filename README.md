@@ -4,7 +4,7 @@
 
 ### UI
 - [x] Task history
-- [ ] Hide previous history
+- [x] Hide previous history
 - [ ] Highlight current task
 - [ ] Unit testing: task queue
 - [ ] Exception handler
