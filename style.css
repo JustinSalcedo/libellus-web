@@ -201,3 +201,15 @@ ul {
     background: #eee;
     font-size: .875rem;
 }
+
+.task-history .current-task {
+    background: #ffe3ff;
+}
+
+.task-history .current-task td {
+    outline: 1px solid #ffe3ff;;
+}
+
+.task-history .current-task td:first-child {
+    color: #7e49aa
+}

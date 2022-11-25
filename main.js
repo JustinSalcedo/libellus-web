@@ -252,6 +252,7 @@ function renderTaskHistory(mySchedule, taskHistoryTable) {
 
         const taskRow = document.createElement('tr')
         taskRow.id = `def_${index}` // task ID = def(ault)_TASKINDEX
+        if (isCurrentTask(task)) taskRow.className = 'current-task'
 
         const taskNameCell = document.createElement('td')
         taskNameCell.textContent = task.name
@@ -265,6 +266,12 @@ function renderTaskHistory(mySchedule, taskHistoryTable) {
         taskRow.append(taskNameCell, taskStartCell, taskEndCell)
         taskHistoryTable.appendChild(taskRow)
     });
+}
+
+function isCurrentTask(task) {
+    return task.name === currentTaskCache.name
+        && task.start.getTime() === currentTaskCache.start.getTime()
+        && task.end.getTime() === currentTaskCache.end.getTime()
 }
 
 // display modal and overlay
