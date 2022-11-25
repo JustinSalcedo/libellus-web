@@ -6,7 +6,7 @@
 - [x] Task history
 - [x] Hide previous history
 - [x] Highlight current task
-- [ ] Unit testing: validate schedule
+- [x] Unit testing: validate schedule
 - [ ] Unit testing: task queue
 - [ ] Exception handler
 - [ ] Task editor
