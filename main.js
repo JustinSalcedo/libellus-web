@@ -1,8 +1,14 @@
 /* Global variables */
 
-let interval
+let interval = 0
 
-const mySchedule = MY_SCHEDULE.sort((a, b) => a.start.getTime() - b.start.getTime())
+let mySchedule = []
+
+try {
+    mySchedule = validateSchedule(MY_SCHEDULE)
+} catch (error) {
+    alert(error)
+}
 
 let currentTaskCache = null
 
@@ -297,6 +303,44 @@ function redirectCompletion() {
     window.location.href = 'complete.html'
 }
 
+// validate schedule (unsorted)
+function validateSchedule(unSchedule) {
+    const schedule = unSchedule.sort((a, b) => a.start.getTime() - b.start.getTime())
+
+    let errorMessage = ''
+    schedule.every((task, index) => {
+        const startTime = task.start.getTime()
+        const endTime = task.end.getTime()
+
+        // Case 1: there's an invalid task
+        if (!isValidTask(task)) {
+            errorMessage = `Task ${task.name} has invalid timestamp`
+        }
+
+        // Case 2: a task ends before it starts
+        if (startTime > endTime) {
+            errorMessage = `Task ${task.name} ends before it starts`
+            return false
+        }
+
+        // Case 3: a task overlaps another one
+        if (index > 0 && startTime < schedule[index - 1].end.getTime()) {
+            errorMessage = `Task '${task.name}' ovelaps '${schedule[index - 1].name}'`
+            return false
+        }
+        
+        return true
+    })
+
+    if (!errorMessage) return schedule
+    throw new Error(errorMessage)
+}
+
+function isValidTask(task) {
+    const notEmptyOrNull = task.name && task.start && task.end
+    const isValidTime = !!task.start.getTime() && !!task.end.getTime()
+    return task.name.length <= 20 && notEmptyOrNull && isValidTime
+}
 
 /* Main function */
 
