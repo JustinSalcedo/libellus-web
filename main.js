@@ -14,6 +14,8 @@ let currentTaskCache = null
 
 let showHistory = false
 
+const DEF_GAP = { name: "Chill" }
+
 // Elements
 
 const clock = document.querySelector('.main-task .clock')
@@ -42,28 +44,36 @@ function formatTimeToStr(timestamp, locale, is12hr) {
 // get previous, current, and next task
 function getTaskQueue(schedule) {
     const time  = new Date()
-    const currentIndex = schedule.findIndex(task => time >= task.start && time < task.end)
+    const currentIndex = getCurrentTaskIndex(schedule, time)
     // assumes the schedule is time sorted
     let queue = schedule.slice(currentIndex - 1, currentIndex + 2)
     if (currentIndex === -1) {
         const defaultGap = getDefaultGap(schedule, time)
         if (defaultGap) queue = defaultGap
     }
-    if (currentIndex === 0) queue = [null, ...schedule.slice(currentIndex, currentIndex + 2)]
+    if (currentIndex === 0) queue = [...schedule.slice(currentIndex, currentIndex + 2)]
     return queue
+}
+
+function getCurrentTaskIndex(schedule, timestamp) {
+    return schedule.findIndex(task => isTaskInTime(task, timestamp))
+}
+
+function isTaskInTime(task, timestamp) {
+    return timestamp >= task.start && timestamp < task.end
 }
 
 function getDefaultGap(schedule, time) {
     // assumes the schedule is time sorted
-    const prevIndex = schedule.findIndex(task => time >= task.end)
     const nextIndex = schedule.findIndex(task => time < task.start)
+    const prevIndex = nextIndex - 1
 
     if (nextIndex === -1) return null
 
     return [
         schedule[prevIndex],
         {
-            name: 'Chill',
+            ...DEF_GAP,
             start: schedule[prevIndex].end,
             end: schedule[nextIndex].start
         },
@@ -106,7 +116,9 @@ const renderTimeLeft = currentTask => {
 
 // content loader (current and next task)
 function loadContent(taskQueue) {
-    const [_, currentTask, nextTask] = taskQueue
+    let [prevTask, currentTask, nextTask] = taskQueue
+    if (taskQueue.length === 1) currentTask = prevTask
+
     if (!currentTask) {
         clearInterval(interval)
         return redirectCompletion()
@@ -154,12 +166,32 @@ function loadNextTask(nextTask) {
 function loadTaskQueue(taskQueue) {
     taskQueueList.innerHTML = ''
 
-    taskQueue.forEach((task, index) => {
-        const taskElement = document.createElement('li')
-        if (index === 1) taskElement.className = 'current'
-        taskElement.textContent = task ? task.name : '...'
-        taskQueueList.appendChild(taskElement)
-    })
+    const taskElements = fillGapItems(taskQueue).map(createQueueElement)
+    taskQueueList.append(...taskElements)
+}
+
+function createQueueElement(task, index) {
+    const taskElement = document.createElement('li')
+    if (index === 1) taskElement.className = 'current'
+    taskElement.textContent = (task && task.name !== DEF_GAP.name) ? task.name : '...'
+    return taskElement
+}
+
+function fillGapItems(taskQueue) {
+    if (taskQueue.length === 2) {
+
+        // Case 1: [X, Y, 0]
+        if (isCurrentTask(taskQueue[1])) return [...taskQueue, 0]
+    
+        // Case 3: [0, X, Y]
+        if (isCurrentTask(taskQueue[0])) return [0, ...taskQueue]
+    }
+
+    // Case 4: [0, X, 0]
+    if (taskQueue.length === 1) return [0, taskQueue[0], 0]
+    
+    // Case 2: [X, 0, Y]
+    return taskQueue
 }
 
 function displayTaskHistory() {
@@ -275,9 +307,16 @@ function renderTaskHistory(mySchedule, taskHistoryTable) {
 }
 
 function isCurrentTask(task) {
-    return task.name === currentTaskCache.name
-        && task.start.getTime() === currentTaskCache.start.getTime()
-        && task.end.getTime() === currentTaskCache.end.getTime()
+    if (currentTaskCache) return areTasksEqual(task, currentTaskCache)
+    return isTaskInTime(task, new Date())
+}
+
+function areTasksEqual(task1, task2) {
+    if (task1 === 0 && task2 === 0) return true
+
+    return task1.name === task2.name
+        && task1.start.getTime() === task2.start.getTime()
+        && task1.end.getTime() === task2.end.getTime()
 }
 
 // display modal and overlay
