@@ -117,7 +117,11 @@ const renderTimeLeft = currentTask => {
 // content loader (current and next task)
 function loadContent(taskQueue) {
     let [prevTask, currentTask, nextTask] = taskQueue
-    if (taskQueue.length === 1) currentTask = prevTask
+
+    if (taskQueue.length < 3) {
+        if (taskQueue.length === 2) nextTask = currentTask
+        currentTask = prevTask
+    }
 
     if (!currentTask) {
         clearInterval(interval)
