@@ -11,97 +11,102 @@
 //     end: new Date(`${}`)
 // },
 
-const SATURDAY = "2022/11/26"
-const SUNDAY = "2022/11/27"
-const MONDAY = "2022/11/28"
-const TUESDAY = "2022/11/29"
-const WEDNESDAY = "2022/11/30"
-const THURSDAY = "2022/12/01"
-const FRIDAY = "2022/12/02"
-// const SATURDAY = "2022/12/03"
-// const SUNDAY = "2022/12/04"
+const SATURDAY = "2022/12/03"
+const SUNDAY = "2022/12/04"
+const MONDAY = "2022/12/05"
+const TUESDAY = "2022/12/06"
+const WEDNESDAY = "2022/12/07"
+const THURSDAY = "2022/12/08"
+const FRIDAY = "2022/12/09"
+// const SATURDAY = "2022/12/10"
+// const SUNDAY = "2022/12/11"
 
 const MY_SCHEDULE = [
-    {
-        name: "Setup",
-        start: new Date(`${MONDAY} 21:30`),
-        end: new Date(`${MONDAY} 21:45`)
-    },
-    {
-        name: "Sleep",
-        start: new Date(`${MONDAY} 22:00`),
-        end: new Date(`${TUESDAY} 4:00`)
-    },
+    // {
+    //     name: "Setup",
+    //     start: new Date(`${MONDAY} 21:30`),
+    //     end: new Date(`${MONDAY} 21:45`)
+    // },
+    // {
+    //     name: "Sleep",
+    //     start: new Date(`${MONDAY} 22:00`),
+    //     end: new Date(`${TUESDAY} 4:00`)
+    // },
 
     // Monday
     {
-        name: "Get ready",
-        start: new Date(`${TUESDAY} 4:00`),
-        end: new Date(`${TUESDAY} 5:00`)
+        name: "Love time",
+        start: new Date(`${SATURDAY} 13:00`),
+        end: new Date(`${SATURDAY} 14:00`)
     },
     {
-        name: "Work",
-        start: new Date(`${TUESDAY} 5:00`),
-        end: new Date(`${TUESDAY} 15:30`)
+        name: "Lunch",
+        start: new Date(`${SATURDAY} 14:00`),
+        end: new Date(`${SATURDAY} 14:30`)
     },
     {
-        name: "Drive",
-        start: new Date(`${TUESDAY} 15:30`),
-        end: new Date(`${TUESDAY} 16:00`)
-    },
-    {
-        name: "Nap",
-        start: new Date(`${TUESDAY} 16:00`),
-        end: new Date(`${TUESDAY} 16:30`)
-    },
-    {
-        name: "Eat & Setup",
-        start: new Date(`${TUESDAY} 16:30`),
-        end: new Date(`${TUESDAY} 16:45`)
-    },
-    {
-        name: "Passport appointment",
-        start: new Date(`${TUESDAY} 16:45`),
-        end: new Date(`${TUESDAY} 17:15`)
-    },
-    {
-        name: "CT Knowledge check",
-        start: new Date(`${TUESDAY} 17:15`),
-        end: new Date(`${TUESDAY} 18:00`)
-    },
-    {
-        name: "CT Discussion",
-        start: new Date(`${TUESDAY} 19:00`),
-        end: new Date(`${TUESDAY} 20:00`)
-    },
-    {
-        name: "IP Discussion",
-        start: new Date(`${TUESDAY} 20:00`),
-        end: new Date(`${TUESDAY} 21:00`)
+        name: "Change address",
+        start: new Date(`${SATURDAY} 14:30`),
+        end: new Date(`${SATURDAY} 14:45`)
     },
     {
         name: "Cut Bonsai",
-        start: new Date(`${TUESDAY} 21:00`),
-        end: new Date(`${TUESDAY} 21:15`)
+        start: new Date(`${SATURDAY} 14:45`),
+        end: new Date(`${SATURDAY} 15:00`)
     },
     {
-        name: "Plan SNT",
-        start: new Date(`${TUESDAY} 21:15`),
-        end: new Date(`${TUESDAY} 21:30`)
+        name: "Gather pendrives",
+        start: new Date(`${SATURDAY} 15:00`),
+        end: new Date(`${SATURDAY} 15:15`)
+    },
+    {
+        name: "Reboot Rossana",
+        start: new Date(`${SATURDAY} 15:45`),
+        end: new Date(`${SATURDAY} 16:30`)
+    },
+    {
+        name: "CT Knowledge check",
+        start: new Date(`${SATURDAY} 16:30`),
+        end: new Date(`${SATURDAY} 18:00`)
+    },
+    {
+        name: "CT Discussion",
+        start: new Date(`${SATURDAY} 18:00`),
+        end: new Date(`${SATURDAY} 18:30`)
+    },
+    {
+        name: "IP Project",
+        start: new Date(`${SATURDAY} 18:30`),
+        end: new Date(`${SATURDAY} 19:30`)
+    },
+    {
+        name: "IP Discussion",
+        start: new Date(`${SATURDAY} 19:30`),
+        end: new Date(`${SATURDAY} 20:00`)
+    },
+    {
+        name: "Shower",
+        start: new Date(`${SATURDAY} 20:30`),
+        end: new Date(`${SATURDAY} 21:30`)
     },
     {
         name: "Libellus",
-        start: new Date(`${TUESDAY} 21:30`),
-        end: new Date(`${TUESDAY} 21:45`)
+        start: new Date(`${SATURDAY} 21:30`),
+        end: new Date(`${SATURDAY} 21:45`)
     },
     {
         name: "Setup",
-        start: new Date(`${TUESDAY} 21:45`),
-        end: new Date(`${TUESDAY} 22:00`)
+        start: new Date(`${SATURDAY} 21:45`),
+        end: new Date(`${SATURDAY} 22:00`)
+    },
+    {
+        name: "Watch movie",
+        start: new Date(`${SATURDAY} 22:00`),
+        end: new Date(`${SUNDAY} 0:00`)
     },
     {
         name: "Sleep",
-        start: new Date(`${TUESDAY} 22:00`),
-        end: new Date(`${WEDNESDAY} 4:00`)
-    },
+        start: new Date(`${SUNDAY} 0:00`),
+        end: new Date(`${SUNDAY} 8:00`)
+    }
 ]
