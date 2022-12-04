@@ -8,6 +8,8 @@
 - [x] Highlight current task
 - [x] Unit testing: validate schedule
 - [x] Unit testing: task queue
+- [ ] Expand task name in table
+- [ ] Desktop layout
 - [ ] Exception handler
 - [ ] Task editor
 - [ ] Schedule manager
