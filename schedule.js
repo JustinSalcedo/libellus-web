@@ -147,7 +147,7 @@ const MY_SCHEDULE = [
         end: new Date(`${MONDAY} 16:00`)
     },
     {
-        name: "Online shopping",    // Remember to buy: watch, USB pendrives, nutcracker, keyboard, monitor cable
+        name: "Online shopping",    // Remember to buy: case, watch, USB pendrives, nutcracker, keyboard, monitor cable
         start: new Date(`${MONDAY} 16:00`),
         end: new Date(`${MONDAY} 17:00`)
     },
