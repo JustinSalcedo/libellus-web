@@ -23,187 +23,80 @@ const FRIDAY = "2022/12/09"
 
 const MY_SCHEDULE = [
     {
-        name: "Libellus",
-        start: new Date(`${SUNDAY} 2:00`),
-        end: new Date(`${SUNDAY} 2:30`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${SUNDAY} 2:30`),
-        end: new Date(`${SUNDAY} 2:45`)
-    },
-    {
         name: "Sleep",
-        start: new Date(`${SUNDAY} 2:45`),
-        end: new Date(`${SUNDAY} 10:30`)
-    },
-
-    // Sunday
-    {
-        name: "Meditate",
-        start: new Date(`${SUNDAY} 10:30`),
-        end: new Date(`${SUNDAY} 11:00`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${SUNDAY} 11:00`),
-        end: new Date(`${SUNDAY} 11:15`)
-    },
-    {
-        name: "Letter",
-        start: new Date(`${SUNDAY} 11:30`),
-        end: new Date(`${SUNDAY} 12:00`)
-    },
-    {
-        name: "Breakfast",
-        start: new Date(`${SUNDAY} 12:00`),
-        end: new Date(`${SUNDAY} 12:15`)
-    },
-    {
-        name: "CT Knowledge check",
-        start: new Date(`${SUNDAY} 12:15`),
-        end: new Date(`${SUNDAY} 14:00`)
-    },
-    {
-        name: "CT Discussion",
-        start: new Date(`${SUNDAY} 14:00`),
-        end: new Date(`${SUNDAY} 14:30`)
-    },
-    {
-        name: "IP Project",
-        start: new Date(`${SUNDAY} 14:30`),
-        end: new Date(`${SUNDAY} 16:00`)
-    },
-    {
-        name: "CT Lab",
-        start: new Date(`${SUNDAY} 16:00`),
-        end: new Date(`${SUNDAY} 17:15`)
-    },
-    {
-        name: "Reboot Rossana",
-        start: new Date(`${SUNDAY} 17:30`),
-        end: new Date(`${SUNDAY} 18:30`)
-    },
-    {
-        name: "Refactor Libellus",
-        start: new Date(`${SUNDAY} 18:30`),
-        end: new Date(`${SUNDAY} 19:30`)
-    },
-    {
-        name: "Social networking",
-        start: new Date(`${SUNDAY} 19:30`),
-        end: new Date(`${SUNDAY} 20:00`)
-    },
-    // {
-    //     name: "Libellus API",
-    //     start: new Date(`${SUNDAY} 18:30`),
-    //     end: new Date(`${SUNDAY} 19:30`)
-    // },
-    {
-        name: "Plan SNT",
-        start: new Date(`${SUNDAY} 20:00`),
-        end: new Date(`${SUNDAY} 21:00`)
-    },
-    // {
-    //     name: "Snacks and Labels",
-    //     start: new Date(`${SUNDAY} 20:00`),
-    //     end: new Date(`${SUNDAY} 21:00`)
-    // },
-    {
-        name: "Watch movie",
-        start: new Date(`${SUNDAY} 21:00`),
-        end: new Date(`${SUNDAY} 23:00`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${SUNDAY} 23:00`),
-        end: new Date(`${SUNDAY} 23:15`)
-    },
-    {
-        name: "Sleep",
-        start: new Date(`${SUNDAY} 23:15`),
-        end: new Date(`${MONDAY} 6:45`)
+        start: new Date(`${MONDAY} 22:30`),
+        end: new Date(`${TUESDAY} 6:45`)
     },
 
     // Monday
     {
         name: "Work",
-        start: new Date(`${MONDAY} 7:00`),
-        end: new Date(`${MONDAY} 13:00`)
+        start: new Date(`${TUESDAY} 7:00`),
+        end: new Date(`${TUESDAY} 13:15`)
     },
     {
-        name: "Submit FAFSA form",
-        start: new Date(`${MONDAY} 13:00`),
-        end: new Date(`${MONDAY} 13:45`)
+        name: "Clean monitor",
+        start: new Date(`${TUESDAY} 13:15`),
+        end: new Date(`${TUESDAY} 13:30`)
     },
     {
-        name: "Withdraw",
-        start: new Date(`${MONDAY} 13:45`),
-        end: new Date(`${MONDAY} 14:30`)
+        name: "Final pay",
+        start: new Date(`${TUESDAY} 13:30`),
+        end: new Date(`${TUESDAY} 13:45`)
     },
     {
-        name: "Immigration services",
-        start: new Date(`${MONDAY} 15:00`),
-        end: new Date(`${MONDAY} 16:00`)
+        name: "Libellus refactor",
+        start: new Date(`${TUESDAY} 14:00`),
+        end: new Date(`${TUESDAY} 16:00`)
     },
     {
-        name: "Online shopping",    // Remember to buy: case, watch, USB pendrives, nutcracker, keyboard, monitor cable
-        start: new Date(`${MONDAY} 16:00`),
-        end: new Date(`${MONDAY} 17:00`)
+        name: "Printer setup",
+        start: new Date(`${TUESDAY} 16:00`),
+        end: new Date(`${TUESDAY} 16:30`)
     },
     {
-        name: "IP Knowledge check",
-        start: new Date(`${MONDAY} 17:00`),
-        end: new Date(`${MONDAY} 17:15`)
+        name: "Shower",
+        start: new Date(`${TUESDAY} 16:30`),
+        end: new Date(`${TUESDAY} 17:30`)
     },
     {
-        name: "IP Reading",
-        start: new Date(`${MONDAY} 17:15`),
-        end: new Date(`${MONDAY} 17:45`)
+        name: "IP Discussion",
+        start: new Date(`${TUESDAY} 17:30`),
+        end: new Date(`${TUESDAY} 18:30`)
     },
     {
         name: "CT Knowledge",
-        start: new Date(`${MONDAY} 18:00`),
-        end: new Date(`${MONDAY} 19:00`)
+        start: new Date(`${TUESDAY} 18:30`),
+        end: new Date(`${TUESDAY} 19:30`)
     },
     {
         name: "CT Discussion",
-        start: new Date(`${MONDAY} 19:00`),
-        end: new Date(`${MONDAY} 20:00`)
+        start: new Date(`${TUESDAY} 19:30`),
+        end: new Date(`${TUESDAY} 20:30`)
     },
-    // {
-    //     name: "Printer setup",
-    //     start: new Date(`${MONDAY} `),
-    //     end: new Date(`${MONDAY} `)
-    // },
     // {
     //     name: "Libellus server",
-    //     start: new Date(`${MONDAY} `),
-    //     end: new Date(`${MONDAY} `)
+    //     start: new Date(`${TUESDAY} `),
+    //     end: new Date(`${TUESDAY} `)
     // },
     {
-        name: "Dinner",
-        start: new Date(`${MONDAY} 20:00`),
-        end: new Date(`${MONDAY} 20:30`)
-    },
-    {
         name: "Plan SNT",
-        start: new Date(`${MONDAY} 20:30`),
-        end: new Date(`${MONDAY} 21:30`)
+        start: new Date(`${TUESDAY} 20:30`),
+        end: new Date(`${TUESDAY} 21:30`)
     },
     {
         name: "Libellus",
-        start: new Date(`${MONDAY} 21:30`),
-        end: new Date(`${MONDAY} 21:45`)
+        start: new Date(`${TUESDAY} 21:30`),
+        end: new Date(`${TUESDAY} 21:45`)
     },
     {
         name: "Setup",
-        start: new Date(`${MONDAY} 21:45`),
-        end: new Date(`${MONDAY} 22:00`)
+        start: new Date(`${TUESDAY} 21:45`),
+        end: new Date(`${TUESDAY} 22:00`)
     },
     {
         name: "Sleep",
-        start: new Date(`${MONDAY} 22:00`),
-        end: new Date(`${TUESDAY} 6:45`)
+        start: new Date(`${TUESDAY} 22:00`),
+        end: new Date(`${WEDNESDAY} 6:45`)
     },
 ]
