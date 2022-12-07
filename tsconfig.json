@@ -21,6 +21,9 @@
         "jsx": "react-jsx"
     },
     "include": [
+        "env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
         "src"
     ],
     "exclude": [

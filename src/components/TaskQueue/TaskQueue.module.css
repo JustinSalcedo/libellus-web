@@ -1,0 +1,22 @@
+.task-queue ul {
+    display: flex;
+    /* position: absolute; */
+    width: max-content;
+    cursor: pointer;
+}
+
+.task-queue li.current {
+    padding: 0% .5rem;
+    margin: 0% .5rem;
+    color: #555;
+    border-left: 2px solid #777;
+    border-right: 2px solid #777;
+}
+
+.task-queue li:not(.current) {
+    color: #bbb;
+}
+
+.task-queue li.current ~ li {
+    color: #777;
+}

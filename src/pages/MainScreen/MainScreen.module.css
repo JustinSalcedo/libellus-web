@@ -1,0 +1,42 @@
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-rows: 7fr 1fr 2fr 2fr;
+    grid-template-areas:
+        "top"
+        "."
+        "middle"
+        "bottom";
+}
+
+.top {
+    grid-area: top;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.middle {
+    grid-area: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.bottom {
+    grid-area: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Components */
+
+.next-task span.label {
+    font-weight: bold;
+    padding-right: .5rem;
+}
+
+.next-task span.last-task {
+    font-style: italic;
+}

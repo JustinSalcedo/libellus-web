@@ -1,0 +1,6 @@
+.screen {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    overflow-y: hidden;
+    padding: calc(100vh / 10 * 1.5) calc(100vw / 6) calc(100vh / 10);
+}

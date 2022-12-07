@@ -23,8 +23,9 @@ module.exports = {
                 use: ["ts-loader"],
             },
             {
-                test: /\.(css|scss)$/,
-                use: ["style-loader", "css-loader"],
+                test: /\.css$/,
+                include: path.join(__dirname, 'src'),
+                use: [ "style-loader", "css-loader"]
             },
             { 
                 test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,

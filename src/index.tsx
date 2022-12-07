@@ -1,14 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
+import App from "./App"
 const container = document.getElementById("root")
-const root = createRoot(container)
+const root = createRoot(container as HTMLElement)
 
-const Holi = () => {
-    return (
-        <h1>
-            Holi XD
-        </h1>
-    )
-}
-
-root.render(<Holi/>)
+root.render(<App/>)
