@@ -23,80 +23,85 @@ const FRIDAY = "2022/12/09"
 
 const MY_SCHEDULE = [
     {
+        name: "Libellus",
+        start: new Date(`${WEDNESDAY} 23:30`),
+        end: new Date(`${WEDNESDAY} 23:45`),
+    },
+    {
         name: "Sleep",
-        start: new Date(`${MONDAY} 22:30`),
-        end: new Date(`${TUESDAY} 6:45`)
+        start: new Date(`${WEDNESDAY} 23:45`),
+        end: new Date(`${THURSDAY} 6:45`),
     },
 
     // Monday
     {
         name: "Work",
-        start: new Date(`${TUESDAY} 7:00`),
-        end: new Date(`${TUESDAY} 13:15`)
+        start: new Date(`${THURSDAY} 7:00`),
+        end: new Date(`${THURSDAY} 13:15`)
     },
     {
-        name: "Clean monitor",
-        start: new Date(`${TUESDAY} 13:15`),
-        end: new Date(`${TUESDAY} 13:30`)
+        name: "Unload cardboard",
+        start: new Date(`${THURSDAY} 13:15`),
+        end: new Date(`${THURSDAY} 13:30`)
     },
     {
-        name: "Final pay",
-        start: new Date(`${TUESDAY} 13:30`),
-        end: new Date(`${TUESDAY} 13:45`)
+        name: "Call uncle",
+        start: new Date(`${THURSDAY} 13:30`),
+        end: new Date(`${THURSDAY} 13:45`)
     },
     {
         name: "Libellus refactor",
-        start: new Date(`${TUESDAY} 14:00`),
-        end: new Date(`${TUESDAY} 16:00`)
+        start: new Date(`${THURSDAY} 14:00`),
+        end: new Date(`${THURSDAY} 16:00`)
     },
     {
         name: "Printer setup",
-        start: new Date(`${TUESDAY} 16:00`),
-        end: new Date(`${TUESDAY} 16:30`)
+        start: new Date(`${THURSDAY} 16:00`),
+        end: new Date(`${THURSDAY} 16:30`)
     },
     {
         name: "Shower",
-        start: new Date(`${TUESDAY} 16:30`),
-        end: new Date(`${TUESDAY} 17:30`)
+        start: new Date(`${THURSDAY} 16:30`),
+        end: new Date(`${THURSDAY} 17:30`)
     },
     {
         name: "IP Discussion",
-        start: new Date(`${TUESDAY} 17:30`),
-        end: new Date(`${TUESDAY} 18:30`)
+        start: new Date(`${THURSDAY} 17:30`),
+        end: new Date(`${THURSDAY} 18:30`)
     },
     {
         name: "CT Knowledge",
-        start: new Date(`${TUESDAY} 18:30`),
-        end: new Date(`${TUESDAY} 19:30`)
+        start: new Date(`${THURSDAY} 18:30`),
+        end: new Date(`${THURSDAY} 19:30`)
     },
     {
         name: "CT Discussion",
-        start: new Date(`${TUESDAY} 19:30`),
-        end: new Date(`${TUESDAY} 20:30`)
+        start: new Date(`${THURSDAY} 19:30`),
+        end: new Date(`${THURSDAY} 20:30`)
     },
     // {
     //     name: "Libellus server",
-    //     start: new Date(`${TUESDAY} `),
-    //     end: new Date(`${TUESDAY} `)
+    //     start: new Date(`${THURSDAY} `),
+    //     end: new Date(`${THURSDAY} `)
     // },
     {
         name: "Plan SNT",
-        start: new Date(`${TUESDAY} 20:30`),
-        end: new Date(`${TUESDAY} 21:30`)
+        start: new Date(`${THURSDAY} 20:30`),
+        end: new Date(`${THURSDAY} 21:30`)
     },
     {
         name: "Libellus",
-        start: new Date(`${TUESDAY} 21:30`),
-        end: new Date(`${TUESDAY} 21:45`)
+        start: new Date(`${THURSDAY} 21:30`),
+        end: new Date(`${THURSDAY} 21:45`)
     },
     {
         name: "Setup",
-        start: new Date(`${TUESDAY} 21:45`),
-        end: new Date(`${TUESDAY} 22:00`)
+        start: new Date(`${THURSDAY} 21:45`),
+        end: new Date(`${THURSDAY} 22:00`)
     },
     {
         name: "Sleep",
-        start: new Date(`${TUESDAY} 22:00`),
-        end: new Date(`${WEDNESDAY} 6:45`)
+        start: new Date(`${THURSDAY} 22:00`),
+        end: new Date(`${FRIDAY} 6:45`)
     },
 ]
