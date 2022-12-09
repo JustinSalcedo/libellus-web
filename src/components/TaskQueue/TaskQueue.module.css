@@ -1,6 +1,9 @@
+.task-queue {
+    position: absolute;
+}
+
 .task-queue ul {
     display: flex;
-    /* position: absolute; */
     width: max-content;
     cursor: pointer;
 }

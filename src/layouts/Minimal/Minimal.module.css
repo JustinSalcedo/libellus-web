@@ -4,3 +4,16 @@
     overflow-y: hidden;
     padding: calc(100vh / 10 * 1.5) calc(100vw / 6) calc(100vh / 10);
 }
+
+.overlay {
+    visibility: hidden;
+}
+
+.overlay.on {
+    visibility: visible;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: hsla(235, 100%, 7%, 0.64);
+}

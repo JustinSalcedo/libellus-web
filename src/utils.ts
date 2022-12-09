@@ -87,3 +87,12 @@ export function getNextTask(schedule: ITask[]) {
     if (nextIndex === 0) return null
     return schedule[nextIndex]
 }
+
+// get formatted time
+export function formatTimeToStr(timestamp: Date, locale: Intl.LocalesArgument, is12hr: boolean) {
+    return timestamp.toLocaleString(locale, { hour: 'numeric', minute: 'numeric', hour12: is12hr })
+}
+
+export function isCurrentTask(task: ITask) {
+    return new Date() >= task.start && new Date() < task.end
+}
