@@ -140,3 +140,5 @@ const MY_SCHEDULE = [
         end: new Date(`${MONDAY} 6:45`)
     },
 ]
+
+export default MY_SCHEDULE

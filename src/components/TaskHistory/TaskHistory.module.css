@@ -1,0 +1,77 @@
+/* Task history */
+
+.task-history {
+    height: fit-content;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+.task-history table {
+    width: calc(100vw / 6 * 4);
+    table-layout: fixed;
+}
+
+/* Fixed header */
+
+.task-history > .fixed-header {
+    position: fixed;
+    background: white;
+    width: calc(100vw / 6 * 4);
+}
+
+.fixed-header > table {
+    width: 100%;
+}
+
+.fixed-header > table th:first-child {
+    width: 7rem;
+}
+
+.fixed-header > table thead {
+    text-align: end;
+    color: #777;
+    text-transform: uppercase;
+    font-size: .875rem;
+}
+
+/* Task list table */
+
+.task-history > table {
+    margin-top: 3rem;
+}
+
+.task-history > table tr {
+    height: 2rem;
+}
+
+.task-history > table td:first-child {
+    width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #555;
+}
+
+.task-history > table td:not(:first-child) {
+    text-align: end;
+}
+
+.task-history > table .day-subhead {
+    color: #bbb;
+    font-style: italic;
+    font-weight: bold;
+    background: #eee;
+    font-size: .875rem;
+}
+
+.task-history .current-task {
+    background: #ffe3ff;
+}
+
+.task-history .current-task td {
+    outline: 1px solid #ffe3ff;;
+}
+
+.task-history .current-task td:first-child {
+    color: #7e49aa
+}
