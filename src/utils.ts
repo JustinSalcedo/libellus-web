@@ -1,7 +1,5 @@
 import { ITask } from "./types"
 
-const DEF_GAP = { name: "Chill" }
-
 export function getTimeLeft(task: ITask, unit: 's' | 'm') {
     const msCurrentTime = Date.now()
     const msEndTime = task.end.getTime()
@@ -61,6 +59,19 @@ function isValidTask(task: ITask) {
 
 export function getVirtualSchedule(schedule: ITask[]) {
     const virtualList: ITask[] = []
+
+    // insert initial task gap so a virtual schedule is never empty
+    const notEmpty = !!schedule.length
+    if (schedule.length) {
+        const firstTaskDate = schedule[0].start.toLocaleDateString()
+        virtualList.push({ name: 'Chill', start: new Date(firstTaskDate), end: schedule[0].start })
+    } else {
+        const today = new Date()
+        const dayStart = new Date(today.toLocaleDateString())
+        const dayEnd = new Date(dayStart.getTime() + 86399000)  // (24 * 60 * 60 - 1) * 1000
+        virtualList.push({ name: 'Chill', start: dayStart, end: dayEnd })
+    }
+
     validateSchedule(schedule).forEach((task, index) => {
         virtualList.push(task)
         

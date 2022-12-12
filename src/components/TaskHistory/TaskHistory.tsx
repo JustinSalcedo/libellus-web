@@ -36,7 +36,7 @@ export default function TaskHistory() {
 
             rows.push(
                 <tr key={'task_' + index} className={isCurrentTask(task) ? styles['current-task'] : ''} >
-                    <td>{task.name}</td>
+                    <TaskName name={task.name} />
                     <td>{formatTimeToStr(task.start, 'en-US', true)}</td>
                     <td>{formatTimeToStr(task.end, 'en-US', true)}</td>
                 </tr>
@@ -69,5 +69,16 @@ export default function TaskHistory() {
                 </tbody>
             </table>
         </div>
+    )
+}
+
+function TaskName({ name }: { name: string }) {
+    const [isExpanded, setIsExpanded] = useState(false)
+    const props: { style?: React.CSSProperties } = {}
+
+    if (isExpanded) props.style = { whiteSpace: "initial" }
+
+    return (
+        <td {...props} onClick={() => setIsExpanded(isExpanded => !isExpanded)} >{name}</td>
     )
 }

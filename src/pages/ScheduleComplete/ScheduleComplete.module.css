@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+        "message"
+        "."
+        "note"
+        "schedule";
+    grid-template-rows: 7fr 1fr 2fr 2fr;
+}
+
+.message {
+    grid-area: message;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.message span {
+    display: block;
+    font-size: 4rem;
+}
+
+.note {
+    grid-area: note;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.schedule {
+    grid-area: schedule;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

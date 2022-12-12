@@ -55,7 +55,7 @@ export default function MainScreen() {
                             <span className={styles.label}>Next: </span>
                             <span className="text">{nextTask.name}</span>
                         </>
-                    ): ( <span className={styles['last-task']}></span> )}
+                    ): ( <span className={styles['last-task']}>Last task</span> )}
                 </div>
                 <div className={styles.bottom}>
                     <TaskQueue prev={nullifyGaps(prevTask)} current={nullifyGaps(currentTask)} next={nullifyGaps(nextTask)} />
