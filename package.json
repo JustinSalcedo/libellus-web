@@ -4,6 +4,7 @@
   "description": "Personal task management assistant",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "webpack": "webpack",
     "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
