@@ -6,9 +6,10 @@ import styles from './TaskQueue.module.css'
 export default function TaskQueue({ prev, next, current }: {
     prev?: ITask, current?: ITask, next?: ITask
 }) {
-    const { isModalOn, launchModal } = useContext(ViewContext)
+    const { setActiveModal, launchModal } = useContext(ViewContext)
 
     function handleOnClick() {
+        setActiveModal('task-history')
         launchModal(true)
     }
 

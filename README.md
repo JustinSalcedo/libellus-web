@@ -8,7 +8,9 @@
 - [x] Highlight current task
 - [x] Unit testing: validate schedule
 - [x] Unit testing: task queue
-- [ ] Expand task name in table
+- [x] Expand task name in table
+- [x] Schedule form
+- [ ] Enhance schedule form layout
 - [ ] Desktop layout
 - [ ] Exception handler
 - [ ] Task editor
@@ -17,7 +19,11 @@
 - [ ] Task bulk increaser
 - [ ] Material list
 
+### Source
+- [ ] Handler naming convention
+- [ ] Serve public content
+
 ### API
-- [ ] CRUD Tasks
+- [x] CRUD Tasks
 - [ ] Auth service
 - [ ] CRUD Actions

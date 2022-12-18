@@ -18,8 +18,8 @@ function formatTimeLeft(timeInMs: number, unit: 's' | 'm') {
     return timeString
 }
 
-export // validate schedule (unsorted)
-function validateSchedule(unSchedule: ITask[]): ITask[] {
+// validate schedule (unsorted)
+export function validateSchedule(unSchedule: ITask[]): ITask[] {
     const schedule = unSchedule.sort((a, b) => a.start.getTime() - b.start.getTime())
 
     let errorMessage = ''
@@ -51,7 +51,7 @@ function validateSchedule(unSchedule: ITask[]): ITask[] {
     throw new Error(errorMessage)
 }
 
-function isValidTask(task: ITask) {
+export function isValidTask(task: ITask) {
     const notEmptyOrNull = task.name && task.start && task.end
     const isValidTime = !!task.start.getTime() && !!task.end.getTime()
     return task.name.length <= 20 && notEmptyOrNull && isValidTime
@@ -66,10 +66,8 @@ export function getVirtualSchedule(schedule: ITask[]) {
         const firstTaskDate = schedule[0].start.toLocaleDateString()
         virtualList.push({ name: 'Chill', start: new Date(firstTaskDate), end: schedule[0].start })
     } else {
-        const today = new Date()
-        const dayStart = new Date(today.toLocaleDateString())
-        const dayEnd = new Date(dayStart.getTime() + 86399000)  // (24 * 60 * 60 - 1) * 1000
-        virtualList.push({ name: 'Chill', start: dayStart, end: dayEnd })
+        const { startsAt: todayStart, endsAt: todayEnd } = getTodayRange()
+        virtualList.push({ name: 'Chill', start: todayStart, end: todayEnd })
     }
 
     validateSchedule(schedule).forEach((task, index) => {
@@ -106,4 +104,17 @@ export function formatTimeToStr(timestamp: Date, locale: Intl.LocalesArgument, i
 
 export function isCurrentTask(task: ITask) {
     return new Date() >= task.start && new Date() < task.end
+}
+
+export function timelineIncludesToday(timeline: ITask[]) {
+    const { startsAt, endsAt } = getTodayRange()
+    return timeline.some(task => task.start >= startsAt)
+        || timeline.some(task => task.end <= endsAt)
+}
+
+function getTodayRange() {
+    const today = new Date()
+    const startsAt = new Date(today.toLocaleDateString())
+    const endsAt = new Date(`${today} 23:59:59`)
+    return { startsAt, endsAt }
 }
