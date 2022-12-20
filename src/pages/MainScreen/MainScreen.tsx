@@ -11,23 +11,25 @@ import { ScheduleContext } from "../../contexts"
 export default function MainScreen() {
     const { schedule } = useContext(ScheduleContext)
 
-    const [virtualSchedule, setVirtualSchedule] = useState(getVirtualSchedule(MY_SCHEDULE))
     const [switcher, setSwitcher] = useState(null)
     const [prevTask, setPrevTask] = useState(null as ITask)
     const [currentTask, setCurrentTask] = useState(null as ITask)
     const [nextTask, setNextTask] = useState(null as ITask)
 
     useEffect(() => {
-        switchTask()
+        switchTask(getVirtualSchedule(schedule))
 
         return clearInterval(switcher)
     }, [schedule])
 
-    function switchTask() {
+    function switchTask(virtualSchedule: ITask[]) {
         if (switcher) clearInterval(switcher)
-        const theTask = getCurrentTask(virtualSchedule)
-        setSwitcher(setInterval(switchTask, theTask.end.getTime() - Date.now()))
-        setCurrentTask(theTask)
+
+        const currentTask = getCurrentTask(virtualSchedule)
+        if (!currentTask) return false
+
+        setSwitcher(setInterval(() => switchTask(virtualSchedule),  currentTask.end.getTime() - Date.now()))
+        setCurrentTask(currentTask)
         setPrevTask(getPreviousTask(virtualSchedule))
         setNextTask(getNextTask(virtualSchedule))
     }

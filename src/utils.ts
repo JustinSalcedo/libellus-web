@@ -20,9 +20,13 @@ function formatTimeLeft(timeInMs: number, unit: 's' | 'm') {
 
 // validate schedule (unsorted)
 export function validateSchedule(unSchedule: ITask[]): ITask[] {
+    // Case 0: there are no tasks
+    if (!unSchedule.length) throw new Error('Empty schedule');
+
     const schedule = unSchedule.sort((a, b) => a.start.getTime() - b.start.getTime())
 
     let errorMessage = ''
+
     schedule.every((task, index) => {
         const startTime = task.start.getTime()
         const endTime = task.end.getTime()
@@ -30,6 +34,7 @@ export function validateSchedule(unSchedule: ITask[]): ITask[] {
         // Case 1: there's an invalid task
         if (!isValidTask(task)) {
             errorMessage = `Task ${task.name} has invalid timestamp`
+            return false
         }
 
         // Case 2: a task ends before it starts
@@ -61,7 +66,6 @@ export function getVirtualSchedule(schedule: ITask[]) {
     const virtualList: ITask[] = []
 
     // insert initial task gap so a virtual schedule is never empty
-    const notEmpty = !!schedule.length
     if (schedule.length) {
         const firstTaskDate = schedule[0].start.toLocaleDateString()
         virtualList.push({ name: 'Chill', start: new Date(firstTaskDate), end: schedule[0].start })
@@ -108,13 +112,13 @@ export function isCurrentTask(task: ITask) {
 
 export function timelineIncludesToday(timeline: ITask[]) {
     const { startsAt, endsAt } = getTodayRange()
-    return timeline.some(task => task.start >= startsAt)
-        || timeline.some(task => task.end <= endsAt)
+    return timeline.some(task => (task.start >= startsAt && task.start < endsAt)
+        || (task.end >= startsAt && task.end < endsAt))
 }
 
 function getTodayRange() {
-    const today = new Date()
-    const startsAt = new Date(today.toLocaleDateString())
+    const today = new Date().toLocaleDateString()
+    const startsAt = new Date(today)
     const endsAt = new Date(`${today} 23:59:59`)
     return { startsAt, endsAt }
 }

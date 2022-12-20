@@ -9,11 +9,13 @@ import ScheduleComplete from './pages/ScheduleComplete'
 const App = () => {
     const [schedule, setSchedule] = useState(validateSchedule(MY_SCHEDULE))
 
-    const isActiveSchedule = schedule.length && timelineIncludesToday(schedule)
+    // TODO: Get schedule from server
+
+    const isActiveSchedule = () => schedule.length && timelineIncludesToday(schedule)
 
     return (
         <ScheduleContext.Provider value={{ schedule, setSchedule }}>
-            {isActiveSchedule ? <MainScreen/> : <ScheduleComplete/>}
+            {isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>}
             
         </ScheduleContext.Provider>
     )

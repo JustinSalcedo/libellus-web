@@ -1,4 +1,7 @@
-import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, KeyboardEventHandler, MouseEvent, MouseEventHandler, useState } from "react"
+import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, KeyboardEventHandler, MouseEvent, MouseEventHandler, useContext, useState } from "react"
+import Schedule from "../../api/Schedule"
+import { USER_ID } from "../../constants"
+import { ScheduleContext } from "../../contexts"
 import { ITask } from "../../types"
 import { isValidTask, validateSchedule } from "../../utils"
 import styles from "./ScheduleForm.module.css"
@@ -7,11 +10,13 @@ const todayDate = new Date().toLocaleDateString()
 const INVALID_TASK_MSG = 'Your task is missing something...'
 
 export default function ScheduleForm() {
+    const { setSchedule } = useContext(ScheduleContext)
+
     const [tasks, setTasks] = useState([] as ITask[])
     const [errorMsg, setErrorMsg] = useState('')
 
     function addNewTask(task: ITask) {
-        setTasks(tasks => [...tasks, task])
+        setTasks(tasks => validateSchedule([...tasks, task]))
     }
 
     function updateTask(index: number, task: Partial<ITask>) {
@@ -27,11 +32,12 @@ export default function ScheduleForm() {
         setTasks(tasks => [...tasks.slice(0, index), ...tasks.slice(index + 1)])
     }
 
-    function addSchedule(e: MouseEvent) {
+    async function addSchedule(e: MouseEvent) {
         e.preventDefault()
         try {
-            const schedule = validateSchedule(tasks)
-            console.log(schedule)
+            const scheduleApi = new Schedule(USER_ID, setErrorMsg)
+            const schedule = await scheduleApi.Create(validateSchedule(tasks))
+            setSchedule(schedule)
         } catch (error) {
             setErrorMsg(error.toString())
         }
