@@ -55,34 +55,44 @@ const MY_SCHEDULE = [
         end: new Date(`${TUESDAY} 13:45`)
     },
     {
-        name: "FAFSA claim",
+        name: "USPS account",
         start: new Date(`${TUESDAY} 13:45`),
         end: new Date(`${TUESDAY} 14:15`)
     },
     {
-        name: "Get ready",
+        name: "FAFSA claim",
         start: new Date(`${TUESDAY} 14:15`),
-        end: new Date(`${TUESDAY} 14:30`)
-    },
-    {
-        name: "Drive",
-        start: new Date(`${TUESDAY} 14:30`),
         end: new Date(`${TUESDAY} 14:45`)
     },
     {
-        name: "Print tickets",
+        name: "Get ready",
         start: new Date(`${TUESDAY} 14:45`),
-        end: new Date(`${TUESDAY} 15:15`)
+        end: new Date(`${TUESDAY} 15:00`)
     },
     {
         name: "Drive",
+        start: new Date(`${TUESDAY} 15:00`),
+        end: new Date(`${TUESDAY} 15:15`)
+    },
+    {
+        name: "Print tickets",
         start: new Date(`${TUESDAY} 15:15`),
         end: new Date(`${TUESDAY} 15:30`)
     },
     {
-        name: "Isita's gifts",
+        name: "Drive",
         start: new Date(`${TUESDAY} 15:30`),
-        end: new Date(`${TUESDAY} 17:30`)
+        end: new Date(`${TUESDAY} 15:45`)
+    },
+    {
+        name: "Phone plan",
+        start: new Date(`${TUESDAY} 15:45`),
+        end: new Date(`${TUESDAY} 16:00`)
+    },
+    {
+        name: "Isita's gifts",
+        start: new Date(`${TUESDAY} 16:15`),
+        end: new Date(`${TUESDAY} 17:45`)
     },
     {
         name: "Drive",
