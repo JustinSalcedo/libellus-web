@@ -62,7 +62,7 @@ const MY_SCHEDULE = [
     {
         name: "Uber business",
         start: new Date(`${WEDNESDAY} 13:45`),
-        end: new Date(`${WEDNESDAY} 13:45`)
+        end: new Date(`${WEDNESDAY} 14:45`)
     },
     {
         name: "Trim",
