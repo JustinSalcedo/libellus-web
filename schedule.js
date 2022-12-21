@@ -52,35 +52,40 @@ const MY_SCHEDULE = [
     {
         name: "Lunch",
         start: new Date(`${WEDNESDAY} 13:15`),
-        end: new Date(`${WEDNESDAY} 13:45`)
+        end: new Date(`${WEDNESDAY} 13:30`)
     },
     {
         name: "Check email",
-        start: new Date(`${WEDNESDAY} 13:45`),
-        end: new Date(`${WEDNESDAY} 14:00`)
+        start: new Date(`${WEDNESDAY} 13:30`),
+        end: new Date(`${WEDNESDAY} 13:45`)
     },
     {
         name: "Uber business",
-        start: new Date(`${WEDNESDAY} 14:00`),
-        end: new Date(`${WEDNESDAY} 15:00`)
+        start: new Date(`${WEDNESDAY} 13:45`),
+        end: new Date(`${WEDNESDAY} 13:45`)
     },
     {
         name: "Trim",
-        start: new Date(`${WEDNESDAY} 15:00`),
-        end: new Date(`${WEDNESDAY} 15:30`)
+        start: new Date(`${WEDNESDAY} 14:45`),
+        end: new Date(`${WEDNESDAY} 15:15`)
     },
     {
         name: "Shower",
-        start: new Date(`${WEDNESDAY} 15:30`),
-        end: new Date(`${WEDNESDAY} 16:30`)
+        start: new Date(`${WEDNESDAY} 15:15`),
+        end: new Date(`${WEDNESDAY} 16:15`)
     },
     {
         name: "Get ready",
+        start: new Date(`${WEDNESDAY} 16:15`),
+        end: new Date(`${WEDNESDAY} 16:30`)
+    },
+    {
+        name: "Drive",
         start: new Date(`${WEDNESDAY} 16:30`),
         end: new Date(`${WEDNESDAY} 16:45`)
     },
     {
-        name: "Drive",
+        name: "Gas",
         start: new Date(`${WEDNESDAY} 16:45`),
         end: new Date(`${WEDNESDAY} 17:00`)
     },
