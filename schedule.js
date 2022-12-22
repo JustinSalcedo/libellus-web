@@ -23,116 +23,14 @@ const FRIDAY = "2022/12/23"
 
 const MY_SCHEDULE = [
     {
-        name: "Libellus",
-        start: new Date(`${TUESDAY} 22:45`),
-        end: new Date(`${TUESDAY} 23:00`)
-    },
-    {
-        name: "Setup",
-        start: new Date(`${TUESDAY} 23:00`),
-        end: new Date(`${TUESDAY} 23:15`)
-    },
-    {
-        name: "Sleep",
-        start: new Date(`${WEDNESDAY} 0:00`),
-        end: new Date(`${WEDNESDAY} 6:45`)
-    },
-
-    // Tuesday
-    {
-        name: "Meditate",
-        start: new Date(`${WEDNESDAY} 6:45`),
-        end: new Date(`${WEDNESDAY} 7:00`)
-    },
-    {
-        name: "Work",
-        start: new Date(`${WEDNESDAY} 7:00`),
-        end: new Date(`${WEDNESDAY} 13:15`)
-    },
-    {
-        name: "Lunch",
-        start: new Date(`${WEDNESDAY} 13:15`),
-        end: new Date(`${WEDNESDAY} 13:30`)
-    },
-    {
-        name: "Check email",
-        start: new Date(`${WEDNESDAY} 13:30`),
-        end: new Date(`${WEDNESDAY} 13:45`)
-    },
-    {
-        name: "Uber business",
-        start: new Date(`${WEDNESDAY} 13:45`),
-        end: new Date(`${WEDNESDAY} 14:45`)
-    },
-    {
-        name: "Trim",
-        start: new Date(`${WEDNESDAY} 14:45`),
-        end: new Date(`${WEDNESDAY} 15:15`)
-    },
-    {
-        name: "Shower",
-        start: new Date(`${WEDNESDAY} 15:15`),
-        end: new Date(`${WEDNESDAY} 16:15`)
-    },
-    {
-        name: "Get ready",
-        start: new Date(`${WEDNESDAY} 16:15`),
-        end: new Date(`${WEDNESDAY} 16:30`)
-    },
-    {
-        name: "Drive",
-        start: new Date(`${WEDNESDAY} 16:30`),
-        end: new Date(`${WEDNESDAY} 16:45`)
-    },
-    {
-        name: "Gas",
-        start: new Date(`${WEDNESDAY} 16:45`),
-        end: new Date(`${WEDNESDAY} 17:00`)
-    },
-    {
-        name: "Withdraw",
-        start: new Date(`${WEDNESDAY} 17:00`),
-        end: new Date(`${WEDNESDAY} 17:15`)
-    },
-    {
-        name: "Drive",
-        start: new Date(`${WEDNESDAY} 17:15`),
-        end: new Date(`${WEDNESDAY} 17:30`)
-    },
-    {
-        name: "Prepare documents",
-        start: new Date(`${WEDNESDAY} 17:30`),
-        end: new Date(`${WEDNESDAY} 18:00`)
-    },
-    {
-        name: "Pack baggage",
-        start: new Date(`${WEDNESDAY} 18:30`),
-        end: new Date(`${WEDNESDAY} 18:45`)
-    },
-    {
         name: "Install CentOS",
-        start: new Date(`${WEDNESDAY} 19:00`),
-        end: new Date(`${WEDNESDAY} 19:30`)
+        start: new Date(`${WEDNESDAY} 20:00`),
+        end: new Date(`${WEDNESDAY} 20:45`)
     },
     {
         name: "School email",
-        start: new Date(`${WEDNESDAY} 19:30`),
-        end: new Date(`${WEDNESDAY} 19:45`)
-    },
-    {
-        name: "Job lead",
-        start: new Date(`${WEDNESDAY} 19:45`),
-        end: new Date(`${WEDNESDAY} 20:00`)
-    },
-    {
-        name: "Dinner",
-        start: new Date(`${WEDNESDAY} 20:00`),
-        end: new Date(`${WEDNESDAY} 20:15`)
-    },
-    {
-        name: "Work agenda",
-        start: new Date(`${WEDNESDAY} 20:15`),
-        end: new Date(`${WEDNESDAY} 20:30`)
+        start: new Date(`${WEDNESDAY} 20:45`),
+        end: new Date(`${WEDNESDAY} 21:00`)
     },
     {
         name: "Libellus",
@@ -140,15 +38,154 @@ const MY_SCHEDULE = [
         end: new Date(`${WEDNESDAY} 21:30`)
     },
     {
-        name: "Setup",
+        name: "Pack baggage",
         start: new Date(`${WEDNESDAY} 21:30`),
         end: new Date(`${WEDNESDAY} 22:00`)
     },
     {
+        name: "Setup",
+        start: new Date(`${WEDNESDAY} 22:15`),
+        end: new Date(`${WEDNESDAY} 22:30`)
+    },
+    {
         name: "Sleep",
-        start: new Date(`${WEDNESDAY} 22:00`),
+        start: new Date(`${WEDNESDAY} 22:30`),
         end: new Date(`${THURSDAY} 6:45`)
     },
+
+    // Tuesday
+    {
+        name: "Meditate",
+        start: new Date(`${THURSDAY} 6:45`),
+        end: new Date(`${THURSDAY} 7:00`)
+    },
+    {
+        name: "Work",
+        start: new Date(`${THURSDAY} 7:00`),
+        end: new Date(`${THURSDAY} 13:00`)
+    },
+    {
+        name: "Lunch",
+        start: new Date(`${THURSDAY} 13:00`),
+        end: new Date(`${THURSDAY} 13:15`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${THURSDAY} 13:15`),
+        end: new Date(`${THURSDAY} 13:30`)
+    },
+    {
+        name: "Re-submit FAFSA",
+        start: new Date(`${THURSDAY} 13:30`),
+        end: new Date(`${THURSDAY} 13:45`)
+    },
+    {
+        name: "Drive",
+        start: new Date(`${THURSDAY} 13:45`),
+        end: new Date(`${THURSDAY} 14:00`)
+    },
+    {
+        name: "Clean car",
+        start: new Date(`${THURSDAY} 14:00`),
+        end: new Date(`${THURSDAY} 14:15`)
+    },
+    {
+        name: "Drive to TJ",
+        start: new Date(`${THURSDAY} 14:15`),
+        end: new Date(`${THURSDAY} 15:45`)
+    },
+    {
+        name: "Cross",
+        start: new Date(`${THURSDAY} 16:00`),
+        end: new Date(`${THURSDAY} 17:00`)
+    },
+    {
+        name: "Get cash",
+        start: new Date(`${THURSDAY} 17:00`),
+        end: new Date(`${THURSDAY} 17:15`)
+    },
+    {
+        name: "Dinner",
+        start: new Date(`${THURSDAY} 17:15`),
+        end: new Date(`${THURSDAY} 17:30`)
+    },
+    {
+        name: "Board",
+        start: new Date(`${THURSDAY} 18:00`),
+        end: new Date(`${THURSDAY} 18:30`)
+    },
+    {
+        name: "Flight",
+        start: new Date(`${THURSDAY} 18:30`),
+        end: new Date(`${THURSDAY} 23:30`)
+    },
+    {
+        name: "Unboard",
+        start: new Date(`${THURSDAY} 23:30`),
+        end: new Date(`${FRIDAY} 0:00`)
+    },
+
+    // Friday
+    {
+        name: "Snack",
+        start: new Date(`${FRIDAY} 0:15`),
+        end: new Date(`${FRIDAY} 0:30`)
+    },
+    {
+        name: "Take a ride",
+        start: new Date(`${FRIDAY} 1:15`),
+        end: new Date(`${FRIDAY} 2:00`)
+    },
+    {
+        name: "Bus stop",
+        start: new Date(`${FRIDAY} 2:00`),
+        end: new Date(`${FRIDAY} 2:30`)
+    },
+    {
+        name: "Trip",
+        start: new Date(`${FRIDAY} 2:30`),
+        end: new Date(`${FRIDAY} 6:15`)
+    },
+    {
+        name: "Lovely time",
+        start: new Date(`${FRIDAY} 6:15`),
+        end: new Date(`${FRIDAY} 7:00`)
+    },
+    {
+        name: "Arrival at hotel",
+        start: new Date(`${FRIDAY} 7:00`),
+        end: new Date(`${FRIDAY} 7:15`)
+    },
+    {
+        name: "Rest",
+        start: new Date(`${FRIDAY} 7:15`),
+        end: new Date(`${FRIDAY} 12:00`)
+    },
+    {
+        name: "???",
+        start: new Date(`${FRIDAY} 12:00`),
+        end: new Date(`${FRIDAY} 23:45`)
+    },
+    // {
+    //     name: "Work agenda",
+    //     start: new Date(`${FRIDAY} 20:15`),
+    //     end: new Date(`${FRIDAY} 20:30`)
+    // },
+    // {
+    //     name: "Libellus",
+    //     start: new Date(`${FRIDAY} 21:00`),
+    //     end: new Date(`${FRIDAY} 21:30`)
+    // },
+    // {
+    //     name: "Setup",
+    //     start: new Date(`${FRIDAY} 21:30`),
+    //     end: new Date(`${FRIDAY} 22:00`)
+    // },
+    // {
+    //     name: "Sleep",
+    //     start: new Date(`${FRIDAY} 22:00`),
+    //     end: new Date(`${FRIDAY} 6:45`)
+    // },
 ]
 
 // Task pool
