@@ -25,9 +25,19 @@ const MY_SCHEDULE = [
 
     // Wednesday
     {
-        name: "Shower",
-        start: new Date(`${WEDNESDAY} 15:45`),
+        name: "Work",
+        start: new Date(`${WEDNESDAY} 7:00`),
+        end: new Date(`${WEDNESDAY} 13:15`)
+    },
+    {
+        name: "Libellus",
+        start: new Date(`${WEDNESDAY} 15:30`),
         end: new Date(`${WEDNESDAY} 16:15`)
+    },
+    {
+        name: "Shower",
+        start: new Date(`${WEDNESDAY} 16:15`),
+        end: new Date(`${WEDNESDAY} 16:30`)
     },
     {
         name: "Get ready",
@@ -54,6 +64,8 @@ const MY_SCHEDULE = [
         start: new Date(`${WEDNESDAY} 23:45`),
         end: new Date(`${THURSDAY} 0:15`)
     },
+
+    // Thursday
     {
         name: "Board",
         start: new Date(`${THURSDAY} 0:45`),
