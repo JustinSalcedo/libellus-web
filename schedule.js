@@ -54,41 +54,6 @@ const MY_SCHEDULE = [
         start: new Date(`${THURSDAY} 21:00`),
         end: new Date(`${THURSDAY} 21:30`)
     },
-    // {
-    //     name: "Talk to aunt",
-    //     start: new Date(`${THURSDAY} 16:00`),
-    //     end: new Date(`${THURSDAY} 16:30`)
-    // },
-    // {
-    //     name: "Shopping cart",
-    //     start: new Date(`${THURSDAY} 16:30`),
-    //     end: new Date(`${THURSDAY} 16:45`)
-    // },
-    // {
-    //     name: "Photo session",
-    //     start: new Date(`${THURSDAY} 16:45`),
-    //     end: new Date(`${THURSDAY} 17:00`)
-    // },
-    // {
-    //     name: "Get Insanity",
-    //     start: new Date(`${THURSDAY} 17:00`),
-    //     end: new Date(`${THURSDAY} 17:15`)
-    // },
-    // {
-    //     name: "Check email",
-    //     start: new Date(`${THURSDAY} 17:15`),
-    //     end: new Date(`${THURSDAY} 17:30`)
-    // },
-    // {
-    //     name: "Transfer domain",
-    //     start: new Date(`${THURSDAY} 17:30`),
-    //     end: new Date(`${THURSDAY} 18:00`)
-    // },
-    // {
-    //     name: "CompTIA Linux+",
-    //     start: new Date(`${THURSDAY} 18:15`),
-    //     end: new Date(`${THURSDAY} 21:30`)
-    // },
     {
         name: "Dinner",
         start: new Date(`${THURSDAY} 21:30`),

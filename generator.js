@@ -1,4 +1,4 @@
-const NOW = new Date()
+const NOW = new Date('2022/12/30')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString()
 const TODAY = NOW.toLocaleDateString()
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString()
@@ -227,6 +227,6 @@ function getTemplate(day) {
     return template
 }
 
-// mySchedule = generate('weekday', 'Task 1', 15, 'Task 2', 30, 'Task 3', 45, 'Task 4', 60)
-// clearInterval(interval)
-// interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
+mySchedule = generate('weekday', 'Shopping cart', 15, 'Get Insanity', 15, 'Transfer domain', 30, 'Talk to aunt', 30, '', 30, 'CompTIA Linux+', 3 * 60, '', 30, 'CompTIA Linux+', 60 + 45, 'Photo session', 15)
+clearInterval(interval)
+interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
