@@ -1,7 +1,7 @@
 const NOW = new Date('2022/12/30')
-const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString()
-const TODAY = NOW.toLocaleDateString()
-const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString()
+const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
+const TODAY = NOW.toLocaleDateString('en-US')
+const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 
 const WEEKDAY = {
     head: [
