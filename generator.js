@@ -120,12 +120,12 @@ const HEAD_WORK_N_CLASS = [
     {
         name: "Homework",
         start: new Date(`${TODAY} 15:30`),
-        end: new Date(`${TODAY} 17:30`)
+        end: new Date(`${TODAY} 16:00`)
     },
     {
         name: "PHYS204 live lesson",
-        start: new Date(`${TODAY} 17:30`),
-        end: new Date(`${TODAY} 18:30`)
+        start: new Date(`${TODAY} 16:00`),
+        end: new Date(`${TODAY} 17:00`)
     }
 ]
 
@@ -347,6 +347,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('tuesday', 'AP Discussion', 60, 'Setup', 15, 'Plyometric Cardio Circuit', 60, 'Shower', 45)
+mySchedule = generate('tuesday', 'AP Discussion', 60, 'Setup', 15, 'Plyometric Cardio Circuit', 60, '', 15, 'Shower', 60, '', 15, 'CT Play Posit', 45)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
