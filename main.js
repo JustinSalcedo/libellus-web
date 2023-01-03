@@ -357,7 +357,7 @@ function validateSchedule(unSchedule) {
 
         // Case 1: there's an invalid task
         if (!isValidTask(task)) {
-            errorMessage = `Task ${task.name} has invalid timestamp`
+            errorMessage = `Task ${task.name} has invalid timestamp or name`
         }
 
         // Case 2: a task ends before it starts
@@ -382,7 +382,7 @@ function validateSchedule(unSchedule) {
 function isValidTask(task) {
     const notEmptyOrNull = task.name && task.start && task.end
     const isValidTime = !!task.start.getTime() && !!task.end.getTime()
-    return task.name.length <= 20 && notEmptyOrNull && isValidTime
+    return task.name.length <= 32 && notEmptyOrNull && isValidTime
 }
 
 /* Main function */

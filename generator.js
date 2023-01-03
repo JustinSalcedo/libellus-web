@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/02')
+const NOW = new Date('2023/01/03')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -83,20 +83,35 @@ const HEAD_WORKDAY = [
         start: new Date(`${TODAY} 6:45`),
         end: new Date(`${TODAY} 7:00`)
     },
+    // {
+    //     name: "Work",
+    //     start: new Date(`${TODAY} 7:00`),
+    //     end: new Date(`${TODAY} 13:15`)
+    // },
+    // {
+    //     name: "Lunch",
+    //     start: new Date(`${TODAY} 13:30`),
+    //     end: new Date(`${TODAY} 13:45`)
+    // },
+    // {
+    //     name: "Check email",
+    //     start: new Date(`${TODAY} 13:45`),
+    //     end: new Date(`${TODAY} 14:00`)
+    // }
     {
         name: "Work",
         start: new Date(`${TODAY} 7:00`),
-        end: new Date(`${TODAY} 13:15`)
+        end: new Date(`${TODAY} 14:45`)
     },
     {
         name: "Lunch",
-        start: new Date(`${TODAY} 13:30`),
-        end: new Date(`${TODAY} 13:45`)
+        start: new Date(`${TODAY} 14:45`),
+        end: new Date(`${TODAY} 15:00`)
     },
     {
         name: "Check email",
-        start: new Date(`${TODAY} 13:45`),
-        end: new Date(`${TODAY} 14:00`)
+        start: new Date(`${TODAY} 15:00`),
+        end: new Date(`${TODAY} 15:15`)
     }
 ]
 
@@ -104,13 +119,13 @@ const HEAD_WORK_N_CLASS = [
     ...HEAD_WORKDAY,
     {
         name: "Homework",
-        start: new Date(`${TODAY} 14:00`),
-        end: new Date(`${TODAY} 16:00`)
+        start: new Date(`${TODAY} 15:30`),
+        end: new Date(`${TODAY} 17:30`)
     },
     {
         name: "PHYS204 live lesson",
-        start: new Date(`${TODAY} 16:00`),
-        end: new Date(`${TODAY} 17:00`)
+        start: new Date(`${TODAY} 17:30`),
+        end: new Date(`${TODAY} 18:30`)
     }
 ]
 
@@ -332,6 +347,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('custom', 'Walk out', 15, 'Setup', 15, 'Fit test', 30, 'Setup', 15, 'Call mechanic', 15, 'AP Prep quiz', 15, 'AP Tutorials', 15, 'AP Knowledge check', 15, 'AP WebAssign', 60, '', 15, 'AP Discussion', 60, '', 15, 'CT Poll', 15, 'CT PlayPosit', 15, 'CT Mindtap', 60, 'CT Quiz', 15, 'CT Discussion', 60)
+mySchedule = generate('tuesday', 'AP Discussion', 60, 'Setup', 15, 'Plyometric Cardio Circuit', 60, 'Shower', 45)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
