@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/03')
+const NOW = new Date('2023/01/04')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -146,6 +146,11 @@ const TAIL_SLEEP_EARLY = [
         end: new Date(`${TODAY} 22:15`)
     },
     {
+        name: "Brush teeth",
+        start: new Date(`${TODAY} 22:15`),
+        end: new Date(`${TODAY} 22:30`)
+    },
+    {
         name: "Sleep",
         start: new Date(`${TODAY} 23:00`),
         end: new Date(`${TOMORROW} 6:45`)
@@ -167,6 +172,11 @@ const TAIL_SLEEP_LATE = [
         name: "Setup",
         start: new Date(`${TODAY} 22:00`),
         end: new Date(`${TODAY} 22:15`)
+    },
+    {
+        name: "Brush teeth",
+        start: new Date(`${TODAY} 22:15`),
+        end: new Date(`${TODAY} 22:30`)
     },
     {
         name: "Sleep",
@@ -347,6 +357,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('tuesday', 'AP Discussion', 60, 'Setup', 15, 'Plyometric Cardio Circuit', 60, '', 15, 'Shower', 60, '', 15, 'CT Play Posit', 45)
+mySchedule = generate('weekday', 'Trim', 30, 'Drive', 15, 'Groceries', 30, 'Cut hair', 60, 'Drive', 15, '', 15, 'Shower', 30, 'CT PlayPosit', 15, 'Setup', 15, 'Cardio Power & Resistance', 60, 'AP Discussion', 45, 'CT Discussion', 45)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
