@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/05')
+const NOW = new Date('2023/01/06')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -101,17 +101,17 @@ const HEAD_WORKDAY = [
     {
         name: "Work",
         start: new Date(`${TODAY} 7:00`),
-        end: new Date(`${TODAY} 14:45`)
+        end: new Date(`${TODAY} 14:15`)
     },
     {
         name: "Lunch",
-        start: new Date(`${TODAY} 14:45`),
-        end: new Date(`${TODAY} 15:00`)
+        start: new Date(`${TODAY} 14:15`),
+        end: new Date(`${TODAY} 14:30`)
     },
     {
         name: "Check email",
-        start: new Date(`${TODAY} 15:00`),
-        end: new Date(`${TODAY} 15:15`)
+        start: new Date(`${TODAY} 14:30`),
+        end: new Date(`${TODAY} 14:45`)
     }
 ]
 
@@ -357,6 +357,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekday', 'Transfer credentials', 15, 'Passport documents', 15, 'Call mechanic', 15, 'Drive', 15, 'Print copies', 15, 'Take passport photos', 30, 'Groceries', 15, 'Drive', 15, '', 15, 'Reschedule exam', 15, 'Find IoT kit', 15, 'Talk to aunt', 15, 'Check FAFSA status', 15, 'Setup', 15, 'Cardio Recovery', 60, '', 15, 'Shower', 30, 'CT PlayPosit', 15, 'CT Discussion', 30)
+mySchedule = generate('friday', 'Zelle info', 15, 'Reschedule exam', 15, 'Call aunt', 15, 'Uber business', 30, '', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'Setup', 15, 'Pure cardio', 60, '', 15, 'CT Discussion', 30, 'AP Discussion', 60)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
