@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/07')
+const NOW = new Date('2023/01/08')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -18,6 +18,11 @@ const HEAD_SLEEP_LATE = [
         name: "Setup",
         start: new Date(`${YESTERDAY} 22:00`),
         end: new Date(`${YESTERDAY} 22:15`)
+    },
+    {
+        name: "Brush teeth",
+        start: new Date(`${YESTERDAY} 22:15`),
+        end: new Date(`${YESTERDAY} 22:30`)
     },
     {
         name: "Sleep",
@@ -41,6 +46,11 @@ const HEAD_SLEEP_EARLY = [
         name: "Setup",
         start: new Date(`${YESTERDAY} 22:00`),
         end: new Date(`${YESTERDAY} 22:15`)
+    },
+    {
+        name: "Brush teeth",
+        start: new Date(`${YESTERDAY} 22:15`),
+        end: new Date(`${YESTERDAY} 22:30`)
     },
     {
         name: "Sleep",
@@ -357,6 +367,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekend', 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'Lunch', 30, 'CompTIA Linux+', 60, 'Uber business', 60, 'CompTIA Linux+', 2 * 60, '', 15, 'Setup', 15, 'Plyometric Cardio Circuit', 60, '', 15, 'Shower', 30)
+mySchedule = generate('sunday', 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, 'Lunch', 30, 'CompTIA Linux+', 2 * 60, '', 15, 'Shave', 30, 'AP Knowledge check', 30, 'AP WebAssign', 60, '', 15, 'AP Discussion', 60, '', 15, 'AP Project', 30)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
