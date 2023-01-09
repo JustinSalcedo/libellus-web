@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/08')
+const NOW = new Date('2023/01/09')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -93,35 +93,20 @@ const HEAD_WORKDAY = [
         start: new Date(`${TODAY} 6:45`),
         end: new Date(`${TODAY} 7:00`)
     },
-    // {
-    //     name: "Work",
-    //     start: new Date(`${TODAY} 7:00`),
-    //     end: new Date(`${TODAY} 13:15`)
-    // },
-    // {
-    //     name: "Lunch",
-    //     start: new Date(`${TODAY} 13:30`),
-    //     end: new Date(`${TODAY} 13:45`)
-    // },
-    // {
-    //     name: "Check email",
-    //     start: new Date(`${TODAY} 13:45`),
-    //     end: new Date(`${TODAY} 14:00`)
-    // }
     {
         name: "Work",
         start: new Date(`${TODAY} 7:00`),
-        end: new Date(`${TODAY} 14:15`)
+        end: new Date(`${TODAY} 13:15`)
     },
     {
         name: "Lunch",
-        start: new Date(`${TODAY} 14:15`),
-        end: new Date(`${TODAY} 14:30`)
+        start: new Date(`${TODAY} 13:30`),
+        end: new Date(`${TODAY} 13:45`)
     },
     {
         name: "Check email",
-        start: new Date(`${TODAY} 14:30`),
-        end: new Date(`${TODAY} 14:45`)
+        start: new Date(`${TODAY} 13:45`),
+        end: new Date(`${TODAY} 14:00`)
     }
 ]
 
@@ -367,6 +352,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('sunday', 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, 'Lunch', 30, 'CompTIA Linux+', 2 * 60, '', 15, 'Shave', 30, 'AP Knowledge check', 30, 'AP WebAssign', 60, '', 15, 'AP Discussion', 60, '', 15, 'AP Project', 30)
+mySchedule = generate('weekday', 'Drive', 15, 'Passport appointment', 30, 'Drive', 15, 'Cancel exam', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'CT PlayPosit', 15, 'CT Poll', 15, 'CT MindTap', 15, 'CT Prep quizes', 30, '', 15, 'Setup', 15, 'Cardio Power & Resistance', 60, 'Shower', 30, 'AP Discussion', 45)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
