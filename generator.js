@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/14')
+const NOW = new Date('2023/01/15')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -352,6 +352,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekend', 'Cereal time!', 15, 'Car registration', 15, 'Claim Amazon products', 15, 'Create nutcracker', 15, 'Research donation', 15, 'Recover contacts', 15, 'CT Discussion', 30, '', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, 'Cut cardboard', 30, 'CompTIA Linux+', 2 * 60, '', 15, 'Setup', 15, 'Pure Cardio & Cardio Abs', 75, 'Shower', 30)
+mySchedule = generate('sunday', 'Cereal time!', 15, 'Car registration', 15, 'Claim Amazon products', 15, 'Create nutcracker', 15, 'Research donation', 15, 'Recover contacts', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'AP Knowledge check', 15, 'AP WebAssign', 75, 'AP Project', 60, '', 15, 'CT PlayPosit', 15, 'CT Poll', 15, 'CT Mindtap', 15, 'CT Prep quizes', 30, 'CT Quiz', 15, '', 15, 'Plan SNT', 45)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
