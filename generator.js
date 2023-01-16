@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/15')
+const NOW = new Date('2023/01/16')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -89,7 +89,12 @@ const HEAD_WAKEUP_LATE = [
 
 const HEAD_WORKDAY = [
     {
-        name: "Meditate",
+        name: "Wake up!",
+        start: new Date(`${TODAY} 6:30`),
+        end: new Date(`${TODAY} 6:45`)
+    },
+    {
+        name: "Setup",
         start: new Date(`${TODAY} 6:45`),
         end: new Date(`${TODAY} 7:00`)
     },
@@ -97,6 +102,11 @@ const HEAD_WORKDAY = [
         name: "Work",
         start: new Date(`${TODAY} 7:00`),
         end: new Date(`${TODAY} 13:15`)
+    },
+    {
+        name: "Remind Isa's workout",
+        start: new Date(`${TODAY} 13:15`),
+        end: new Date(`${TODAY} 13:30`)
     },
     {
         name: "Lunch",
@@ -190,10 +200,7 @@ const WEEKDAY = {
         // Today
         ...HEAD_WORKDAY
     ],
-    tail: [
-        // Today
-        ...TAIL_SLEEP_EARLY
-    ]
+    tail: TAIL_SLEEP_EARLY
 }
 
 const TUESDAY = {
@@ -209,9 +216,7 @@ const TUESDAY = {
 
 const FRIDAY = {
     ...WEEKDAY,
-    tail: [
-        ...TAIL_SLEEP_LATE
-    ]
+    tail: TAIL_SLEEP_LATE
 }
 
 const WEEKEND = {
@@ -237,40 +242,36 @@ const SUNDAY = {
 
 const CUSTOMDAY = {
     ...WEEKDAY,
-    head: [
-        // Yesterday
-        ...HEAD_SLEEP_EARLY,
-
-        // Today
+    tail: [
         {
-            name: "Meditate",
-            start: new Date(`${TODAY} 6:45`),
-            end: new Date(`${TODAY} 7:00`)
+            name: "Dinner",
+            start: new Date(`${TODAY} 20:30`),
+            end: new Date(`${TODAY} 20:45`)
+        },
+        {
+            name: "Libellus",
+            start: new Date(`${TODAY} 20:45`),
+            end: new Date(`${TODAY} 21:00`)
         },
         {
             name: "Setup",
-            start: new Date(`${TODAY} 7:00`),
-            end: new Date(`${TODAY} 7:15`)
+            start: new Date(`${TODAY} 21:00`),
+            end: new Date(`${TODAY} 21:15`)
         },
         {
-            name: "Breakfast",
-            start: new Date(`${TODAY} 7:15`),
-            end: new Date(`${TODAY} 7:30`)
+            name: "Brush teeth",
+            start: new Date(`${TODAY} 21:15`),
+            end: new Date(`${TODAY} 21:30`)
         },
         {
-            name: "CompTIA Linux+",
-            start: new Date(`${TODAY} 8:00`),
-            end: new Date(`${TODAY} 13:15`)
+            name: "Plan SNT",
+            start: new Date(`${TODAY} 22:00`),
+            end: new Date(`${TODAY} 23:00`)
         },
         {
-            name: "Lunch",
-            start: new Date(`${TODAY} 13:30`),
-            end: new Date(`${TODAY} 13:45`)
-        },
-        {
-            name: "Check email",
-            start: new Date(`${TODAY} 13:45`),
-            end: new Date(`${TODAY} 14:00`)
+            name: "Sleep",
+            start: new Date(`${TODAY} 23:00`),
+            end: new Date(`${TOMORROW} 6:45`)
         }
     ]
 }
@@ -352,6 +353,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('sunday', 'Cereal time!', 15, 'Car registration', 15, 'Claim Amazon products', 15, 'Create nutcracker', 15, 'Research donation', 15, 'Recover contacts', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'CompTIA Linux+', 2 * 60, '', 15, 'AP Knowledge check', 15, 'AP WebAssign', 75, 'AP Project', 60, '', 15, 'CT PlayPosit', 15, 'CT Poll', 15, 'CT Mindtap', 15, 'CT Prep quizes', 30, 'CT Quiz', 15, '', 15, 'Plan SNT', 45)
+mySchedule = generate('custom', 'AP Project', 45, 'CT PlayPosit', 15, 'CT Poll', 15, 'CT MindTap', 15, 'CT Prep quizes', 30, 'CT Quiz', 15, '', 15, 'AP Discussion', 60, 'CT Discussion', 60, '', 15, 'Setup', 15, 'Fitness test', 30, 'Shower', 30)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
