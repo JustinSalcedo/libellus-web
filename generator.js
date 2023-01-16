@@ -55,7 +55,7 @@ const HEAD_SLEEP_EARLY = [
     {
         name: "Sleep",
         start: new Date(`${YESTERDAY} 23:00`),
-        end: new Date(`${TODAY} 6:45`)
+        end: new Date(`${TODAY} 6:30`)
     }
 ]
 
@@ -158,7 +158,7 @@ const TAIL_SLEEP_EARLY = [
     {
         name: "Sleep",
         start: new Date(`${TODAY} 23:00`),
-        end: new Date(`${TOMORROW} 6:45`)
+        end: new Date(`${TOMORROW} 6:30`)
     }
 ]
 
