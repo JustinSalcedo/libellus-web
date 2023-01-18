@@ -353,6 +353,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekday', 'CT Discussion', 60, 'AP Discussion', 60, 'CT Quiz', 15, '', 15, 'Shave & Cut', 45, 'CompTIA Linux+', 60, ``, 15, 'CompTIA Linux+', 45, ``, 15, 'Setup', 15, 'Cardio Circuit', 75, 'Shower', 30)
+mySchedule = generate('weekday', 'CT Discussion', 60, 'AP Discussion', 60, 'CT Quiz', 15, '', 15, 'Shave & Cut', 45, 'CompTIA Linux+', 60, ``, 15, 'CompTIA Linux+', 45, ``, 15, 'Setup', 15, 'Pure Cardio & Cardio Abs', 75, 'Shower', 30)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
