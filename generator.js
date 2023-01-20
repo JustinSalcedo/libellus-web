@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/19')
+const NOW = new Date('2023/01/20')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -241,37 +241,43 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...WEEKDAY,
-    tail: [
+    ...FRIDAY,
+    head: [
+        ...HEAD_SLEEP_EARLY,
         {
-            name: "Dinner",
-            start: new Date(`${TODAY} 20:30`),
-            end: new Date(`${TODAY} 20:45`)
-        },
-        {
-            name: "Libellus",
-            start: new Date(`${TODAY} 20:45`),
-            end: new Date(`${TODAY} 21:00`)
+            name: "Wake up!",
+            start: new Date(`${TODAY} 6:30`),
+            end: new Date(`${TODAY} 6:45`)
         },
         {
             name: "Setup",
-            start: new Date(`${TODAY} 21:00`),
-            end: new Date(`${TODAY} 21:15`)
+            start: new Date(`${TODAY} 6:45`),
+            end: new Date(`${TODAY} 7:00`)
         },
         {
-            name: "Brush teeth",
-            start: new Date(`${TODAY} 21:15`),
-            end: new Date(`${TODAY} 21:30`)
+            name: "Work",
+            start: new Date(`${TODAY} 7:00`),
+            end: new Date(`${TODAY} 11:00`)
         },
         {
-            name: "Plan SNT",
-            start: new Date(`${TODAY} 22:00`),
-            end: new Date(`${TODAY} 23:00`)
+            name: "CompTIA+ Linux",
+            start: new Date(`${TODAY} 11:15`),
+            end: new Date(`${TODAY} 13:00`)
         },
         {
-            name: "Sleep",
-            start: new Date(`${TODAY} 23:00`),
-            end: new Date(`${TOMORROW} 6:45`)
+            name: "Remind Isa's workout",
+            start: new Date(`${TODAY} 13:15`),
+            end: new Date(`${TODAY} 13:30`)
+        },
+        {
+            name: "Lunch",
+            start: new Date(`${TODAY} 13:30`),
+            end: new Date(`${TODAY} 13:45`)
+        },
+        {
+            name: "Check email",
+            start: new Date(`${TODAY} 13:45`),
+            end: new Date(`${TODAY} 14:00`)
         }
     ]
 }
@@ -353,6 +359,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekday', 'CT Quiz', 15, 'AP Discussion', 60, '', 15, 'Shave & Cut', 45, 'CompTIA Linux+', 90, ``, 15, 'CompTIA Linux+', 45, ``, 15, 'Setup', 15, 'Cardio Recovery', 60, 'Shower', 30, '', 15, 'CT Discussion', 30 )
+mySchedule = generate('custom', 'Shave & Cut', 45, 'CompTIA Linux+', 90, ``, 15, 'CompTIA Linux+', 90, ``, 15, 'Setup', 15, 'Cardio Power & Resistance', 60, 'Shower', 30, '', 15, 'Plan SNT', 60)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
