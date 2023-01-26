@@ -45,14 +45,27 @@ function formatTimeToStr(timestamp, locale, is12hr) {
 function getTaskQueue(schedule) {
     const time  = new Date()
     const currentIndex = getCurrentTaskIndex(schedule, time)
+
     // assumes the schedule is time sorted
-    let queue = schedule.slice(currentIndex - 1, currentIndex + 2)
-    if (currentIndex === -1) {
-        const defaultGap = getDefaultGap(schedule, time)
-        if (defaultGap) queue = defaultGap
+    const sublist = {
+        prevTask: schedule[currentIndex - 1],
+        currentTask: schedule[currentIndex],
+        nextTask: schedule[currentIndex + 1]
     }
-    if (currentIndex === 0) queue = [...schedule.slice(currentIndex, currentIndex + 2)]
-    return queue
+    if (currentIndex === -1) {
+        // Case 1: [0, 0, 1]
+        const nextIndex = schedule.findIndex(task => time < task.start)
+        if (nextIndex !== -1) {
+            sublist.currentTask = {
+                ...DEF_GAP,
+                start: schedule[nextIndex - 1] ? schedule[nextIndex - 1].end : new Date(new Date().toLocaleDateString()),
+                end: schedule[nextIndex].start
+            },
+            sublist.nextTask = schedule[nextIndex]
+        }
+    }
+
+    return sublist
 }
 
 function getCurrentTaskIndex(schedule, timestamp) {
@@ -61,24 +74,6 @@ function getCurrentTaskIndex(schedule, timestamp) {
 
 function isTaskInTime(task, timestamp) {
     return timestamp >= task.start && timestamp < task.end
-}
-
-function getDefaultGap(schedule, time) {
-    // assumes the schedule is time sorted
-    const nextIndex = schedule.findIndex(task => time < task.start)
-    const prevIndex = nextIndex - 1
-
-    if (nextIndex === -1) return null
-
-    return [
-        schedule[prevIndex],
-        {
-            ...DEF_GAP,
-            start: schedule[prevIndex].end,
-            end: schedule[nextIndex].start
-        },
-        schedule[nextIndex]
-    ]
 }
 
 // // regular clock
@@ -116,12 +111,7 @@ const renderTimeLeft = currentTask => {
 
 // content loader (current and next task)
 function loadContent(taskQueue) {
-    let [prevTask, currentTask, nextTask] = taskQueue
-
-    if (taskQueue.length < 3) {
-        if (taskQueue.length === 2) nextTask = currentTask
-        currentTask = prevTask
-    }
+    const {prevTask, currentTask, nextTask} = taskQueue
 
     if (!currentTask) {
         clearInterval(interval)
@@ -131,7 +121,7 @@ function loadContent(taskQueue) {
     if (currentTask !== currentTaskCache) {
         loadTask(currentTask)
         loadNextTask(nextTask)
-        loadTaskQueue(taskQueue)
+        loadTaskQueue([prevTask, currentTask, nextTask])
 
         currentTaskCache = currentTask
     }
