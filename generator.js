@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/26')
+const NOW = new Date('2023/01/27')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -257,27 +257,22 @@ const CUSTOMDAY = {
         {
             name: "Work",
             start: new Date(`${TODAY} 7:00`),
-            end: new Date(`${TODAY} 11:00`)
-        },
-        {
-            name: "CompTIA+ Linux",
-            start: new Date(`${TODAY} 11:15`),
-            end: new Date(`${TODAY} 13:00`)
+            end: new Date(`${TODAY} 10:45`)
         },
         {
             name: "Remind Isa's workout",
-            start: new Date(`${TODAY} 13:15`),
-            end: new Date(`${TODAY} 13:30`)
+            start: new Date(`${TODAY} 11:00`),
+            end: new Date(`${TODAY} 11:45`)
         },
         {
             name: "Lunch",
-            start: new Date(`${TODAY} 13:30`),
-            end: new Date(`${TODAY} 13:45`)
+            start: new Date(`${TODAY} 11:45`),
+            end: new Date(`${TODAY} 12:00`)
         },
         {
             name: "Check email",
-            start: new Date(`${TODAY} 13:45`),
-            end: new Date(`${TODAY} 14:00`)
+            start: new Date(`${TODAY} 12:00`),
+            end: new Date(`${TODAY} 12:15`)
         }
     ]
 }
@@ -359,6 +354,6 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekday', 'Marathon Bash', 5 * 60,  'Setup', 15, 'Cardio Recovery', 60, 'Shower', 30, '', 15, 'CT Discussion', 30)
+mySchedule = generate('custom', 'Donation prep', 15, 'Drive', 15, 'SEP', 15, 'Donation', 30, 'Drive', 15, 'Firebase migration', 30, 'JS Content', 60, '', 15, 'Libellus POST', 30, 'Watch face tutorial', 30, 'Watch face development', 90, '', 15, 'Setup', 15, 'Pure Cardio & Cardio Abs', 75, 'Shower', 30, '', 15, 'AP Discussion', 60)
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
