@@ -355,5 +355,6 @@ function getTemplate(day) {
 }
 
 mySchedule = generate('custom', 'Donation prep', 15, 'Drive', 15, 'SEP', 15, 'Donation', 30, 'Drive', 15, 'Firebase migration', 30, 'JS Content', 60, '', 15, 'Libellus POST', 30, 'Watch face tutorial', 30, 'Watch face development', 90, '', 15, 'Setup', 15, 'Pure Cardio & Cardio Abs', 75, 'Shower', 30, '', 15, 'AP Discussion', 60)
+setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
