@@ -354,7 +354,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekend', 'Watch face tutorial', 60, 'Watch face development', 90, '', 15, 'JS Content', 45, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'Setup', 15, 'Plyometric Cardio Circuit', 60, 'Shower', 30, '', 15, 'CT Discussion', 30)
+mySchedule = generate('weekend', 'Watch face tutorial', 60, 'Watch face development', 90, '', 15, 'JS Content', 45, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, 'CT Discussion', 30, '', 15, 'Setup', 15, 'Plyometric Cardio Circuit', 60, 'Shower', 30, '', 15)
 setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
