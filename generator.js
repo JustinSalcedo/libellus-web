@@ -515,7 +515,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('monday')
-// setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
+mySchedule = generate('monday', '', 15, 'Internship application', 90)
+setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
