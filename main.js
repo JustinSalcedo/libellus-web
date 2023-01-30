@@ -63,6 +63,12 @@ function getTaskQueue(schedule) {
             },
             sublist.nextTask = schedule[nextIndex]
         }
+
+        // Case 2: [1, 0, 1]
+        const prevTask = [...schedule].reverse().find(task => time > task.end)
+        if (prevTask) {
+            sublist.prevTask = prevTask
+        }
     }
 
     return sublist
