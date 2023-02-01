@@ -1,4 +1,4 @@
-const NOW = new Date('2023/01/31')
+const NOW = new Date('2023/02/01')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -398,39 +398,9 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...FRIDAY,
+    ...WEDNESDAY,
     head: [
-        ...SLEPT_EARLY,
-        {
-            name: "Wake up!",
-            start: new Date(`${TODAY} 6:30`),
-            end: new Date(`${TODAY} 6:45`)
-        },
-        {
-            name: "Setup",
-            start: new Date(`${TODAY} 6:45`),
-            end: new Date(`${TODAY} 7:00`)
-        },
-        {
-            name: "Work",
-            start: new Date(`${TODAY} 7:00`),
-            end: new Date(`${TODAY} 10:45`)
-        },
-        {
-            name: "Remind Isa's workout",
-            start: new Date(`${TODAY} 11:00`),
-            end: new Date(`${TODAY} 11:45`)
-        },
-        {
-            name: "Lunch",
-            start: new Date(`${TODAY} 11:45`),
-            end: new Date(`${TODAY} 12:00`)
-        },
-        {
-            name: "Check email",
-            start: new Date(`${TODAY} 12:00`),
-            end: new Date(`${TODAY} 12:15`)
-        }
+        ...WEDNESDAY.head.slice(0, WEDNESDAY.head.length - 6)
     ]
 }
 
@@ -515,7 +485,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('tuesday', '', 15, 'Internship application', 60)
+mySchedule = generate('custom', 'Internship application', 60, '', 15, 'AP Discussion', 60, 'CT Discussion', 30, '', 15, 'CompTIA Linux+', 60, 'Setup', 15, 'Core Cardio & Balance', 60, 'Shower', 30, '', 15, 'CompTIA Linux+', 90)
 setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
