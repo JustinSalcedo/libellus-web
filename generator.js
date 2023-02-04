@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/03')
+const NOW = new Date('2023/02/04')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -398,10 +398,7 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...WEDNESDAY,
-    head: [
-        ...WEDNESDAY.head.slice(0, WEDNESDAY.head.length - 6)
-    ]
+    ...SATURDAY
 }
 
 function generate(day, ...taskList) {
@@ -485,7 +482,8 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('custom', 'Internship application', 60, '', 15, 'Drive', 15, 'Cacahuate dreams', 15, 'Drive', 15, 'CompTIA Linux+', 60 + 45, '', 15, 'Setup', 15, 'Core Cardio & Balance', 60, 'Shower', 30, '', 15, 'AP Discussion', 60, 'CT Discussion', 30)
-setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
+mySchedule = generate('saturday', 'Wasted', 3 * 60 - 15, 'Libellus', 30, 'Call uncle', 15, 'Drive', 45, 'Uncle\' house', 2 * 60, 'Drive', 45, '', 15, 'Setup', 15, 'Core Cardio & Balance', 60, 'Shower', 30, '', 15, 'CompTIA Linux+', 2 * 60)
+// mySchedule = generate('saturday', 'Wasted', 3 * 60 - 15, 'Libellus', 15, 'Call uncle', 15, 'AP Discussion', 30, 'CT Discussion', 30, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'Setup', 15, 'Core Cardio & Balance', 60, 'Shower', 30, '', 15, 'CompTIA Linux+', 90)
+// setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
