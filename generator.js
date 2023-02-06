@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/05')
+const NOW = new Date('2023/02/06')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -196,7 +196,7 @@ const MONDAY = {
             end: new Date(`${TODAY} 18:15`)
         },
         {
-            name: "Core Cardio & Balance",
+            name: "Fit Test & Max Interval Training",
             start: new Date(`${TODAY} 18:15`),
             end: new Date(`${TODAY} 19:15`)
         },
@@ -227,7 +227,7 @@ const TUESDAY = {
             end: new Date(`${TODAY} 18:45`)
         },
         {
-            name: "Core Cardio & Balance",
+            name: "Max Interval Plyo",
             start: new Date(`${TODAY} 18:45`),
             end: new Date(`${TODAY} 19:45`)
         },
@@ -264,7 +264,7 @@ const WEDNESDAY = {
             end: new Date(`${TODAY} 18:15`)
         },
         {
-            name: "Core Cardio & Balance",
+            name: "Max Cardio Conditioning",
             start: new Date(`${TODAY} 18:15`),
             end: new Date(`${TODAY} 19:15`)
         },
@@ -296,7 +296,7 @@ const THURSDAY = {
             end: new Date(`${TODAY} 18:15`)
         },
         {
-            name: "Core Cardio & Balance",
+            name: "Max Recovery",
             start: new Date(`${TODAY} 18:15`),
             end: new Date(`${TODAY} 19:15`)
         },
@@ -327,7 +327,7 @@ const FRIDAY = {
             end: new Date(`${TODAY} 18:15`)
         },
         {
-            name: "Core Cardio & Balance",
+            name: "Max Interval Circuit",
             start: new Date(`${TODAY} 18:15`),
             end: new Date(`${TODAY} 19:15`)
         },
@@ -482,7 +482,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('sunday', 'Get ready', 15, 'Drive', 60, 'Visit aunt', 2 * 60, 'Drive', 60, '', 15, 'Setup', 15, 'Core Cardio & Balance', 60, 'Shower')
+mySchedule = generate('monday', '', 15, 'CT MindTap', 15, 'CT Prep quiz', 15, 'CT Quiz', 15, 'NSLS Presentation', 45)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
