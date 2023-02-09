@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/08')
+const NOW = new Date('2023/02/09')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -398,60 +398,9 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...TUESDAY,
+    ...THURSDAY,
     head: [
-        ...SLEPT_EARLY,
-        ...WORKDAY,
-        {
-            name: "CT Discussion",
-            start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 14:30`)
-        },
-        {
-            name: "Drive",
-            start: new Date(`${TODAY} 14:30`),
-            end: new Date(`${TODAY} 14:45`)
-        },
-        {
-            name: "SPPOMB",
-            start: new Date(`${TODAY} 14:45`),
-            end: new Date(`${TODAY} 15:00`)
-        },
-        {
-            name: "Drive",
-            start: new Date(`${TODAY} 15:00`),
-            end: new Date(`${TODAY} 15:15`)
-        },
-        {
-            name: "CompTIA Linux+",
-            start: new Date(`${TODAY} 15:15`),
-            end: new Date(`${TODAY} 16:00`)
-        },
-        {
-            name: "PHYS204 live lesson",
-            start: new Date(`${TODAY} 16:00`),
-            end: new Date(`${TODAY} 17:00`)
-        },
-        {
-            name: "AP Discussion",
-            start: new Date(`${TODAY} 17:00`),
-            end: new Date(`${TODAY} 18:30`)
-        },
-        {
-            name: "Setup",
-            start: new Date(`${TODAY} 18:30`),
-            end: new Date(`${TODAY} 18:45`)
-        },
-        {
-            name: "Max Interval Plyo",
-            start: new Date(`${TODAY} 18:45`),
-            end: new Date(`${TODAY} 19:45`)
-        },
-        {
-            name: "Shower",
-            start: new Date(`${TODAY} 19:45`),
-            end: new Date(`${TODAY} 20:15`)
-        }
+        ...THURSDAY.head.slice(0, THURSDAY.head.length - 5)
     ]
 }
 
@@ -536,7 +485,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('wednesday', 'AP Discussion', 60, 'Call for smog', 15, 'Domain purchase', 15, 'Isita\' gifts', 15)
+mySchedule = generate('custom', 'Get ready', 15, 'Drive', 15, 'Smog check', 60, 'Drive', 15, 'SCOMP', 15, 'Drive', 15, 'CompTIA Linux+', 90, '', 15, 'Setup', 15, 'Max Recovery', 60, 'Shower', 30, '', 15, 'Internet quote', 15, 'Pachuca route', 15, 'CT Discussion', 30, 'AP Discussion', 30)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
