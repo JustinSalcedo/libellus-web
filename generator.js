@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/12')
+const NOW = new Date('2023/02/13')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -52,20 +52,30 @@ const WORKDAY = [
     {
         name: "Work",
         start: new Date(`${TODAY} 7:00`),
+        end: new Date(`${TODAY} 11:00`)
+    },
+    {
+        name: "Lunch",
+        start: new Date(`${TODAY} 11:00`),
+        end: new Date(`${TODAY} 11:15`)
+    },
+    {
+        name: "Work",
+        start: new Date(`${TODAY} 11:15`),
         end: new Date(`${TODAY} 13:15`)
     },
     {
-        name: "Remind Isa's workout",
+        name: "Setup and remind",
         start: new Date(`${TODAY} 13:15`),
         end: new Date(`${TODAY} 13:30`)
     },
     {
-        name: "Lunch",
+        name: "Check email",
         start: new Date(`${TODAY} 13:30`),
         end: new Date(`${TODAY} 13:45`)
     },
     {
-        name: "Check email",
+        name: "Detoxify",
         start: new Date(`${TODAY} 13:45`),
         end: new Date(`${TODAY} 14:00`)
     }
@@ -87,6 +97,11 @@ const WORK_N_CLASS = [
         name: "PHYS204 live lesson",
         start: new Date(`${TODAY} 16:00`),
         end: new Date(`${TODAY} 17:00`)
+    },
+    {
+        name: "Salad time!",
+        start: new Date(`${TODAY} 17:00`),
+        end: new Date(`${TODAY} 17:15`)
     }
 ]
 
@@ -178,6 +193,11 @@ const MONDAY = {
         {
             name: "AP Project",
             start: new Date(`${TODAY} 14:00`),
+            end: new Date(`${TODAY} 15:15`)
+        },
+        {
+            name: "Salad time!",
+            start: new Date(`${TODAY} 15:15`),
             end: new Date(`${TODAY} 15:30`)
         },
         {
@@ -196,7 +216,7 @@ const MONDAY = {
             end: new Date(`${TODAY} 18:15`)
         },
         {
-            name: "Fit Test & Max Interval Training",
+            name: "Max Interval Training",
             start: new Date(`${TODAY} 18:15`),
             end: new Date(`${TODAY} 19:15`)
         },
@@ -249,8 +269,13 @@ const WEDNESDAY = {
             end: new Date(`${TODAY} 14:30`)
         },
         {
-            name: "CompTIA Linux+",
+            name: "Salad time!",
             start: new Date(`${TODAY} 14:30`),
+            end: new Date(`${TODAY} 14:45`)
+        },
+        {
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 15:00`),
             end: new Date(`${TODAY} 16:00`)
         },
         {
@@ -283,11 +308,16 @@ const THURSDAY = {
         {
             name: "CompTIA Linux+",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 16:00`)
+            end: new Date(`${TODAY} 15:00`)
+        },
+        {
+            name: "Salad time!",
+            start: new Date(`${TODAY} 15:00`),
+            end: new Date(`${TODAY} 15:15`)
         },
         {
             name: "CompTIA Linux+",
-            start: new Date(`${TODAY} 16:15`),
+            start: new Date(`${TODAY} 15:15`),
             end: new Date(`${TODAY} 17:45`)
         },
         {
@@ -314,11 +344,16 @@ const FRIDAY = {
         {
             name: "CompTIA Linux+",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 16:00`)
+            end: new Date(`${TODAY} 15:00`)
+        },
+        {
+            name: "Salad time!",
+            start: new Date(`${TODAY} 15:00`),
+            end: new Date(`${TODAY} 15:15`)
         },
         {
             name: "CompTIA Linux+",
-            start: new Date(`${TODAY} 16:15`),
+            start: new Date(`${TODAY} 15:15`),
             end: new Date(`${TODAY} 17:45`)
         },
         {
@@ -392,16 +427,19 @@ const SUNDAY = {
             name: "AP WebAssign",
             start: new Date(`${TODAY} 12:00`),
             end: new Date(`${TODAY} 14:00`)
+        },
+        {
+            name: "Salad time!",
+            start: new Date(`${TODAY} 14:15`),
+            end: new Date(`${TODAY} 14:30`)
         }
     ],
     tail: SLEEP_EARLY
 }
 
 const CUSTOMDAY = {
-    ...THURSDAY,
-    head: [
-        ...THURSDAY.head.slice(0, THURSDAY.head.length - 5)
-    ]
+    ...MONDAY,
+    head: MONDAY.head
 }
 
 function generate(day, ...taskList) {
@@ -485,7 +523,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('sunday', 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'CompTIA Linux+', 90, '', 15, 'Advance notes', 30)
+mySchedule = generate('custom', 'Shave', 30, '', 15, 'CompTIA Linux+', 60)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
