@@ -439,7 +439,11 @@ const SUNDAY = {
 
 const CUSTOMDAY = {
     ...MONDAY,
-    head: MONDAY.head
+    head: MONDAY.head.map((task) => {
+        if (task.name === "Check email") return { ...task, name: "Drive" }
+        if (task.name === "Detoxify") return { ...task, name: "Groceries" }
+        return task
+    })
 }
 
 function generate(day, ...taskList) {
