@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/13')
+const NOW = new Date('2023/02/14')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -238,7 +238,7 @@ const TUESDAY = {
         ...WORK_N_CLASS,
         {
             name: "AP Discussion",
-            start: new Date(`${TODAY} 17:00`),
+            start: new Date(`${TODAY} 17:15`),
             end: new Date(`${TODAY} 18:30`)
         },
         {
@@ -527,7 +527,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('custom', 'Shave', 30, '', 15, 'CompTIA Linux+', 60)
+mySchedule = generate('tuesday', '', 15, 'AP Project', 30, 'CT Discussion', 30)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
