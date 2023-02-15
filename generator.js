@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/14')
+const NOW = new Date('2023/02/15')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -89,19 +89,19 @@ const WORK_N_CLASS = [
         end: new Date(`${TODAY} 14:30`)
     },
     {
-        name: "CompTIA Linux+",
+        name: "Salad time!",
         start: new Date(`${TODAY} 14:30`),
+        end: new Date(`${TODAY} 14:45`)
+    },
+    {
+        name: "CompTIA Linux+",
+        start: new Date(`${TODAY} 14:45`),
         end: new Date(`${TODAY} 16:00`)
     },
     {
         name: "PHYS204 live lesson",
         start: new Date(`${TODAY} 16:00`),
         end: new Date(`${TODAY} 17:00`)
-    },
-    {
-        name: "Salad time!",
-        start: new Date(`${TODAY} 17:00`),
-        end: new Date(`${TODAY} 17:15`)
     }
 ]
 
@@ -238,7 +238,7 @@ const TUESDAY = {
         ...WORK_N_CLASS,
         {
             name: "AP Discussion",
-            start: new Date(`${TODAY} 17:15`),
+            start: new Date(`${TODAY} 17:00`),
             end: new Date(`${TODAY} 18:30`)
         },
         {
@@ -527,7 +527,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('tuesday', '', 15, 'AP Project', 30, 'CT Discussion', 30)
+mySchedule = generate('wednesday', '', 15, 'AP Project', 15, 'AP Discussion', 60, 'Surveys', 15)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
