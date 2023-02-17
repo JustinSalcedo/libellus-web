@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/16')
+const NOW = new Date('2023/02/17')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -439,12 +439,11 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...MONDAY,
-    head: MONDAY.head.map((task) => {
-        if (task.name === "Check email") return { ...task, name: "Drive" }
-        if (task.name === "Detoxify") return { ...task, name: "Groceries" }
-        return task
-    })
+    head: [
+        ...SLEPT_EARLY,
+        ...WORKDAY
+    ],
+    tail: SLEEP_LATE
 }
 
 function generate(day, ...taskList) {
@@ -528,7 +527,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('thursday', '', 15, 'CT Discussion', 30, 'AP Discussion', 30, 'Surveys', 15)
+mySchedule = generate('custom', 'Activate gift card', 15, 'Surveys', 15, 'CT Discussion', 30, 'AP Discussion', 30, '', 15, 'Shower', 30, 'Shave', 15, '', 15, 'Essay', 60, '', 15, 'Essay', 60, '', 15, 'Call aunt', 15, 'CompTIA Linux+', 90, '', 15, 'Update templates', 15)
 // setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
