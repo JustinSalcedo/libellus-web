@@ -84,19 +84,19 @@ const WORKDAY = [
 const WORK_N_CLASS = [
     ...WORKDAY,
     {
-        name: "Shower",
+        name: "CT Discussion",
         start: new Date(`${TODAY} 14:00`),
-        end: new Date(`${TODAY} 14:45`)
+        end: new Date(`${TODAY} 14:30`)
     },
     {
         name: "Salad time!",
-        start: new Date(`${TODAY} 14:45`),
-        end: new Date(`${TODAY} 15:00`)
+        start: new Date(`${TODAY} 14:30`),
+        end: new Date(`${TODAY} 14:45`)
     },
     {
-        name: "CT Discussion",
-        start: new Date(`${TODAY} 15:00`),
-        end: new Date(`${TODAY} 15:45`)
+        name: "CompTIA Linux+",
+        start: new Date(`${TODAY} 14:45`),
+        end: new Date(`${TODAY} 16:00`)
     },
     {
         name: "PHYS204 live lesson",
@@ -106,11 +106,6 @@ const WORK_N_CLASS = [
 ]
 
 const SLEEP_EARLY = [
-    {
-        name: "Setup",
-        start: new Date(`${TODAY} 21:15`),
-        end: new Date(`${TODAY} 21:30`)
-    },
     {
         name: "Dinner",
         start: new Date(`${TODAY} 21:30`),
@@ -145,11 +140,6 @@ const SLEPT_EARLY = SLEEP_EARLY.map(task => ({
 }))
 
 const SLEEP_LATE = [
-    {
-        name: "Setup",
-        start: new Date(`${TODAY} 21:15`),
-        end: new Date(`${TODAY} 21:30`)
-    },
     {
         name: "Dinner",
         start: new Date(`${TODAY} 21:30`),
@@ -201,29 +191,39 @@ const MONDAY = {
     head: [
         ...WEEKDAY.head,
         {
-            name: "Shower",
+            name: "AP Project",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 14:45`)
+            end: new Date(`${TODAY} 15:15`)
         },
         {
             name: "Salad time!",
-            start: new Date(`${TODAY} 14:45`),
-            end: new Date(`${TODAY} 15:00`)
+            start: new Date(`${TODAY} 15:15`),
+            end: new Date(`${TODAY} 15:30`)
         },
         {
             name: "AP Discussion",
-            start: new Date(`${TODAY} 15:00`),
-            end: new Date(`${TODAY} 16:00`)
+            start: new Date(`${TODAY} 15:45`),
+            end: new Date(`${TODAY} 16:45`)
         },
         {
             name: "CT Discussion",
-            start: new Date(`${TODAY} 16:00`),
-            end: new Date(`${TODAY} 17:00`)
+            start: new Date(`${TODAY} 17:00`),
+            end: new Date(`${TODAY} 18:00`)
         },
         {
-            name: "AP Project",
-            start: new Date(`${TODAY} 17:15`),
-            end: new Date(`${TODAY} 18:30`)
+            name: "Setup",
+            start: new Date(`${TODAY} 18:00`),
+            end: new Date(`${TODAY} 18:15`)
+        },
+        {
+            name: "Max Interval Training",
+            start: new Date(`${TODAY} 18:15`),
+            end: new Date(`${TODAY} 19:15`)
+        },
+        {
+            name: "Shower",
+            start: new Date(`${TODAY} 19:15`),
+            end: new Date(`${TODAY} 19:45`)
         }
     ]
 }
@@ -240,6 +240,21 @@ const TUESDAY = {
             name: "AP Discussion",
             start: new Date(`${TODAY} 17:00`),
             end: new Date(`${TODAY} 18:30`)
+        },
+        {
+            name: "Setup",
+            start: new Date(`${TODAY} 18:30`),
+            end: new Date(`${TODAY} 18:45`)
+        },
+        {
+            name: "Max Interval Plyo",
+            start: new Date(`${TODAY} 18:45`),
+            end: new Date(`${TODAY} 19:45`)
+        },
+        {
+            name: "Shower",
+            start: new Date(`${TODAY} 19:45`),
+            end: new Date(`${TODAY} 20:15`)
         }
     ],
 }
@@ -249,14 +264,39 @@ const WEDNESDAY = {
     head: [
         ...WEEKDAY.head,
         {
-            name: "Shower",
+            name: "CT Discussion",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 14:45`)
+            end: new Date(`${TODAY} 14:30`)
         },
         {
             name: "Salad time!",
-            start: new Date(`${TODAY} 14:45`),
-            end: new Date(`${TODAY} 15:00`)
+            start: new Date(`${TODAY} 14:30`),
+            end: new Date(`${TODAY} 14:45`)
+        },
+        {
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 15:00`),
+            end: new Date(`${TODAY} 16:00`)
+        },
+        {
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 16:15`),
+            end: new Date(`${TODAY} 17:45`)
+        },
+        {
+            name: "Setup",
+            start: new Date(`${TODAY} 18:00`),
+            end: new Date(`${TODAY} 18:15`)
+        },
+        {
+            name: "Max Cardio Conditioning",
+            start: new Date(`${TODAY} 18:15`),
+            end: new Date(`${TODAY} 19:15`)
+        },
+        {
+            name: "Shower",
+            start: new Date(`${TODAY} 19:15`),
+            end: new Date(`${TODAY} 19:45`)
         }
     ]
 }
@@ -266,14 +306,35 @@ const THURSDAY = {
     head: [
         ...WEEKDAY.head,
         {
-            name: "Shower",
+            name: "CompTIA Linux+",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 14:45`)
+            end: new Date(`${TODAY} 15:00`)
         },
         {
             name: "Salad time!",
-            start: new Date(`${TODAY} 14:45`),
-            end: new Date(`${TODAY} 15:00`)
+            start: new Date(`${TODAY} 15:00`),
+            end: new Date(`${TODAY} 15:15`)
+        },
+        {
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 15:15`),
+            end: new Date(`${TODAY} 17:45`)
+        },
+        {
+            name: "Setup",
+            start: new Date(`${TODAY} 18:00`),
+            end: new Date(`${TODAY} 18:15`)
+        },
+        {
+            // name: "Max Recovery",
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 18:15`),
+            end: new Date(`${TODAY} 19:15`)
+        },
+        {
+            name: "Shower",
+            start: new Date(`${TODAY} 19:15`),
+            end: new Date(`${TODAY} 19:45`)
         }
     ]
 }
@@ -282,14 +343,34 @@ const FRIDAY = {
     head: [
         ...WEEKDAY.head,
         {
-            name: "Shower",
+            name: "CompTIA Linux+",
             start: new Date(`${TODAY} 14:00`),
-            end: new Date(`${TODAY} 14:45`)
+            end: new Date(`${TODAY} 15:00`)
         },
         {
             name: "Salad time!",
-            start: new Date(`${TODAY} 14:45`),
-            end: new Date(`${TODAY} 15:00`)
+            start: new Date(`${TODAY} 15:00`),
+            end: new Date(`${TODAY} 15:15`)
+        },
+        {
+            name: "CompTIA Linux+",
+            start: new Date(`${TODAY} 15:15`),
+            end: new Date(`${TODAY} 17:45`)
+        },
+        {
+            name: "Setup",
+            start: new Date(`${TODAY} 18:00`),
+            end: new Date(`${TODAY} 18:15`)
+        },
+        {
+            name: "Max Interval Circuit",
+            start: new Date(`${TODAY} 18:15`),
+            end: new Date(`${TODAY} 19:15`)
+        },
+        {
+            name: "Shower",
+            start: new Date(`${TODAY} 19:15`),
+            end: new Date(`${TODAY} 19:45`)
         }
     ],
     tail: SLEEP_LATE
@@ -356,97 +437,3 @@ const SUNDAY = {
     ],
     tail: SLEEP_EARLY
 }
-
-const CUSTOMDAY = {
-    head: [
-        ...SLEPT_EARLY,
-        ...WORKDAY
-    ],
-    tail: SLEEP_LATE
-}
-
-function generate(day, ...taskList) {
-    const { head, tail } = getTemplate(day)
-
-    const subSchedule = []
-
-    let lastTimestamp = validateSchedule(head)[head.length - 1].end
-    const timestampLimit = validateSchedule(tail)[0].start
-
-    for (let index = 0; index < taskList.length; index++) {
-        const taskName = taskList[index]
-        const timespanInMin = taskList[index + 1]
-        // skip timespans or task names without timespan
-        if (index % 2 || !timespanInMin) continue;
-
-        // NOTE: wrap in parenthesis to compare typeof
-        if (!(typeof taskName === 'string')) throw new Error(`Task '${taskName}' has invalid name or type`)
-        if (!(typeof timespanInMin === 'number')) throw new Error(`Task '${taskName}' misses a timespan`)
-        
-        // empty string = task gap
-        if (!taskName) {
-            lastTimestamp = new Date(lastTimestamp.getTime() + timespanInMin * 60 * 1000)
-            continue;
-        }
-
-        const task = generateTask(taskName, timespanInMin, lastTimestamp)
-
-        // task goes over the subschedule timespan
-        if (task.end > timestampLimit) {
-            console.warn(`Task '${task.name}' ${(taskList.length - 2 === index)
-                ? 'exceeds the timespan and was skipped'
-                : `and other ${Math.floor((taskList.length - index - 1) / 2)} exceed the timespan and were skipped`
-            }`)
-            break;
-        }
-
-        subSchedule.push(task)
-        lastTimestamp = task.end
-    }
-
-    return validateSchedule([...head, ...subSchedule, ...tail])
-}
-
-function generateTask(name, timespanInMin, lastTimestamp) {
-    return {
-        name,
-        start: lastTimestamp,
-        end: new Date(lastTimestamp.getTime() + timespanInMin * 60 * 1000)
-    }
-}
-
-function getTimespan(day) {
-    const { head, tail } = getTemplate(day)
-    const headEnd = validateSchedule(head)[head.length - 1].end
-    const tailStart = validateSchedule(tail)[0].start
-
-    const diffInMin = Math.floor((tailStart.getTime() - headEnd.getTime()) / 1000 / 60)
-    const hours = Math.floor(diffInMin / 60)
-    const mins = diffInMin % 60
-    if (hours) return `${hours} hours${mins ? ` and ${mins} minutes` : ''}`
-    return `${mins} minutes`
-}
-
-function getTemplate(day) {
-    let template = null
-
-    if (day === "weekday") template = WEEKDAY
-    if (day === "monday") template = MONDAY
-    if (day === "tuesday") template = TUESDAY
-    if (day === "wednesday") template = WEDNESDAY
-    if (day === "thursday") template = THURSDAY
-    if (day === "friday") template = FRIDAY
-    if (day === "weekend") template = WEEKEND
-    if (day === "saturday") template = SATURDAY
-    if (day === "sunday") template = SUNDAY
-    if (day === "custom") template = CUSTOMDAY
-
-    if (!template) throw new Error('No valid template selected')
-
-    return template
-}
-
-mySchedule = generate('wednesday')
-// setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
-clearInterval(interval)
-interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
