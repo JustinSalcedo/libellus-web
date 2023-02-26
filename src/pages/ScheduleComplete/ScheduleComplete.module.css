@@ -3,7 +3,7 @@
     height: 100%;
     grid-template-areas:
         "message"
-        "."
+        "refresh"
         "note"
         "schedule";
     grid-template-rows: 7fr 1fr 2fr 2fr;
@@ -18,6 +18,14 @@
 .message span {
     display: block;
     font-size: 4rem;
+}
+
+.action {
+    grid-area: refresh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
 }
 
 .note {

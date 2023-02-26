@@ -3,12 +3,12 @@ import TaskQueue from "../../components/TaskQueue/TaskQueue"
 import Timer from "../../components/Timer"
 import Minimal from "../../layouts/Minimal"
 import { ITask } from "../../types"
-import { getCurrentTask, getNextTask, getPreviousTask, getVirtualSchedule, validateSchedule } from "../../utils"
+import { getCurrentTask, getTaskQueue, getVirtualSchedule, validateSchedule } from "../../utils"
 import styles from "./MainScreen.module.css"
 import { ScheduleContext } from "../../contexts"
 
 export default function MainScreen() {
-    const { schedule } = useContext(ScheduleContext)
+    const { schedule, refreshSchedule } = useContext(ScheduleContext)
 
     const [switcher, setSwitcher] = useState(null)
     const [prevTask, setPrevTask] = useState(null as ITask)
@@ -25,12 +25,13 @@ export default function MainScreen() {
         if (switcher) clearInterval(switcher)
 
         const currentTask = getCurrentTask(virtualSchedule)
-        if (!currentTask) return false
+        if (!currentTask) return refreshSchedule()
 
         setSwitcher(setInterval(() => switchTask(virtualSchedule),  currentTask.end.getTime() - Date.now()))
-        setCurrentTask(currentTask)
-        setPrevTask(getPreviousTask(virtualSchedule))
-        setNextTask(getNextTask(virtualSchedule))
+        const { prevTask: prev, currentTask: curr, nextTask: next } = getTaskQueue(virtualSchedule)
+        setCurrentTask(curr)
+        setPrevTask(prev)
+        setNextTask(next)
     }
 
     function nullifyGaps(task: ITask) {

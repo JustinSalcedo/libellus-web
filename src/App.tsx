@@ -5,7 +5,7 @@ import MainScreen from "./pages/MainScreen"
 import { ScheduleContext } from './contexts'
 import { timelineIncludesToday, validateSchedule } from './utils'
 import ScheduleComplete from './pages/ScheduleComplete'
-import { BASE_URL, USER_ID } from './constants'
+import { USER_ID } from './constants'
 import { ITask } from './types'
 
 const App = () => {
@@ -32,10 +32,15 @@ const App = () => {
         }
     }, [hasLoaded])
 
+    function refreshSchedule() {
+        window.localStorage.removeItem('schedule')
+        setHasLoaded(false)
+    }
+
     const isActiveSchedule = () => schedule.length && timelineIncludesToday(schedule)
 
     return (
-        <ScheduleContext.Provider value={{ schedule, setSchedule }}>
+        <ScheduleContext.Provider value={{ schedule, setSchedule, refreshSchedule }}>
             {!hasLoaded ? "Loading..." : (isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>)} 
         </ScheduleContext.Provider>
     )

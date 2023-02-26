@@ -1,5 +1,7 @@
 import { ITask } from "./types"
 
+const DEF_GAP = { name: "Chill" }
+
 export function getTimeLeft(task: ITask, unit: 's' | 'm') {
     const msCurrentTime = Date.now()
     const msEndTime = task.end.getTime()
@@ -68,37 +70,66 @@ export function getVirtualSchedule(schedule: ITask[]) {
     // insert initial task gap so a virtual schedule is never empty
     if (schedule.length) {
         const firstTaskDate = schedule[0].start.toLocaleDateString()
-        virtualList.push({ name: 'Chill', start: new Date(firstTaskDate), end: schedule[0].start })
+        virtualList.push({ ...DEF_GAP, start: new Date(firstTaskDate), end: schedule[0].start })
     } else {
         const { startsAt: todayStart, endsAt: todayEnd } = getTodayRange()
-        virtualList.push({ name: 'Chill', start: todayStart, end: todayEnd })
+        virtualList.push({ ...DEF_GAP, start: todayStart, end: todayEnd })
     }
 
     validateSchedule(schedule).forEach((task, index) => {
         virtualList.push(task)
         
         if (index < schedule.length - 1 && task.end.getTime() !== schedule[index + 1].start.getTime()) {
-            virtualList.push({ name: 'Chill', start: task.end, end: schedule[index + 1].start })
+            virtualList.push({ ...DEF_GAP, start: task.end, end: schedule[index + 1].start })
         }
     })
     
     return virtualList
 }
 
+// get previous, current, and next task
+export function getTaskQueue(schedule: ITask[]) {
+    const time  = new Date()
+    const currentIndex = getCurrentTaskIndex(schedule, time)
+
+    // assumes the schedule is time sorted
+    const sublist = {
+        prevTask: schedule[currentIndex - 1],
+        currentTask: schedule[currentIndex],
+        nextTask: schedule[currentIndex + 1]
+    }
+    if (currentIndex === -1) {
+        // Case 1: [0, 0, 1]
+        const nextIndex = schedule.findIndex(task => time < task.start)
+        if (nextIndex !== -1) {
+            sublist.currentTask = {
+                ...DEF_GAP,
+                start: schedule[nextIndex - 1] ? schedule[nextIndex - 1].end : new Date(new Date().toLocaleDateString()),
+                end: schedule[nextIndex].start
+            },
+            sublist.nextTask = schedule[nextIndex]
+        }
+
+        // Case 2: [1, 0, 1]
+        const prevTask = [...schedule].reverse().find(task => time > task.end)
+        if (prevTask) {
+            sublist.prevTask = prevTask
+        }
+    }
+
+    return sublist
+}
+
+function getCurrentTaskIndex(schedule: ITask[], timestamp: Date) {
+    return schedule.findIndex(task => isTaskInTime(task, timestamp))
+}
+
+function isTaskInTime(task: ITask, timestamp: Date) {
+    return timestamp >= task.start && timestamp < task.end
+}
+
 export function getCurrentTask(schedule: ITask[]) {
     return schedule.find(task => new Date() >= task.start && new Date() < task.end)
-}
-
-export function getPreviousTask(schedule: ITask[]) {
-    const prevIndex = schedule.findIndex(task => new Date() >= task.start && new Date() < task.end) - 1
-    if (prevIndex < 0) return null
-    return schedule[prevIndex]
-}
-
-export function getNextTask(schedule: ITask[]) {
-    const nextIndex = schedule.findIndex(task => new Date() >= task.start && new Date() < task.end) + 1
-    if (nextIndex === 0) return null
-    return schedule[nextIndex]
 }
 
 // get formatted time

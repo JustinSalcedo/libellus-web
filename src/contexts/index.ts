@@ -10,5 +10,6 @@ export const ViewContext = createContext({
 
 export const ScheduleContext = createContext({
     schedule: [] as ITask[],
-    setSchedule: (schedule: ITask[]) => {}
+    setSchedule: (schedule: ITask[]) => {},
+    refreshSchedule: () => {}
 })
