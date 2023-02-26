@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/25')
+const NOW = new Date('2023/02/26')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -358,7 +358,7 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    ...WEEKEND,
+    head: SLEPT_LATE,
     tail: SLEEP_EARLY
 }
 
@@ -443,7 +443,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('saturday', 'Interview prep', 30, 'Take interview', 2 * 60, '', 15, 'Lunch', 15, 'Libellus planning', 2 * 60, '', 15, 'Libellus planning', 2 * 60, 'Salad time!', 15, '', 15, 'Libellus App', 2 * 60, '', 15, 'Libellus App', 60)
-// setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
+mySchedule = generate('custom', 'Meditate', 15, 'Coffee', 15, 'Setup', 30, 'Interview prep', 30, '', 15, 'Take interview', 90, '', 15, 'NT Quizes', 45, 'NT Project', 60, '', 15, 'DD Intro', 15, 'DD Quizes', 45, 'DD Project', 60, '', 15, 'Libellus App', 90, '', 15, 'Libellus App', 90, '', 15, 'Libellus App', 60, '', 15, 'Drive', 15, 'Pizza time!', 15, 'Drive', 15)
+setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
