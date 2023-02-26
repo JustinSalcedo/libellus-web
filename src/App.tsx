@@ -5,7 +5,7 @@ import MainScreen from "./pages/MainScreen"
 import { ScheduleContext } from './contexts'
 import { timelineIncludesToday, validateSchedule } from './utils'
 import ScheduleComplete from './pages/ScheduleComplete'
-import { USER_ID } from './constants'
+import { BASE_URL, USER_ID } from './constants'
 import { ITask } from './types'
 
 const App = () => {

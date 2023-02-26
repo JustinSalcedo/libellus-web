@@ -5,7 +5,6 @@ import Minimal from "../../layouts/Minimal"
 import { ITask } from "../../types"
 import { getCurrentTask, getNextTask, getPreviousTask, getVirtualSchedule, validateSchedule } from "../../utils"
 import styles from "./MainScreen.module.css"
-import MY_SCHEDULE from "../../constants/schedule"
 import { ScheduleContext } from "../../contexts"
 
 export default function MainScreen() {
