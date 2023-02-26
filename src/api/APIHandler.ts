@@ -11,6 +11,7 @@ export default class APIHandler {
         this.userId = userId
         this.apiUrl = this.serverUrl
         if (errorHandler) this.errorHandler = errorHandler
+        if (!(this.apiUrl && this.userId)) throw new Error("Unable to connect to server");
     }
 
     protected getError(payload: { errors: any }) {
