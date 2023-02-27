@@ -14,12 +14,20 @@ export default function MainScreen() {
     const [prevTask, setPrevTask] = useState(null as ITask)
     const [currentTask, setCurrentTask] = useState(null as ITask)
     const [nextTask, setNextTask] = useState(null as ITask)
+    const [wasNotified, setWasNotified] = useState(false)
 
     useEffect(() => {
         switchTask(getVirtualSchedule(schedule))
 
         return clearInterval(switcher)
     }, [schedule])
+
+    useEffect(() => {
+        if (!wasNotified && currentTask) {
+            notify(currentTask)
+            setWasNotified(true)
+        }
+    }, [currentTask])
 
     function switchTask(virtualSchedule: ITask[]) {
         if (switcher) clearInterval(switcher)
@@ -32,8 +40,12 @@ export default function MainScreen() {
         setCurrentTask(curr)
         setPrevTask(prev)
         setNextTask(next)
+    }
 
-        notify(curr)
+    function nullifyGaps(task: ITask) {
+        if (!task || task.name === "Chill") return null
+
+        return task
     }
 
     function notify(task: ITask) {
@@ -65,12 +77,6 @@ export default function MainScreen() {
 
         const notification = new Notification(title, { body })
         notification.onclick = () => { notification.close(), window.parent.focus() }
-    }
-
-    function nullifyGaps(task: ITask) {
-        if (!task || task.name === "Chill") return null
-
-        return task
     }
 
     return (
