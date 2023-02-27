@@ -7,7 +7,11 @@ export default function Timer({ task }: { task: ITask }) {
     const [timer, setTimer] = useState(null)
     const [timeLeft, setTimeLeft] = useState('0:00')
 
-    const tick = () => setTimeLeft(getTimeLeft(task, 's'))
+    const tick = () => {
+        const timeLeft = getTimeLeft(task, 's')
+        setTimeLeft(timeLeft)
+        document.title = `${timeLeft} - ${task.name} | Libellus`
+    }
 
     useEffect(() => {
         setTimer(setInterval(tick, 1000))

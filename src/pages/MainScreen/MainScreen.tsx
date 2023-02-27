@@ -32,6 +32,39 @@ export default function MainScreen() {
         setCurrentTask(curr)
         setPrevTask(prev)
         setNextTask(next)
+
+        notify(curr)
+    }
+
+    function notify(task: ITask) {
+        const message = `${task.name} has started`
+        if (!("Notification" in window)) {
+            return alert(message)
+        }
+
+        const title = task.name
+
+        if (Notification.permission === "granted") {
+            showNotification(title, message)
+        }
+
+        if (Notification.permission === "default") {
+            Notification.requestPermission()
+                .then(permission => {
+                    if (permission === "granted") {
+                        showNotification(title, message)
+                    }
+                })
+        }
+    }
+
+    function showNotification(title: string, body: string) {
+        if (document.visibilityState === "visible") {
+            return alert(body)
+        }
+
+        const notification = new Notification(title, { body })
+        notification.onclick = () => { notification.close(), window.parent.focus() }
     }
 
     function nullifyGaps(task: ITask) {
