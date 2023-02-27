@@ -1,8 +1,14 @@
-.area {
+.tray {
     position: absolute;
     width: 20vw;
-    height: 20vw;
+    height: 40vw;
     right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.area {
+    height: 20vw;
 }
 
 .circle {
@@ -18,3 +24,9 @@
     border: 3px solid #555;
     cursor: pointer;
 }
+
+/* .circle > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
