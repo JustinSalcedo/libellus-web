@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/26')
+const NOW = new Date('2023/02/27')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -211,19 +211,14 @@ const MONDAY = {
             end: new Date(`${TODAY} 15:00`)
         },
         {
-            name: "AP Discussion",
+            name: "NT Discussion",
             start: new Date(`${TODAY} 15:00`),
             end: new Date(`${TODAY} 16:00`)
         },
         {
-            name: "CT Discussion",
+            name: "DD Discussion",
             start: new Date(`${TODAY} 16:00`),
             end: new Date(`${TODAY} 17:00`)
-        },
-        {
-            name: "AP Project",
-            start: new Date(`${TODAY} 17:15`),
-            end: new Date(`${TODAY} 18:30`)
         }
     ]
 }
@@ -443,7 +438,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('custom', 'Meditate', 15, 'Coffee', 15, 'Setup', 30, 'Interview prep', 30, '', 15, 'Take interview', 90, '', 30, 'Setup', 15, '', 30, 'Email reply', 15, '', 45, 'NT Quizes', 45, 'NT Project', 60, '', 15, 'DD Intro', 15, 'DD Quizes', 45, 'DD Project', 60, '', 15, 'Libellus App', 90, '', 15, 'Libellus App', 45, '', 15, 'Drive', 15, 'Pizza time!', 15, 'Drive', 15)
+mySchedule = generate('weekday', 'Shower', 45, 'Salad time!', 15, '', 15, 'Drive', 15, 'Renew DL', 60, 'Drive', 15, '', 15, 'NT Discussion', 60, 'DD Discussion', 60, '', 15, 'Go minimalist', 60, '', 15, 'Libellus app', 45)
 setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
