@@ -35,13 +35,13 @@ export function validateSchedule(unSchedule: ITask[]): ITask[] {
 
         // Case 1: there's an invalid task
         if (!isValidTask(task)) {
-            errorMessage = `Task ${task.name} has invalid timestamp`
+            errorMessage = `Task '${task.name}' has invalid timestamp`
             return false
         }
 
         // Case 2: a task ends before it starts
         if (startTime > endTime) {
-            errorMessage = `Task ${task.name} ends before it starts`
+            errorMessage = `Task '${task.name}' ends before it starts`
             return false
         }
 
@@ -88,7 +88,7 @@ export function getVirtualSchedule(schedule: ITask[]) {
 }
 
 // get previous, current, and next task
-export function getTaskQueue(schedule: ITask[]) {
+export function getTaskQueue(schedule: ITask[], strict?: boolean) {
     const time  = new Date()
     const currentIndex = getCurrentTaskIndex(schedule, time)
 
@@ -98,6 +98,21 @@ export function getTaskQueue(schedule: ITask[]) {
         currentTask: schedule[currentIndex],
         nextTask: schedule[currentIndex + 1]
     }
+
+    if (strict) {
+        if (currentIndex === -1) sublist.currentTask = null
+
+        const nextIndex = schedule.findIndex(task => time < task.start)
+        if (nextIndex !== -1) sublist.nextTask = schedule[nextIndex]
+        else sublist.nextTask = null
+
+        const prevTask = [...schedule].reverse().find(task => time > task.end)
+        if (prevTask) sublist.prevTask = prevTask
+        else sublist.prevTask = null
+
+        return sublist
+    }
+
     if (currentIndex === -1) {
         // Case 1: [0, 0, 1]
         const nextIndex = schedule.findIndex(task => time < task.start)
@@ -147,9 +162,17 @@ export function timelineIncludesToday(timeline: ITask[]) {
         || (task.end >= startsAt && task.end < endsAt))
 }
 
-function getTodayRange() {
+export function getTodayRange() {
     const today = new Date().toLocaleDateString()
     const startsAt = new Date(today)
     const endsAt = new Date(`${today} 23:59:59`)
     return { startsAt, endsAt }
+}
+
+// Misc
+
+export function errorToStr(error: any) {
+    if (typeof error === 'string') return error
+    if (error instanceof Error) return error.message
+    return 'Undefined error'
 }

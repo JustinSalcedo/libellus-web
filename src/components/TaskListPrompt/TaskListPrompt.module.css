@@ -1,19 +1,35 @@
-/* Task history */
+.prompt {
+    margin-bottom: .5rem;
+}
 
-.task-history {
+.note-area {
+    background: #eee;
+    padding: .25rem;
+    margin-bottom: .5rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+/* Task preview */
+
+.task-preview {
     height: fit-content;
     max-height: 50vh;
     overflow-y: scroll;
 }
 
-.task-history table {
+.task-preview table {
     width: calc(100vw / 6 * 4);
     table-layout: fixed;
 }
 
 /* Fixed header */
 
-.task-history > .fixed-header {
+.task-preview > .fixed-header {
     position: fixed;
     background: white;
     width: calc(100vw / 6 * 4);
@@ -36,15 +52,15 @@
 
 /* Task list table */
 
-.task-history > table {
-    margin-top: 3rem;
+.task-preview > table {
+    margin-top: 1.5rem;
 }
 
-.task-history > table tr {
+.task-preview > table tr {
     height: 2rem;
 }
 
-.task-history > table td:first-child {
+.task-preview > table td:first-child {
     width: 7rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -52,6 +68,6 @@
     color: #555;
 }
 
-.task-history > table td:not(:first-child) {
+.task-preview > table td:not(:first-child) {
     text-align: end;
 }

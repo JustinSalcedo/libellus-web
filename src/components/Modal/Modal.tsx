@@ -1,11 +1,12 @@
 import React, { useContext } from "react"
 import { ViewContext } from "../../contexts"
-import ScheduleForm from "../ScheduleForm"
+// import ScheduleForm from "../ScheduleForm"
 import TaskHistory from "../TaskHistory"
+import TaskListPrompt from "../TaskListPrompt"
 import styles from "./Modal.module.css"
 
 interface IComponent {
-    node: React.ReactNode
+    node?: React.ReactNode
     heading: string
 }
 
@@ -15,8 +16,12 @@ const COMPONENTS: { [key: string]: IComponent } = {
         heading: "Task history"
     },
     "schedule-form": {
-        node: <ScheduleForm />,
+        // node: <ScheduleForm />,
+        node: <TaskListPrompt />,
         heading: "Add new schedule"
+    },
+    "schedule-created": {
+        heading: "Schedule created!"
     }
 }
 

@@ -1,0 +1,19 @@
+.day-subhead {
+    color: #bbb;
+    font-style: italic;
+    font-weight: bold;
+    background: #eee;
+    font-size: .875rem;
+}
+
+.current-task {
+    background: #ffe3ff;
+}
+
+.current-task td {
+    outline: 1px solid #ffe3ff;;
+}
+
+.current-task td:first-child {
+    color: #7e49aa
+}

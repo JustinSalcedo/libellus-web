@@ -12,6 +12,6 @@ ul {
     list-style: none;
 }
 
-button {
+button:not([disabled]) {
     cursor: pointer;
 }
