@@ -17,7 +17,7 @@ export default function TaskQueue({ prev, next, current }: {
         <div className={styles['task-queue']} onClick={handleOnClick}>
             <ul>
                 <li>{prev ? prev.name : "..."}</li>
-                <li className={styles.current}>{current ? current.name : "------"}</li>
+                <li className={styles.current}>{current ? current.name : "..."}</li>
                 <li>{next ? next.name : "..."}</li>
             </ul>
         </div>

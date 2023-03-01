@@ -40,6 +40,9 @@ export default function MainScreen() {
     }
 
     function notify(task: ITask) {
+        // Task is a gap
+        if (!task.id) return
+
         const message = `${task.name} has started`
         if (!("Notification" in window)) {
             return alert(message)
@@ -70,7 +73,7 @@ export default function MainScreen() {
         notification.onclick = () => { notification.close(), window.parent.focus() }
     }
 
-    return (
+    return currentTask ? (
         <Minimal>
             <div className={styles.container}>
                 <div className={styles.top}>
@@ -94,5 +97,5 @@ export default function MainScreen() {
                 </div>
             </div>
         </Minimal>
-    )
+    ) : (<>Loading...</>)
 }

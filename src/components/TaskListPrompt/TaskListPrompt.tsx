@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useContext, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useContext, useEffect, useState } from "react";
 import Schedule from "../../api/Schedule";
 import Task from "../../api/Task";
 import { USER_ID } from "../../constants";
@@ -16,6 +16,11 @@ export default function TaskListPrompt() {
     const [prompt, setPrompt] = useState('')
     const [wasPreviewed, setWasPreviewed] = useState(false)
     const [note, setNote] = useState('')
+
+    useEffect(() => {
+        const savedPrompt = localStorage.getItem('prompt')
+        if (savedPrompt) setPrompt(savedPrompt)
+    })
 
     function previewSchedule() {
         if (!prompt) return false
@@ -45,6 +50,7 @@ export default function TaskListPrompt() {
                 setGlobalSchedule(recordedSchedule)
             }, 1000)
             setActiveModal('schedule-created')
+            window.localStorage.removeItem('prompt')
         } catch (error) {
             setNote(errorToStr(error))
         }
@@ -53,12 +59,14 @@ export default function TaskListPrompt() {
     function resetPrompt() {
         setSchedule(null)
         setPrompt('')
+        window.localStorage.removeItem('prompt')
     }
 
     function onPromptChange(e: ChangeEvent<HTMLTextAreaElement>) {
         const { value } = e.target
         setPrompt(value)
         setWasPreviewed(false) // prompt was altered
+        window.localStorage.setItem('prompt', value)
     }
 
     function onPromptEnter(e: KeyboardEvent) {
