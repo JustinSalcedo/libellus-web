@@ -3,44 +3,35 @@ import TaskQueue from "../../components/TaskQueue/TaskQueue"
 import Timer from "../../components/Timer"
 import Minimal from "../../layouts/Minimal"
 import { ITask } from "../../types"
-import { getCurrentTask, getTaskQueue, getVirtualSchedule, validateSchedule } from "../../utils"
+import { getTaskQueue } from "../../utils"
 import styles from "./MainScreen.module.css"
 import { ScheduleContext } from "../../contexts"
 
 export default function MainScreen() {
-    const { schedule, refreshSchedule } = useContext(ScheduleContext)
+    const { schedule } = useContext(ScheduleContext)
 
-    const [switcher, setSwitcher] = useState(null)
+    const [timer, setTimer] = useState(null)
     const [prevTask, setPrevTask] = useState(null as ITask)
     const [currentTask, setCurrentTask] = useState(null as ITask)
     const [nextTask, setNextTask] = useState(null as ITask)
     const [wasNotified, setWasNotified] = useState(false)
 
-    useEffect(() => {
-        switchTask(getVirtualSchedule(schedule))
+    const tick = () => {
+        const { prevTask: prev, currentTask: curr, nextTask: next } = getTaskQueue(schedule)
+        if (currentTask && ((!currentTask.id && !curr.id) || (currentTask.id && curr.id && currentTask.id === curr.id))) return
+        setPrevTask(prev); setCurrentTask(curr); setNextTask(next)
+    }
 
-        return clearInterval(switcher)
-    }, [schedule])
-
     useEffect(() => {
+        setTimer(setInterval(tick, 1000))
+
         if (!wasNotified && currentTask) {
             notify(currentTask)
             setWasNotified(true)
         }
+
+        return clearInterval(timer)
     }, [currentTask])
-
-    function switchTask(virtualSchedule: ITask[]) {
-        if (switcher) clearInterval(switcher)
-
-        const currentTask = getCurrentTask(virtualSchedule)
-        if (!currentTask) return refreshSchedule()
-
-        setSwitcher(setInterval(() => switchTask(virtualSchedule),  currentTask.end.getTime() - Date.now()))
-        const { prevTask: prev, currentTask: curr, nextTask: next } = getTaskQueue(virtualSchedule)
-        setCurrentTask(curr)
-        setPrevTask(prev)
-        setNextTask(next)
-    }
 
     function nullifyGaps(task: ITask) {
         if (!task || task.name === "Chill") return null
