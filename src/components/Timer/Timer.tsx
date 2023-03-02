@@ -8,7 +8,7 @@ export default function Timer({ task }: { task: ITask }) {
     const [timeLeft, setTimeLeft] = useState('0:00')
 
     const tick = () => {
-        const timeLeft = getTimeLeft(task, 's')
+        const timeLeft = getTimeLeft(task, 's', true)
         setTimeLeft(timeLeft)
         document.title = `${timeLeft} - ${task.name} | Libellus`
     }

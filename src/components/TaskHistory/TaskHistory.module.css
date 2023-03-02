@@ -38,6 +38,7 @@
 
 .task-history > table {
     margin-top: 3rem;
+    margin-bottom: .5rem;
 }
 
 .task-history > table tr {

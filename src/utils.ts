@@ -2,10 +2,12 @@ import { ITask } from "./types"
 
 const DEF_GAP = { name: "Chill" }
 
-export function getTimeLeft(task: ITask, unit: 's' | 'm') {
+export function getTimeLeft(task: ITask, unit: 's' | 'm', positiveOnly?: boolean) {
     const msCurrentTime = Date.now()
     const msEndTime = task.end.getTime()
+    const msTimeLeft = msEndTime - msCurrentTime
 
+    if (positiveOnly && msTimeLeft < 0) return formatTimeLeft(0, unit)
     return formatTimeLeft(msEndTime - msCurrentTime, unit)
 }
 

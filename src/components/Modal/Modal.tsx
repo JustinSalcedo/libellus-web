@@ -26,7 +26,7 @@ const COMPONENTS: { [key: string]: IComponent } = {
 }
 
 export default function Modal({ heading, nodeKey, children }: { heading?: string, nodeKey?: string, children?: React.ReactNode }) {
-    const { isModalOn, launchModal } = useContext(ViewContext)
+    const { isModalOn } = useContext(ViewContext)
 
     function renderHeading() {
         if (!(nodeKey || heading)) return ''

@@ -9,18 +9,24 @@ import TaskTable from "../TaskTable"
 import styles from './TaskListPrompt.module.css'
 
 export default function TaskListPrompt() {
-    const { setSchedule: setGlobalSchedule } = useContext(ScheduleContext)
+    const { setSchedule: setGlobalSchedule, schedule: currSchedule } = useContext(ScheduleContext)
     const { setActiveModal } = useContext(ViewContext)
 
     const [schedule, setSchedule] = useState(null)
+    const [isEdit, setIsEdit] = useState(false)
     const [prompt, setPrompt] = useState('')
     const [wasPreviewed, setWasPreviewed] = useState(false)
     const [note, setNote] = useState('')
 
     useEffect(() => {
-        const savedPrompt = localStorage.getItem('prompt')
-        if (savedPrompt) setPrompt(savedPrompt)
-    })
+        if (isEdit) {
+            const generatedPrompt = scheduleToPrompt(currSchedule)
+            setPrompt(generatedPrompt)
+        } else {
+            const savedPrompt = localStorage.getItem('prompt')
+            if (savedPrompt) setPrompt(savedPrompt)
+        }
+    }, [isEdit])
 
     function previewSchedule() {
         if (!prompt) return false
@@ -50,7 +56,7 @@ export default function TaskListPrompt() {
                 setGlobalSchedule(recordedSchedule)
             }, 1000)
             setActiveModal('schedule-created')
-            window.localStorage.removeItem('prompt')
+            if (!isEdit) window.localStorage.removeItem('prompt')
         } catch (error) {
             setNote(errorToStr(error))
         }
@@ -59,14 +65,14 @@ export default function TaskListPrompt() {
     function resetPrompt() {
         setSchedule(null)
         setPrompt('')
-        window.localStorage.removeItem('prompt')
+        if (!isEdit) window.localStorage.removeItem('prompt')
     }
 
     function onPromptChange(e: ChangeEvent<HTMLTextAreaElement>) {
         const { value } = e.target
         setPrompt(value)
         setWasPreviewed(false) // prompt was altered
-        window.localStorage.setItem('prompt', value)
+        if (!isEdit) window.localStorage.setItem('prompt', value)
     }
 
     function onPromptEnter(e: KeyboardEvent) {
@@ -76,8 +82,17 @@ export default function TaskListPrompt() {
         }
     }
 
+    function onCheckboxChange(e: ChangeEvent<HTMLInputElement>) {
+        const { checked } = e.target
+        setIsEdit(checked)
+    }
+
     return (
         <>
+            <div className={styles["edit-check"]}>
+                <label htmlFor="edit">...or edit existing</label>
+                <input type="checkbox" name="edit" checked={isEdit} onChange={onCheckboxChange} />
+            </div>
             <label htmlFor="tasklist">Task list:</label>
             <textarea className={styles.prompt} name="tasklist" cols={30} rows={3}
                 value={prompt} onChange={onPromptChange} onKeyDown={onPromptEnter}></textarea>
@@ -150,4 +165,15 @@ function generateTask(name: string, timespanInMin: number, lastTimestamp: Date) 
         start: lastTimestamp,
         end: new Date(lastTimestamp.getTime() + timespanInMin * 60 * 1000)
     } as ITask
+}
+
+function scheduleToPrompt(schedule: ITask[]) {
+    return schedule
+        .map(({name, start, end}, index) => {
+            let prefix = ''
+            if (index && (start.getTime() !== schedule[index - 1].end.getTime()))
+                prefix = `, ${Math.floor((start.getTime() - schedule[index - 1].end.getTime()) / 1000 / 60)}, `
+            return prefix + `${name}, ${Math.floor((end.getTime() - start.getTime()) / 1000 / 60)}`
+        })
+        .join(', ')
 }
