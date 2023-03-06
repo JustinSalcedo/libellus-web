@@ -1,4 +1,4 @@
-const NOW = new Date('2023/02/27')
+const NOW = new Date('2023/03/05')
 const YESTERDAY = new Date(NOW.getTime() - 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
 const TODAY = NOW.toLocaleDateString('en-US')
 const TOMORROW = new Date(NOW.getTime() + 24 * 60 * 60 * 1000).toLocaleDateString('en-US')
@@ -353,8 +353,20 @@ const SUNDAY = {
 }
 
 const CUSTOMDAY = {
-    head: SLEPT_LATE,
-    tail: SLEEP_EARLY
+    head: [
+        {
+            name: "Flight",
+            start: new Date(`${YESTERDAY} 21:00`),
+            end: new Date(`${TODAY} 0:00`)
+        }
+    ],
+    tail: [
+        {
+            name: "Wake up!",
+            start: new Date(`${TOMORROW} 6:30`),
+            end: new Date(`${TOMORROW} 7:00`)
+        }
+    ]
 }
 
 function generate(day, ...taskList) {
@@ -438,7 +450,7 @@ function getTemplate(day) {
     return template
 }
 
-mySchedule = generate('weekday', 'Shower', 45, 'Salad time!', 15, '', 15, 'Drive', 15, 'Renew DL', 60, 'Drive', 15, '', 15, 'NT Discussion', 60, 'DD Discussion', 60, '', 15, 'Go minimalist', 60, '', 15, 'Libellus app', 45)
+mySchedule = generate('custom', 'Sleep', 12 * 60 + 30, 'Meditate', 30, 'Setup', 15, 'DD Discussion', 45, 'Lunch', 30, '' , 15, 'Setup', 15, 'Check email', 15, 'Libellus', 15, 'Family time', 165, 'NT Quizes', 45, 'DD Intro', 15, 'DD Quizes', 45, 'NT Project', 60, '' , 15, 'DD Project', 60, 'Brush teeth', 15, 'Sleep', 8 * 60)
 setScheduleForLb(mySchedule).then(savedSchedule => console.log(savedSchedule))
 clearInterval(interval)
 interval = setInterval(() => loadContent(getTaskQueue(mySchedule)), 1000)
