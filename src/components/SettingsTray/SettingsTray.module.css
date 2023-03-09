@@ -1,0 +1,33 @@
+.container {
+    width: calc(100vw / 6 * 4);
+}
+
+.container h3 {
+    background: #eee;
+    color: #555;
+    padding-left: .5rem;
+}
+
+.note-area {
+    background: #eee;
+    padding: .25rem;
+    margin-bottom: .5rem;
+}
+
+.spacer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: .5rem;
+}
+
+.flexer {
+    display: flex;
+}
+
+.half {
+    width: 50%;
+}
+
+.half > * {
+    width: 90%;
+}

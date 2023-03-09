@@ -2,13 +2,14 @@ import { ChangeEvent, KeyboardEvent, useContext, useEffect, useState } from "rea
 import Schedule from "../../api/Schedule";
 import Task from "../../api/Task";
 import { USER_ID } from "../../constants";
-import { ScheduleContext, ViewContext } from "../../contexts";
-import { ITask } from "../../types";
+import { ScheduleContext, SettingsContext, ViewContext } from "../../contexts";
+import { ITask, ScheduleRangeSettings } from "../../types";
 import { errorToStr, getTodayRange, validateSchedule } from "../../utils";
 import TaskTable from "../TaskTable"
 import styles from './TaskListPrompt.module.css'
 
 export default function TaskListPrompt() {
+    const { scheduleRange } = useContext(SettingsContext)
     const { setSchedule: setGlobalSchedule, schedule: currSchedule } = useContext(ScheduleContext)
     const { setActiveModal } = useContext(ViewContext)
 
@@ -32,7 +33,7 @@ export default function TaskListPrompt() {
         if (!prompt) return false
 
         try {
-            setSchedule(validateSchedule(generateFromScratch(parsePrompt(prompt))))
+            setSchedule(validateSchedule(generateFromScratch(parsePrompt(prompt), scheduleRange, setNote)))
             setWasPreviewed(true)
         } catch (error) {
             setNote(errorToStr(error))
@@ -121,12 +122,16 @@ export default function TaskListPrompt() {
     )
 }
 
-function generateFromScratch(taskList: string[], errorHandler?: (errorMsg: string) => void) {
+function generateFromScratch(taskList: string[], scheduleRange: ScheduleRangeSettings, errorHandler?: (errorMsg: string) => void) {
     const schedule = []
 
-    const { startsAt, endsAt } = getTodayRange()
-    let lastTimestamp = startsAt
-    const timestampLimit = endsAt
+    let { dateRange, startDate, endDate } = scheduleRange
+    if (dateRange === "today") {
+        const { startsAt, endsAt } = getTodayRange()
+        startDate = startsAt; endDate = endsAt
+    }
+    let lastTimestamp = startDate
+    const timestampLimit = endDate
 
     for (let index = 0; index < taskList.length; index++) {
         const taskName = taskList[index];

@@ -18,6 +18,12 @@
     border-radius: 1rem;
 }
 
+@media screen and (max-width: 900px) {
+    .modal.on {
+        max-height: none;
+    }
+}
+
 .modal > .modal-header {
     font-size: 1.5rem;
     font-weight: bold;

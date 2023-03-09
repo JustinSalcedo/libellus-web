@@ -14,7 +14,8 @@ export default function MainScreen() {
     const [prevTask, setPrevTask] = useState(null as ITask)
     const [currentTask, setCurrentTask] = useState(null as ITask)
     const [nextTask, setNextTask] = useState(null as ITask)
-    const [wasNotified, setWasNotified] = useState(false)
+    // const [wasNotified, setWasNotified] = useState(false)
+    const [wasNotified, setWasNotified] = useState(true)
 
     const tick = () => {
         const { prevTask: prev, currentTask: curr, nextTask: next } = getTaskQueue(schedule)

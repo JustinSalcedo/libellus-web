@@ -167,7 +167,7 @@ export function timelineIncludesToday(timeline: ITask[]) {
 export function getTodayRange() {
     const today = new Date().toLocaleDateString()
     const startsAt = new Date(today)
-    const endsAt = new Date(`${today} 23:59:59`)
+    const endsAt = new Date(startsAt.getTime() + 24 * 60 * 60 * 1000)
     return { startsAt, endsAt }
 }
 

@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import { ViewContext } from "../../contexts"
+import SettingsTray from "../SettingsTray"
 // import ScheduleForm from "../ScheduleForm"
 import TaskHistory from "../TaskHistory"
 import TaskListPrompt from "../TaskListPrompt"
@@ -22,6 +23,10 @@ const COMPONENTS: { [key: string]: IComponent } = {
     },
     "schedule-created": {
         heading: "Schedule created!"
+    },
+    "settings": {
+        node: <SettingsTray />,
+        heading: "Settings"
     }
 }
 

@@ -5,8 +5,9 @@ import { ViewContext } from "../../contexts"
 import styles from './Minimal.module.css'
 
 export default function Minimal({ children }: { children: ReactNode }) {
-    const [modalOn, setModalOn] = useState(false)
-    const [activeModal, setActiveModal] = useState('')
+    // const [modalOn, setModalOn] = useState(false)
+    const [modalOn, setModalOn] = useState(true)
+    const [activeModal, setActiveModal] = useState('settings')
 
     function handleOnClick() {
         setModalOn(false)
