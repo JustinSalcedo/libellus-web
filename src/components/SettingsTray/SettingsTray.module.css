@@ -31,3 +31,10 @@
 .half > * {
     width: 90%;
 }
+
+/* Theme */
+
+.container.theme-dark h3 {
+    background: #3c3b59;
+    color: #ccc;
+}

@@ -6,7 +6,7 @@ import { ScheduleContext, SettingsContext } from './contexts'
 import { validateSchedule, getTaskQueue, getTodayRange } from './utils'
 import ScheduleComplete from './pages/ScheduleComplete'
 import { USER_ID } from './constants'
-import { ITask, ScheduleRangeSettings, Settings } from './types'
+import { ITask, ScheduleRangeSettings, Settings, Theme } from './types'
 import Timeline from './api/Timeline'
 const { startsAt, endsAt } = getTodayRange()
 
@@ -18,12 +18,14 @@ const App = () => {
 	const [startDate, setStartDate] = useState(startsAt)
 	const [endDate, setEndDate] = useState(endsAt)
 
+    const [theme, setTheme] = useState('system' as Theme)
+
     const [hasLoadedSettings, setHasLoadedSettings] = useState(false)
 
     useEffect(() => {
         if (!hasLoadedSettings) {
-            const { schedule: { dateRange, startDate, endDate } } = recoverSettings()
-            setDateRange(dateRange); setStartDate(startDate); setEndDate(endDate)
+            const { schedule: { dateRange, startDate, endDate }, theme } = recoverSettings()
+            setDateRange(dateRange); setStartDate(startDate); setEndDate(endDate); setTheme(theme)
             setHasLoadedSettings(true)
         }
     })
@@ -67,12 +69,16 @@ const App = () => {
         setHasLoaded(false)
     }
 
-    function storeSettings({ schedule }: Partial<Settings>) {
+    function storeSettings({ schedule, theme }: Partial<Settings>) {
         const rawSettings = window.localStorage.getItem('settings')
         const settings: Partial<Settings> = rawSettings ? { ...JSON.parse(rawSettings) } : {}
         if (schedule) {
             settings.schedule = schedule
             setScheduleSettings(schedule)
+        }
+        if (theme) {
+            settings.theme = theme
+            setTheme(theme)
         }
         window.localStorage.setItem('settings', JSON.stringify(settings))
     }
@@ -80,10 +86,10 @@ const App = () => {
     function recoverSettings(): Settings {
         const rawSettings = window.localStorage.getItem('settings')
         if (rawSettings) {
-            const parsedSettings = JSON.parse(rawSettings) as Settings
-            return { ...parsedSettings, schedule: formatDateRange(parsedSettings.schedule)  }
+            const { schedule, theme } = JSON.parse(rawSettings) as Settings
+            return { schedule: formatDateRange(schedule), theme: theme || 'system'  }
         }
-        return { schedule: { dateRange: 'today', startDate: startsAt, endDate: endDate } }
+        return { schedule: { dateRange: 'today', startDate: startsAt, endDate: endDate }, theme: 'system' }
     }
 
     function setScheduleSettings({ dateRange, startDate, endDate }: ScheduleRangeSettings) {
@@ -93,13 +99,22 @@ const App = () => {
         }
     }
 
+    function getTheme(): Theme {
+        if (theme === 'system') {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) return 'dark'
+            return 'light'
+        }
+
+        return theme
+    }
+
     const isActiveSchedule = () => {
         const { currentTask, nextTask } = getTaskQueue(validateSchedule(schedule), true)
         return schedule.length && (currentTask || nextTask)
     }
 
     return (
-        <SettingsContext.Provider value={{ scheduleRange: { dateRange, startDate, endDate }, setSettings: storeSettings }}>
+        <SettingsContext.Provider value={{ scheduleRange: { dateRange, startDate, endDate }, setSettings: storeSettings, theme, getTheme, setTheme }}>
             <ScheduleContext.Provider value={{ schedule, setSchedule, refreshSchedule }}>
                 {!hasLoaded ? "Loading..." : (isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>)} 
             </ScheduleContext.Provider>

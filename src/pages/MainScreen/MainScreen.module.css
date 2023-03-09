@@ -40,3 +40,9 @@
 .next-task span.last-task {
     font-style: italic;
 }
+
+/* Theme */
+
+.theme-dark {
+    color: #ddd
+}

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { ViewContext } from "../../contexts"
+import { SettingsContext, ViewContext } from "../../contexts"
 import SettingsTray from "../SettingsTray"
 // import ScheduleForm from "../ScheduleForm"
 import TaskHistory from "../TaskHistory"
@@ -31,6 +31,7 @@ const COMPONENTS: { [key: string]: IComponent } = {
 }
 
 export default function Modal({ heading, nodeKey, children }: { heading?: string, nodeKey?: string, children?: React.ReactNode }) {
+    const { getTheme } = useContext(SettingsContext)
     const { isModalOn } = useContext(ViewContext)
 
     function renderHeading() {
@@ -46,7 +47,7 @@ export default function Modal({ heading, nodeKey, children }: { heading?: string
     }
 
     return (
-        <div className={styles.modal + ' ' + (isModalOn ? styles.on : '')}>
+        <div className={`${styles.modal} ${styles['theme-' + getTheme()]} ${isModalOn ? styles.on : ''}`}>
             <div className={styles['modal-header']}>{renderHeading()}</div>
             <div className="modal-body">{renderBody()}</div>
         </div>

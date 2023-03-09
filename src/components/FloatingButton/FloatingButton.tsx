@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react"
-import { ScheduleContext, ViewContext } from "../../contexts"
+import { ScheduleContext, SettingsContext, ViewContext } from "../../contexts"
 import styles from "./FloatingButton.module.css"
 
 export default function FloatingButton() {
+    const { getTheme } = useContext(SettingsContext)
     const { setActiveModal, launchModal } = useContext(ViewContext)
     const { refreshSchedule } = useContext(ScheduleContext)
-    const [clicks, setClicks] = useState(3)
+    const [clicks, setClicks] = useState(0)
 
     function handleClickOnArea() {
         if (clicks < 3) setClicks(clicks => clicks + 1)
@@ -29,7 +30,7 @@ export default function FloatingButton() {
     }
 
     return (
-        <div className={styles.tray}>
+        <div className={`${styles.tray} ${styles['theme-' + getTheme()]}`}>
             <div className={styles.area} onClick={handleClickOnArea}>
                 {clicks > 2 ? <div className={styles.circle} onClick={handleClickOnPlus}><span>+</span></div> : ''}
             </div>

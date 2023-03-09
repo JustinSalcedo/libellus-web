@@ -13,13 +13,21 @@ export function getTimeLeft(task: ITask, unit: 's' | 'm', positiveOnly?: boolean
 
 function formatTimeLeft(timeInMs: number, unit: 's' | 'm') {
     let timeInSec = Math.floor(timeInMs / 1000)
-    let timeString = `${Math.floor(timeInSec / 3600)}:${Math.floor(timeInSec % 3600 / 60)}`
+    let timeHours = Math.floor(timeInSec / 3600)
+    let timeString = timeHours
+        ? `${prependZero(timeHours)}:${prependZero(Math.floor(timeInSec % 3600 / 60))}`
+        : prependZero(Math.floor(timeInSec % 3600 / 60))
 
     if (unit === 's') {
-        timeString = `${timeString}:${timeInSec % 60}`
+        timeString = `${timeString}:${prependZero(timeInSec % 60)}`
     }
 
     return timeString
+}
+
+function prependZero(unit: number) {
+    if (unit < 10) return '0' + unit
+    return unit.toString()
 }
 
 // validate schedule (unsorted)

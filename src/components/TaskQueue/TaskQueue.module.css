@@ -23,3 +23,19 @@
 .task-queue li.current ~ li {
     color: #777;
 }
+
+/* Theme */
+
+.task-queue.theme-dark li.current {
+    color: #ccc;
+    border-left: 2px solid #999;
+    border-right: 2px solid #999;
+}
+
+.task-queue.theme-dark li:not(.current) {
+    color: #666;
+}
+
+.task-queue.theme-dark li.current ~ li {
+    color: #999;
+}

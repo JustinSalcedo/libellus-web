@@ -5,17 +5,17 @@ import Minimal from "../../layouts/Minimal"
 import { ITask } from "../../types"
 import { getTaskQueue } from "../../utils"
 import styles from "./MainScreen.module.css"
-import { ScheduleContext } from "../../contexts"
+import { ScheduleContext, SettingsContext } from "../../contexts"
 
 export default function MainScreen() {
+    const { getTheme } = useContext(SettingsContext)
     const { schedule } = useContext(ScheduleContext)
 
     const [timer, setTimer] = useState(null)
     const [prevTask, setPrevTask] = useState(null as ITask)
     const [currentTask, setCurrentTask] = useState(null as ITask)
     const [nextTask, setNextTask] = useState(null as ITask)
-    // const [wasNotified, setWasNotified] = useState(false)
-    const [wasNotified, setWasNotified] = useState(true)
+    const [wasNotified, setWasNotified] = useState(false)
 
     const tick = () => {
         const { prevTask: prev, currentTask: curr, nextTask: next } = getTaskQueue(schedule)
@@ -76,7 +76,7 @@ export default function MainScreen() {
 
     return currentTask ? (
         <Minimal>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${styles['theme-' + getTheme()]}`}>
                 <div className={styles.top}>
                     {currentTask ? (
                         <>

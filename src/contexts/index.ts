@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ITask, ModalName, ScheduleRangeSettings, Settings } from "../types";
+import { ITask, ModalName, ScheduleRangeSettings, Settings, Theme } from "../types";
 
 export const ViewContext = createContext({
     isModalOn: false,
@@ -10,7 +10,10 @@ export const ViewContext = createContext({
 
 export const SettingsContext = createContext({
     scheduleRange: null as ScheduleRangeSettings,
-    setSettings: (settings: Settings) => {}
+    setSettings: (settings: Settings) => {},
+    theme: 'system' as Theme,
+    getTheme: () => 'system' as Theme,
+    setTheme: (theme: Theme) => {}
 })
 
 export const ScheduleContext = createContext({

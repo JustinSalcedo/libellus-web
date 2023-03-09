@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useContext, useState } from "react"
-import { ScheduleContext } from "../../contexts"
+import { ScheduleContext, SettingsContext } from "../../contexts"
 import TaskTable from "../TaskTable"
 import styles from "./TaskHistory.module.css"
 
 export default function TaskHistory() {
+    const { getTheme } = useContext(SettingsContext)
     const { schedule } = useContext(ScheduleContext)
 
     const [showHistory, setShowHistory] = useState(false)
@@ -14,7 +15,7 @@ export default function TaskHistory() {
     }
 
     return (
-        <div className={styles["task-history"]}>
+        <div className={`${styles["task-history"]} ${styles['theme-' + getTheme()]}`}>
             <div className={styles["fixed-header"]}>
                 <form>
                     <label htmlFor="showHistory">Show past tasks:</label>

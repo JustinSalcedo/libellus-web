@@ -17,3 +17,7 @@
     height: 100vh;
     background-color: hsla(235, 100%, 7%, 0.64);
 }
+
+.screen.theme-dark {
+    background: #100c0c
+}

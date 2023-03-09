@@ -50,9 +50,18 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: #555;
 }
 
 .task-history > table td:not(:first-child) {
     text-align: end;
+}
+
+/* Theme */
+
+.theme-dark > .fixed-header {
+    background: #292a37;
+}
+
+.theme-dark .fixed-header > table thead {
+    color: #999;
 }

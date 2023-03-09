@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useCallback, useContext, useState } from "react"
+import { SettingsContext } from "../../contexts"
 import { ITask } from "../../types"
 import { formatTimeToStr, isCurrentTask } from "../../utils"
 import styles from './TaskTable.module.css'
 
 export default function TaskTable({ schedule, showHistory }: { schedule: ITask[], showHistory: boolean }) {
+    const { getTheme } = useContext(SettingsContext)
 
     function renderTaskRows(schedule: ITask[], showHistory: boolean) {
         const today = new Date().getDay()
@@ -38,7 +40,7 @@ export default function TaskTable({ schedule, showHistory }: { schedule: ITask[]
     }
 
     return (
-        <table>
+        <table className={`${styles.table} ${styles['theme-' + getTheme()]}`}>
             <tbody>
                 {renderTaskRows(schedule, showHistory)}
             </tbody>

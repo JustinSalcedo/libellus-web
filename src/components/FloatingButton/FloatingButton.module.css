@@ -24,3 +24,8 @@
     border: 3px solid #555;
     cursor: pointer;
 }
+
+.theme-dark .circle {
+    background-color: #201c1c;
+    color: #ccc;
+}

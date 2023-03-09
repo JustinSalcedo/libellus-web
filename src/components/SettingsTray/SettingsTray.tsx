@@ -1,16 +1,14 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { SettingsContext } from '../../contexts'
-import { ScheduleRangeSettings } from '../../types'
+import { Theme } from '../../types'
 import styles from './SettingsTray.module.css'
 
 export default function SettingsTray() {
-	const { scheduleRange, setSettings } = useContext(SettingsContext)
+	const { scheduleRange, setSettings, theme, setTheme, getTheme } = useContext(SettingsContext)
 
     const [dateRange, setDateRange] = useState(scheduleRange.dateRange)
 	const [startDate, setStartDate] = useState(scheduleRange.startDate)
 	const [endDate, setEndDate] = useState(scheduleRange.endDate)
-
-	const [theme, setTheme] = useState('system' as 'light' | 'dark' | 'system')
 
     const [note, setNote] = useState('')
 	const [noteCode, setNoteCode] = useState('schedule-range')
@@ -42,13 +40,13 @@ export default function SettingsTray() {
 
 	function onThemeRadioChange(e: ChangeEvent<HTMLInputElement>) {
         const { value } = e.target
-        setTheme(value as 'light' | 'dark' | 'system')
+        setTheme(value as Theme)
 	}
 
 	function saveSettings() {
 		// Schedule
-		if (dateRange && startDate && endDate && (endDate > startDate)) {
-			setSettings({ schedule: { dateRange, startDate, endDate } })
+		if (dateRange && startDate && endDate && (endDate > startDate) && theme) {
+			setSettings({ schedule: { dateRange, startDate, endDate }, theme })
 		}
 	}
 
@@ -58,7 +56,7 @@ export default function SettingsTray() {
 
     return (
         <>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${styles['theme-' + getTheme()]}`}>
                 <h3>Schedule</h3>
                 <div>
                     <p>Timeline date range</p>
@@ -88,7 +86,7 @@ export default function SettingsTray() {
 						</div>
 					</>) : '' }
                 </div>
-				{/* <h3>Appearance</h3>
+				<h3>Appearance</h3>
 				<div>
 					<p>Theme</p>
 					<div className={styles.spacer}>
@@ -108,7 +106,7 @@ export default function SettingsTray() {
 							<label htmlFor="system">System</label>
 						</div>
 					</div>
-				</div> */}
+				</div>
             </div>
         </>
     )

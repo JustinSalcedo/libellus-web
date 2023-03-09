@@ -1,3 +1,7 @@
+.table td:first-child {
+    color: #555;
+}
+
 .day-subhead {
     color: #bbb;
     font-style: italic;
@@ -11,9 +15,32 @@
 }
 
 .current-task td {
-    outline: 1px solid #ffe3ff;;
+    outline: 1px solid #ffe3ff;
 }
 
 .current-task td:first-child {
-    color: #7e49aa
+    color: #7e49aa;
+}
+
+/* Theme */
+
+.theme-dark .day-subhead {
+    color: #ccc;
+    background: #3c3b59;
+}
+
+.theme-dark td:first-child {
+    color: #bbb;
+}
+
+.theme-dark .current-task {
+    background: #5b2886;
+}
+
+.theme-dark .current-task td {
+    outline: 1px solid #5b2886;
+}
+
+.theme-dark .current-task td:first-child {
+    color: #ffe3ff;
 }

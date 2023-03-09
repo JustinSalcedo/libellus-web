@@ -29,3 +29,8 @@
     font-weight: bold;
     margin-bottom: 1rem;
 }
+
+.modal.on.theme-dark {
+    background-color: #292a37;
+    color: #ddd;
+}

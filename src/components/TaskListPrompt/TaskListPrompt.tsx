@@ -9,7 +9,7 @@ import TaskTable from "../TaskTable"
 import styles from './TaskListPrompt.module.css'
 
 export default function TaskListPrompt() {
-    const { scheduleRange } = useContext(SettingsContext)
+    const { scheduleRange, getTheme } = useContext(SettingsContext)
     const { setSchedule: setGlobalSchedule, schedule: currSchedule } = useContext(ScheduleContext)
     const { setActiveModal } = useContext(ViewContext)
 
@@ -89,14 +89,16 @@ export default function TaskListPrompt() {
     }
 
     return (
-        <>
+        <div className={styles['theme-' + getTheme()]}>
             <div className={styles["edit-check"]}>
                 <label htmlFor="edit">...or edit existing</label>
                 <input type="checkbox" name="edit" checked={isEdit} onChange={onCheckboxChange} />
             </div>
-            <label htmlFor="tasklist">Task list:</label>
-            <textarea className={styles.prompt} name="tasklist" cols={30} rows={3}
-                value={prompt} onChange={onPromptChange} onKeyDown={onPromptEnter}></textarea>
+            <div className={styles.flexer}>
+                <label htmlFor="tasklist">Task list:</label>
+                <textarea className={styles.prompt} name="tasklist" cols={30} rows={3}
+                    value={prompt} onChange={onPromptChange} onKeyDown={onPromptEnter}></textarea>
+            </div>
             {note ? <div className={styles["note-area"]}>{note}</div> : ''}
             <div className={styles.buttons}>
                 <button onClick={resetPrompt}>Reset</button>
@@ -118,7 +120,7 @@ export default function TaskListPrompt() {
                 </div>
                 <TaskTable schedule={schedule} showHistory={true} />
             </div> : '' }
-        </>
+        </div>
     )
 }
 
