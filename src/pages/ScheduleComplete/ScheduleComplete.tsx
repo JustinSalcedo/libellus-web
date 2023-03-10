@@ -1,13 +1,15 @@
 import React, { useContext } from "react"
-import { ScheduleContext } from "../../contexts"
+import { ScheduleContext, SettingsContext } from "../../contexts"
 import Minimal from "../../layouts/Minimal"
 import styles from './ScheduleComplete.module.css'
 
 export default function ScheduleComplete() {
+    const { getTheme } = useContext(SettingsContext)
     const { refreshSchedule } = useContext(ScheduleContext)
+
     return (
         <Minimal>
-            <div className={styles.container}>
+            <div className={`${styles.container} ${styles['theme-' + getTheme()]}`}>
                 <div className={styles.message}>
                     <h3>Schedule finished<span>✔️</span></h3>
                 </div>
