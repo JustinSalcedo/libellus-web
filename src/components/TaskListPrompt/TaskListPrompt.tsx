@@ -1,4 +1,4 @@
-import { ChangeEvent, KeyboardEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useContext, useEffect, useRef, useState } from "react";
 import Schedule from "../../api/Schedule";
 import Task from "../../api/Task";
 import { USER_ID } from "../../constants";
@@ -7,6 +7,9 @@ import { ITask, ScheduleRangeSettings } from "../../types";
 import { errorToStr, getTodayRange, validateSchedule } from "../../utils";
 import TaskTable from "../TaskTable"
 import styles from './TaskListPrompt.module.css'
+
+const MIN_ROWS = 3
+// const MAX_ROWS = 7
 
 export default function TaskListPrompt() {
     const { scheduleRange, getTheme } = useContext(SettingsContext)
@@ -18,6 +21,15 @@ export default function TaskListPrompt() {
     const [prompt, setPrompt] = useState('')
     const [wasPreviewed, setWasPreviewed] = useState(false)
     const [note, setNote] = useState('')
+
+    const textareaRef = useRef(null as HTMLTextAreaElement)
+    // const [initialHeight, setInitialHeight] = useState(0)
+    // // const [estimatedRowHeight, setEstimatedRowHeight] = useState(0)
+    // const [textareaRows, setTextareaRows] = useState(MIN_ROWS)
+
+    // useEffect(() => {
+    //     measurePromptHeight()
+    // })
 
     useEffect(() => {
         if (isEdit) {
@@ -74,6 +86,7 @@ export default function TaskListPrompt() {
         setPrompt(value)
         setWasPreviewed(false) // prompt was altered
         if (!isEdit) window.localStorage.setItem('prompt', value)
+        // adjustPromptHeight()
     }
 
     function onPromptEnter(e: KeyboardEvent) {
@@ -88,6 +101,29 @@ export default function TaskListPrompt() {
         setIsEdit(checked)
     }
 
+    // function measurePromptHeight() {
+    //     const initialHeight = textareaRef.current.scrollHeight
+    //     setInitialHeight(initialHeight)
+    //     // setEstimatedRowHeight(Math.floor(initialHeight / MIN_ROWS))
+    // }
+
+    // function adjustPromptHeight(multiline?: boolean) {
+    //     if (textareaRef.current.scrollHeight !== initialHeight) {
+    //         if (textareaRef.current.scrollHeight > initialHeight)
+    //             setTextareaRows(rows => {
+    //                 if ((rows + 1) > MAX_ROWS) return MAX_ROWS
+    //                 // setEstimatedRowHeight(Math.round(textareaRef.current.scrollHeight - initialHeight))
+    //                 return rows + 1
+    //             })
+    //         // TODO: Detect promp text content decrease
+    //         // else setTextareaRows(rows => {
+    //         //     if ((rows - 1) < MIN_ROWS) return MIN_ROWS
+    //         //     setEstimatedRowHeight(Math.round(initialHeight - textareaRef.current.scrollHeight))
+    //         //     return rows - 1
+    //         // })
+    //     }
+    // }
+
     return (
         <div className={styles['theme-' + getTheme()]}>
             <div className={styles["edit-check"]}>
@@ -96,8 +132,9 @@ export default function TaskListPrompt() {
             </div>
             <div className={styles.flexer}>
                 <label htmlFor="tasklist">Task list:</label>
-                <textarea className={styles.prompt} name="tasklist" cols={30} rows={3}
-                    value={prompt} onChange={onPromptChange} onKeyDown={onPromptEnter}></textarea>
+                <textarea className={styles.prompt} name="tasklist" cols={30} rows={MIN_ROWS}
+                    value={prompt} onChange={onPromptChange} onKeyDown={onPromptEnter}
+                    ref={textareaRef}></textarea>
             </div>
             {note ? <div className={styles["note-area"]}>{note}</div> : ''}
             <div className={styles.buttons}>

@@ -38,3 +38,7 @@
     background: #3c3b59;
     color: #ccc;
 }
+
+.container.theme-dark input[type=datetime-local] {
+    background-color: #ddd;
+}
