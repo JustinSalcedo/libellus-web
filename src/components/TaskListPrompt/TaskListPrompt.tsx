@@ -47,6 +47,7 @@ export default function TaskListPrompt() {
         try {
             setSchedule(validateSchedule(generateFromScratch(parsePrompt(prompt), scheduleRange, setNote)))
             setWasPreviewed(true)
+            setNote('')
         } catch (error) {
             setNote(errorToStr(error))
         }
@@ -70,6 +71,7 @@ export default function TaskListPrompt() {
             }, 1000)
             setActiveModal('schedule-created')
             if (!isEdit) window.localStorage.removeItem('prompt')
+            setNote('')
         } catch (error) {
             setNote(errorToStr(error))
         }
