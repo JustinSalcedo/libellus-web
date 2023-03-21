@@ -6,6 +6,7 @@ import { ITask } from "../../types"
 import { getTaskQueue } from "../../utils"
 import styles from "./MainScreen.module.css"
 import { ScheduleContext, SettingsContext } from "../../contexts"
+import LoadScreen from "../LoadScreen"
 
 export default function MainScreen() {
     const { getTheme } = useContext(SettingsContext)
@@ -98,5 +99,5 @@ export default function MainScreen() {
                 </div>
             </div>
         </Minimal>
-    ) : (<>Loading...</>)
+    ) : (<LoadScreen/>)
 }

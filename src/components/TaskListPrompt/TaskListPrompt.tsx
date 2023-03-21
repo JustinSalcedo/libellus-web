@@ -9,12 +9,11 @@ import TaskTable from "../TaskTable"
 import styles from './TaskListPrompt.module.css'
 
 const MIN_ROWS = 3
-// const MAX_ROWS = 7
 
 export default function TaskListPrompt() {
     const { scheduleRange, getTheme } = useContext(SettingsContext)
-    const { setSchedule: setGlobalSchedule, schedule: currSchedule } = useContext(ScheduleContext)
-    const { setActiveModal } = useContext(ViewContext)
+    const { setSchedule: setGlobalSchedule, schedule: currSchedule, refreshSchedule } = useContext(ScheduleContext)
+    const { setActiveModal, launchModal } = useContext(ViewContext)
 
     const [schedule, setSchedule] = useState(null)
     const [isEdit, setIsEdit] = useState(false)
@@ -23,13 +22,6 @@ export default function TaskListPrompt() {
     const [note, setNote] = useState('')
 
     const textareaRef = useRef(null as HTMLTextAreaElement)
-    // const [initialHeight, setInitialHeight] = useState(0)
-    // // const [estimatedRowHeight, setEstimatedRowHeight] = useState(0)
-    // const [textareaRows, setTextareaRows] = useState(MIN_ROWS)
-
-    // useEffect(() => {
-    //     measurePromptHeight()
-    // })
 
     useEffect(() => {
         if (isEdit) {
@@ -68,6 +60,8 @@ export default function TaskListPrompt() {
             setTimeout(() => {
                 window.localStorage.setItem('schedule', JSON.stringify(recordedSchedule))
                 setGlobalSchedule(recordedSchedule)
+                launchModal(false)
+                refreshSchedule(true)
             }, 1000)
             setActiveModal('schedule-created')
             if (!isEdit) window.localStorage.removeItem('prompt')
@@ -88,7 +82,6 @@ export default function TaskListPrompt() {
         setPrompt(value)
         setWasPreviewed(false) // prompt was altered
         if (!isEdit) window.localStorage.setItem('prompt', value)
-        // adjustPromptHeight()
     }
 
     function onPromptEnter(e: KeyboardEvent) {
@@ -102,29 +95,6 @@ export default function TaskListPrompt() {
         const { checked } = e.target
         setIsEdit(checked)
     }
-
-    // function measurePromptHeight() {
-    //     const initialHeight = textareaRef.current.scrollHeight
-    //     setInitialHeight(initialHeight)
-    //     // setEstimatedRowHeight(Math.floor(initialHeight / MIN_ROWS))
-    // }
-
-    // function adjustPromptHeight(multiline?: boolean) {
-    //     if (textareaRef.current.scrollHeight !== initialHeight) {
-    //         if (textareaRef.current.scrollHeight > initialHeight)
-    //             setTextareaRows(rows => {
-    //                 if ((rows + 1) > MAX_ROWS) return MAX_ROWS
-    //                 // setEstimatedRowHeight(Math.round(textareaRef.current.scrollHeight - initialHeight))
-    //                 return rows + 1
-    //             })
-    //         // TODO: Detect promp text content decrease
-    //         // else setTextareaRows(rows => {
-    //         //     if ((rows - 1) < MIN_ROWS) return MIN_ROWS
-    //         //     setEstimatedRowHeight(Math.round(initialHeight - textareaRef.current.scrollHeight))
-    //         //     return rows - 1
-    //         // })
-    //     }
-    // }
 
     return (
         <div className={styles['theme-' + getTheme()]}>

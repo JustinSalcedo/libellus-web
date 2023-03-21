@@ -15,7 +15,7 @@ export default function ScheduleComplete() {
                 </div>
                 <div className={styles.note}>No more schedules</div>
                 <div className={styles.schedule}>Default tasklist</div>
-                <div className={styles.action}><button onClick={refreshSchedule}>Refresh</button></div>
+                <div className={styles.action}><button onClick={() => refreshSchedule()}>Refresh</button></div>
             </div>
         </Minimal>
     )

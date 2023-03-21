@@ -1,0 +1,13 @@
+.screen {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.theme-dark {
+    color: #ddd;
+    background: #100c0c;
+}

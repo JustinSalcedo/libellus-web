@@ -8,6 +8,7 @@ import ScheduleComplete from './pages/ScheduleComplete'
 import { USER_ID } from './constants'
 import { ITask, ScheduleRangeSettings, Settings, Theme } from './types'
 import Timeline from './api/Timeline'
+import LoadScreen from './pages/LoadScreen'
 const { startsAt, endsAt } = getTodayRange()
 
 const App = () => {
@@ -64,8 +65,8 @@ const App = () => {
         }
     }, [hasLoaded])
 
-    function refreshSchedule() {
-        window.localStorage.removeItem('schedule')
+    function refreshSchedule(loadOnly?: boolean) {
+        if (!loadOnly) window.localStorage.removeItem('schedule')
         setHasLoaded(false)
     }
 
@@ -116,7 +117,7 @@ const App = () => {
     return (
         <SettingsContext.Provider value={{ scheduleRange: { dateRange, startDate, endDate }, setSettings: storeSettings, theme, getTheme, setTheme }}>
             <ScheduleContext.Provider value={{ schedule, setSchedule, refreshSchedule }}>
-                {!hasLoaded ? "Loading..." : (isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>)} 
+                {!hasLoaded ? <LoadScreen/> : (isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>)} 
             </ScheduleContext.Provider>
         </SettingsContext.Provider>
     )
