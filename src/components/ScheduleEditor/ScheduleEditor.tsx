@@ -1,10 +1,15 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useEffect } from 'react'
+import { SettingsContext } from '../../contexts'
 import ScheduleForm from '../ScheduleForm'
 import TaskListPrompt from '../TaskListPrompt'
 import styles from './ScheduleEditor.module.css'
 
 export default function ScheduleEditor () {
-    const [editor, setEditor] = useState('form' as 'form' | 'prompt')
+    const { editor, setEditor, setSettings } = useContext(SettingsContext)
+
+    useEffect(() => {
+        return setSettings({ editor })
+    })
 
     function onEditorRadioChange(e: ChangeEvent<HTMLInputElement>) {
         const { value } = e.target

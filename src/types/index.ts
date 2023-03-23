@@ -11,4 +11,4 @@ export interface ScheduleRangeSettings { dateRange: 'today' | 'custom', startDat
 
 export type Theme = 'light' | 'dark' | 'system'
 
-export interface Settings { schedule: ScheduleRangeSettings, theme: Theme }
+export interface Settings { schedule: ScheduleRangeSettings, theme: Theme, editor: 'form' | 'prompt' }

@@ -10,10 +10,12 @@ export const ViewContext = createContext({
 
 export const SettingsContext = createContext({
     scheduleRange: null as ScheduleRangeSettings,
-    setSettings: (settings: Settings) => {},
+    setSettings: (settings: Partial<Settings>) => {},
     theme: 'system' as Theme,
     getTheme: () => 'system' as Theme,
-    setTheme: (theme: Theme) => {}
+    setTheme: (theme: Theme) => {},
+    editor: 'form' as 'form' | 'prompt',
+    setEditor: (editor: 'form' | 'prompt') => {}
 })
 
 export const ScheduleContext = createContext({

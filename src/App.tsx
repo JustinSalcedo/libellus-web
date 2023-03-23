@@ -20,13 +20,14 @@ const App = () => {
 	const [endDate, setEndDate] = useState(endsAt)
 
     const [theme, setTheme] = useState('system' as Theme)
+    const [editor, setEditor] = useState('form' as 'form' | 'prompt')
 
     const [hasLoadedSettings, setHasLoadedSettings] = useState(false)
 
     useEffect(() => {
         if (!hasLoadedSettings) {
-            const { schedule: { dateRange, startDate, endDate }, theme } = recoverSettings()
-            setDateRange(dateRange); setStartDate(startDate); setEndDate(endDate); setTheme(theme)
+            const { schedule: { dateRange, startDate, endDate }, theme, editor } = recoverSettings()
+            setDateRange(dateRange); setStartDate(startDate); setEndDate(endDate); setTheme(theme); setEditor(editor)
             setHasLoadedSettings(true)
         }
     })
@@ -70,7 +71,7 @@ const App = () => {
         setHasLoaded(false)
     }
 
-    function storeSettings({ schedule, theme }: Partial<Settings>) {
+    function storeSettings({ schedule, theme, editor }: Partial<Settings>) {
         const rawSettings = window.localStorage.getItem('settings')
         const settings: Partial<Settings> = rawSettings ? { ...JSON.parse(rawSettings) } : {}
         if (schedule) {
@@ -81,16 +82,20 @@ const App = () => {
             settings.theme = theme
             setTheme(theme)
         }
+        if (editor) {
+            settings.editor = editor
+            setEditor(editor)
+        }
         window.localStorage.setItem('settings', JSON.stringify(settings))
     }
 
     function recoverSettings(): Settings {
         const rawSettings = window.localStorage.getItem('settings')
         if (rawSettings) {
-            const { schedule, theme } = JSON.parse(rawSettings) as Settings
-            return { schedule: formatDateRange(schedule), theme: theme || 'system'  }
+            const { schedule, theme, editor } = JSON.parse(rawSettings) as Settings
+            return { schedule: formatDateRange(schedule), theme: theme || 'system', editor: editor || 'form' }
         }
-        return { schedule: { dateRange: 'today', startDate: startsAt, endDate: endDate }, theme: 'system' }
+        return { schedule: { dateRange: 'today', startDate: startsAt, endDate: endDate }, theme: 'system', editor: 'form' }
     }
 
     function setScheduleSettings({ dateRange, startDate, endDate }: ScheduleRangeSettings) {
@@ -115,7 +120,8 @@ const App = () => {
     }
 
     return (
-        <SettingsContext.Provider value={{ scheduleRange: { dateRange, startDate, endDate }, setSettings: storeSettings, theme, getTheme, setTheme }}>
+        <SettingsContext.Provider value={{ scheduleRange: { dateRange, startDate, endDate }, setSettings: storeSettings, theme, getTheme, setTheme,
+            editor, setEditor }}>
             <ScheduleContext.Provider value={{ schedule, setSchedule, refreshSchedule }}>
                 {!hasLoaded ? <LoadScreen/> : (isActiveSchedule() ? <MainScreen/> : <ScheduleComplete/>)} 
             </ScheduleContext.Provider>
