@@ -10,12 +10,11 @@ import styles from './ScheduleForm.module.css'
 
 export default function ScheduleForm() {
     const { getTheme, scheduleRange: { startDate, endDate } } = useContext(SettingsContext)
-    const initialTask = { name: '', start: startDate, end: new Date(endDate.getTime() + 15 * 60 * 1000) }
     const { setSchedule: setGlobalSchedule, schedule: currSchedule, refreshSchedule } = useContext(ScheduleContext)
     const { setActiveModal, launchModal } = useContext(ViewContext)
     
     const [dateList, setDateList] = useState([getLocalDate(startDate)])
-    const [scheduleGroup, setScheduleGroup] = useState({ [getLocalDate(startDate)]: [initialTask] })
+    const [scheduleGroup, setScheduleGroup] = useState({ [getLocalDate(startDate)]: [createNextTask(startDate)] })
 
     const [note, setNote] = useState('')
     const [preventNote, setPreventNote] = useState(false)
@@ -25,8 +24,9 @@ export default function ScheduleForm() {
 
     useEffect(() => {
         if (!dateList.length && !Object.keys(scheduleGroup).length) {
+            setNote('')
             setDateList([getLocalDate(startDate)])
-            setScheduleGroup({ [getLocalDate(startDate)]: [initialTask] })
+            setScheduleGroup({ [getLocalDate(startDate)]: [createNextTask(startDate)] })
         }
     })
 
@@ -38,7 +38,7 @@ export default function ScheduleForm() {
         } else {
             const rawScheduleGroup = window.localStorage.getItem('scheduleGroup')
             if (rawScheduleGroup) {
-                const savedScheduleGroup = generateDates(JSON.parse(rawScheduleGroup))
+                const savedScheduleGroup = splitGroupDates(generateDates(JSON.parse(rawScheduleGroup)), setNote)
                 setScheduleGroup(savedScheduleGroup)
                 setDateList(Object.keys(savedScheduleGroup))
             }
@@ -104,9 +104,12 @@ export default function ScheduleForm() {
         setScheduleGroup(scheduleGroup => {
             const taskList = scheduleGroup[localDate]
             const start = taskList[taskList.length - 1].end
-            return { ...scheduleGroup, [localDate]: [...taskList, {
-                name: '', start, end: new Date(start.getTime() + 15 * 60 * 1000)
-            }] }
+            const nextTask = createNextTask(start)
+            if (!nextTask) {
+                setNote('Task is out of range. Add another date.')
+                return scheduleGroup
+            }
+            return { ...scheduleGroup, [localDate]: [...taskList, nextTask] }
         })
     }
 
@@ -125,9 +128,8 @@ export default function ScheduleForm() {
     }
 
     async function createSchedule() {
-        const schedule = Object.values(scheduleGroup).flatMap(taskList => taskList)
-
         try {
+            const schedule = Object.values(scheduleGroup).flatMap(taskList => taskList)
             const scheduleApi = new Schedule(USER_ID)
             const taskApi = new Task(USER_ID)
             await taskApi.DeleteAll()
@@ -193,7 +195,7 @@ function DayTasks({ localDate, taskList, editDate, handleTask, addTask, deleteTa
         setCanEdit(canEdit => !canEdit)
     }
 
-    const day = (new Date().getDay() === new Date(localDate).getDay()) ? 'Today' : new Date(`${localDate} 00:00`).toLocaleDateString('en-US', { weekday: 'long' })
+    const day = (new Date().getDay() === new Date(`${localDate} 00:00`).getDay()) ? 'Today' : new Date(`${localDate} 00:00`).toLocaleDateString('en-US', { weekday: 'long' })
 
     return (
         <div className={styles['day-tasks']}>
@@ -270,15 +272,15 @@ function isSortedTaskList(taskList: ITask[]) {
     return isSorted
 }
 
-function isSortedScheduleGroup(scheduleGroup: { [key: string]: ITask[] }) {
-    let isSorted = true
-    Object.values(scheduleGroup).every(taskList => {
-        isSorted = isSortedTaskList(taskList)
-        return isSorted
-    })
+// function isSortedScheduleGroup(scheduleGroup: { [key: string]: ITask[] }) {
+//     let isSorted = true
+//     Object.values(scheduleGroup).every(taskList => {
+//         isSorted = isSortedTaskList(taskList)
+//         return isSorted
+//     })
 
-    return isSorted
-}
+//     return isSorted
+// }
 
 function generateDates(scheduleGroup: { [key: string]: ITask[] }) {
     const parsedScheduleGroup: { [key: string]: ITask[] } = {}
@@ -288,22 +290,58 @@ function generateDates(scheduleGroup: { [key: string]: ITask[] }) {
     return parsedScheduleGroup
 }
 
-function scheduleToGroup(schedule: ITask[]) {
+function scheduleToGroup(schedule: ITask[], errorHandler?: (msg: string) => void) {
     const scheduleGroup: { [key: string]: ITask[] } = {}
-    validateSchedule(schedule).forEach(task => {
+    validateSchedule(schedule, errorHandler).forEach(task => {
         const startDate = getLocalDate(task.start)
         const endDate = getLocalDate(task.end)
         
         if (startDate !== endDate) {
-            const firstTask: ITask = { ...task, start: task.start, end: new Date(`${startDate} 23:59`) }
-            const secondTask: ITask = { ...task, start: new Date(`${endDate} 00:00`), end: task.end }
 
-            scheduleGroup[startDate] = scheduleGroup[startDate] ? [...scheduleGroup[startDate], firstTask] : [firstTask]
-            scheduleGroup[endDate] = scheduleGroup[startDate] ? [...scheduleGroup[startDate], secondTask] : [secondTask]
+            const days = Math.round((new Date(`${endDate} 00:00`).getTime() - new Date(`${startDate} 00:00`).getTime()) / (24 * 60 * 60 * 1000))
+
+            let splitTasks: ITask[] = []
+            for (let i = 0; i < days; i++) {
+                if (i === 0) {
+                    const firstTask: ITask = { ...task, start: task.start, end: new Date(`${startDate} 23:59`) }
+                    scheduleGroup[startDate] = scheduleGroup[startDate] ? [...scheduleGroup[startDate], firstTask] : [firstTask]
+                    splitTasks = [firstTask]
+                }
+
+                if (i === days - 1) {
+                    const lastTask: ITask = { ...task, start: new Date(`${endDate} 00:00`), end: task.end }
+                    scheduleGroup[endDate] = scheduleGroup[endDate] ? [...scheduleGroup[endDate], lastTask] : [lastTask]
+                    splitTasks = [...splitTasks, lastTask]
+                }
+
+                if (!(i === 0) && !(i === days - 1)) {
+                    const previousDate = getLocalDate(splitTasks[i - 1].start)
+                    const nextDate = getLocalDate(new Date(new Date(`${previousDate} 00:00`).getTime() + 24 * 60 * 60 * 1000))
+                    const nextTask = { ...task, start: new Date(`${nextDate} 00:00`), end: new Date(`${nextDate} 23:59`) }
+                    scheduleGroup[nextDate] = scheduleGroup[nextDate] ? [...scheduleGroup[nextDate], nextTask] : [nextTask]
+                    splitTasks = [...splitTasks, nextTask]
+                }
+            }
         } else {
             scheduleGroup[startDate] = scheduleGroup[startDate] ? [...scheduleGroup[startDate], task] : [task]
         }
     })
 
     return scheduleGroup
+}
+
+function splitGroupDates(scheduleGroup: { [key: string]: ITask[] }, errorHandler?: (msg: string) => void) {
+    return scheduleToGroup(Object.values(scheduleGroup).flatMap(taskList => taskList), errorHandler)
+}
+
+function createNextTask(start: Date): ITask {
+    const plus15mins = new Date(start.getTime() + 15 * 60 * 1000)
+    if (getLocalDate(start) !== getLocalDate(plus15mins)) {
+        const plusOneMin = new Date(start.getTime() + 60 * 1000)
+        if (getLocalDate(start) !== getLocalDate(plusOneMin)) {
+            return null
+        }
+        return { name: '', start, end: plusOneMin }
+    }
+    return { name: '', start, end: plus15mins }
 }

@@ -1,3 +1,8 @@
+.container {
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+
 .container button, .container input:not(input[type=checkbox]) {
     border-radius: 4px;
     border: 1px solid #777;

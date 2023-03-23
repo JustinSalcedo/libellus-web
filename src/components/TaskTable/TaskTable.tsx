@@ -16,7 +16,7 @@ export default function TaskTable({ schedule, showHistory, noDays }: { schedule:
         parsedSchedule.forEach((task, index) => {
             if (!noDays && (currentDay !== task.start.getDay())) {
                 rows.push(
-                    <tr key={'date_' + currentDay} className={styles["day-subhead"]}>
+                    <tr key={'date_' + task.start.getTime()} className={styles["day-subhead"]}>
                         <td colSpan={3}>{today !== task.start.getDay()
                             ? task.start.toLocaleDateString('en-US', { weekday: 'long' })
                             : 'Today'

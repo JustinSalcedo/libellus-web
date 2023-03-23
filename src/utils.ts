@@ -32,7 +32,7 @@ function prependZero(unit: number) {
 }
 
 // validate schedule (unsorted)
-export function validateSchedule(unSchedule: ITask[]): ITask[] {
+export function validateSchedule(unSchedule: ITask[], errorHandler?: (msg: string) => void): ITask[] {
     // Case 0: there are no tasks
     if (!unSchedule.length) throw new Error('Empty schedule');
 
@@ -72,6 +72,10 @@ export function validateSchedule(unSchedule: ITask[]): ITask[] {
     })
 
     if (!errorMessage) return schedule
+    if (errorHandler) {
+        errorHandler(errorMessage)
+        return schedule
+    }
     throw new Error(errorMessage)
 }
 
