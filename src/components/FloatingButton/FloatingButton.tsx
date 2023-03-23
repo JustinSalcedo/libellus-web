@@ -13,7 +13,7 @@ export default function FloatingButton() {
     }
 
     function handleClickOnPlus() {
-        setActiveModal('schedule-form')
+        setActiveModal('schedule-editor')
         launchModal(true)
         setClicks(0)
     }

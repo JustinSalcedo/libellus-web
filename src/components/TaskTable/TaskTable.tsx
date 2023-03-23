@@ -4,7 +4,7 @@ import { ITask } from "../../types"
 import { formatTimeToStr, isCurrentTask } from "../../utils"
 import styles from './TaskTable.module.css'
 
-export default function TaskTable({ schedule, showHistory }: { schedule: ITask[], showHistory: boolean }) {
+export default function TaskTable({ schedule, showHistory, noDays }: { schedule: ITask[], showHistory: boolean, noDays?: boolean }) {
     const { getTheme } = useContext(SettingsContext)
 
     function renderTaskRows(schedule: ITask[], showHistory: boolean) {
@@ -14,7 +14,7 @@ export default function TaskTable({ schedule, showHistory }: { schedule: ITask[]
 
         const parsedSchedule = showHistory ? schedule : schedule.filter(task => Date.now() < task.end.getTime())
         parsedSchedule.forEach((task, index) => {
-            if (currentDay !== task.start.getDay()) {
+            if (!noDays && (currentDay !== task.start.getDay())) {
                 rows.push(
                     <tr key={'date_' + currentDay} className={styles["day-subhead"]}>
                         <td colSpan={3}>{today !== task.start.getDay()

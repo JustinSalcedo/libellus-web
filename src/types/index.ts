@@ -5,7 +5,7 @@ export interface ITask {
     end: Date
 }
 
-export type ModalName = "" | "task-history" | "schedule-form" | "schedule-created" | "settings"
+export type ModalName = "" | "task-history" | "schedule-editor" | "schedule-created" | "settings"
 
 export interface ScheduleRangeSettings { dateRange: 'today' | 'custom', startDate: Date, endDate: Date }
 

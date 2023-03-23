@@ -1,3 +1,4 @@
+import { MAX_TASK_NAME } from "./constants"
 import { ITask } from "./types"
 
 const DEF_GAP = { name: "Chill" }
@@ -43,6 +44,12 @@ export function validateSchedule(unSchedule: ITask[]): ITask[] {
         const startTime = task.start.getTime()
         const endTime = task.end.getTime()
 
+        // Case 0: task has a valid name
+        if (!taskHasValidName(task)) {
+            errorMessage = `Task ${task.name ? (`'${task.name}'`) : (`#${index}`)} has invalid name`
+            return false
+        }
+
         // Case 1: there's an invalid task
         if (!isValidTask(task)) {
             errorMessage = `Task '${task.name}' has invalid timestamp`
@@ -71,7 +78,11 @@ export function validateSchedule(unSchedule: ITask[]): ITask[] {
 export function isValidTask(task: ITask) {
     const notEmptyOrNull = task.name && task.start && task.end
     const isValidTime = !!task.start.getTime() && !!task.end.getTime()
-    return task.name.length <= 20 && notEmptyOrNull && isValidTime
+    return taskHasValidName(task) && notEmptyOrNull && isValidTime
+}
+
+function taskHasValidName(task: ITask) {
+    return task.name && task.name.length <= MAX_TASK_NAME
 }
 
 export function getVirtualSchedule(schedule: ITask[]) {
