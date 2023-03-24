@@ -1,9 +1,10 @@
 import Centered from "../../layouts/Centered";
+import loader from '../../assets/loader.svg'
 
 export default function LoadScreen() {
     return (
         <Centered>
-            <img src="../../assets/loader.svg" />
+            <img src={loader} />
         </Centered>
     )
 }

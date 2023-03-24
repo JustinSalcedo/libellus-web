@@ -1,5 +1,6 @@
 import './styles/global.css'
 import React, { useEffect, useState } from "react"
+import favicon from './favicon.ico'
 import Schedule from "./api/Schedule"
 import MainScreen from "./pages/MainScreen"
 import { ScheduleContext, SettingsContext } from './contexts'
@@ -25,6 +26,12 @@ const App = () => {
     const [hasLoadedSettings, setHasLoadedSettings] = useState(false)
 
     useEffect(() => {
+        const linkNode = document.createElement('link')
+        linkNode.setAttribute('rel', 'shortcut icon')
+        linkNode.setAttribute('href', favicon)
+        linkNode.setAttribute('type', 'image/x-icon')
+        document.head.appendChild(linkNode)
+
         if (!hasLoadedSettings) {
             const { schedule: { dateRange, startDate, endDate }, theme, editor } = recoverSettings()
             setDateRange(dateRange); setStartDate(startDate); setEndDate(endDate); setTheme(theme); setEditor(editor)

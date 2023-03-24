@@ -44,6 +44,11 @@ declare module "*.webp" {
     export default src;
 }
 
+declare module "*.ico" {
+    const src: string;
+    export default src;
+}
+
 declare module "*.svg" {
     import * as React from "react";
 

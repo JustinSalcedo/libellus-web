@@ -33,7 +33,7 @@ module.exports = {
                 use: [ "style-loader", "css-loader"]
             },
             { 
-                test: /\.(jpg|jpeg|png|gif|mp3|svg|ico)$/,
+                test: /\.(jpg|jpeg|png|gif|mp3|svg|ico)$/i,
                 include: path.join(__dirname, 'src'),
                 use: ["file-loader"] 
             },
